@@ -34,6 +34,10 @@ public class User {
 	//one user can have many posts
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
+	
+	//many users have many activities
+	@ManyToMany(mappedBy="users")
+	private List<Activity> activities;
 
 	public int getId() {
 		return id;
