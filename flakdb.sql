@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `flakdb` DEFAULT CHARACTER SET utf8 ;
 USE `flakdb` ;
 
 -- -----------------------------------------------------
--- Table `group`
+-- Table `flak_group`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `group` ;
+DROP TABLE IF EXISTS `flak_group` ;
 
-CREATE TABLE IF NOT EXISTS `group` (
+CREATE TABLE IF NOT EXISTS `flak_group` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `group_user` (
   INDEX `fk_group_user_user_id_idx` (`user_id` ASC),
   CONSTRAINT `fk_group_user_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    REFERENCES `flak_group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_group_user_user_id`
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `conversation` (
   INDEX `fk_converation_group_id_idx` (`group_id` ASC),
   CONSTRAINT `fk_conversation_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    REFERENCES `flak_group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `activity` (
   INDEX `fk_activity_type_id_idx` (`type_id` ASC),
   CONSTRAINT `fk_activity_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    REFERENCES `flak_group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_activity_type_id`
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `qrl` (
   INDEX `fk_qrl_group_id_idx` (`group_id` ASC),
   CONSTRAINT `fk_qrl_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    REFERENCES `flak_group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -253,11 +253,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `group`
+-- Data for table `flak_group`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `group` (`id`, `name`) VALUES (1, 'FlakFamily');
+INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'FlakFamily');
 
 COMMIT;
 
