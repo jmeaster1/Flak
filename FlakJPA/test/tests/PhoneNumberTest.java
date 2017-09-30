@@ -36,10 +36,14 @@ public class PhoneNumberTest {
 	}
 
 	@Test
-	public void test_convo_name_mapping() {
+	public void test_Data_In_Phone_Number_Table() {
 		assertEquals(pn.getDescription(), "Test Complete");
 		assertEquals(pn.getPhoneDigits(), 2147483647);
 	}
 
-
+	@Test
+	public void test_Many_To_One_With_Contact() {
+		assertEquals(pn.getContact().getFirstName(), "Test");
+		assertEquals(pn.getContact().getQrl().getDescription(), "Test");
+	}
 }

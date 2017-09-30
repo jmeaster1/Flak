@@ -45,6 +45,7 @@ public class ConversationTest {
 		assertEquals(convo.getGroup().getId(), 1);
 		assertEquals(convo.getGroup().getName(), "FlakFamily");
 		assertEquals(convo.getGroup().getUsers().get(0).getUsername(), "Jimmy");
+		assertEquals(convo.getGroup().getRefLists().get(0).getDescription(), "Test");
 	}
 
 }
