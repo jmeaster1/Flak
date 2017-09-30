@@ -45,5 +45,11 @@ public class QRLTest {
 		assertEquals(qrl.getContacts().get(0).getFirstName(), "Test");
 		assertEquals(qrl.getContacts().get(0).getLastName(), "Testing");
 	}
+	
+	@Test
+	public void test_qrl_group_mapping() {
+		QRL qrl = em.find(QRL.class, 1);
+		assertEquals(qrl.getGroup().getId(), 1);
+	}
 
 }
