@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import entities.Group;
 
-public class EntitiesTesting {
+public class GroupTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
 	
