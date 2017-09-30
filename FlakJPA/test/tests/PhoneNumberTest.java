@@ -10,18 +10,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Conversation;
+import entities.PhoneNumber;
 
 public class PhoneNumberTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
-	Conversation convo;
+	PhoneNumber pn;
 	
 	@Before
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("Flak");
 		em = emf.createEntityManager();
-		convo = em.find(Conversation.class, 1);
+		pn = em.find(PhoneNumber.class, 1);
 	}
 	
 	@After
@@ -37,7 +37,8 @@ public class PhoneNumberTest {
 
 	@Test
 	public void test_convo_name_mapping() {
-		assertEquals(convo.getTitle(), "family stuff");
+		assertEquals(pn.getDescription(), "Test Complete");
+		assertEquals(pn.getPhoneDigits(), 2147483647);
 	}
 
 
