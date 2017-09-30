@@ -35,5 +35,11 @@ public class GroupTest {
 		Group g = em.find(Group.class, 1);
 		assertEquals(g.getName(), "FlakFamily");
 	}
+	
+	@Test
+	public void test_group_conversation_mapping() {
+		Group g = em.find(Group.class, 1);
+		assertEquals(g.getConversations().get(0).getId(), 1);
+	}
 
 }
