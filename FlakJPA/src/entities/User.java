@@ -39,6 +39,14 @@ public class User {
 	@ManyToMany(mappedBy="users")
 	private List<Activity> activities;
 
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
+
 	public int getId() {
 		return id;
 	}
