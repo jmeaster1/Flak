@@ -10,16 +10,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.Conversation;
 import entities.Group;
 
 public class ConversationTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
+	Conversation convo;
 	
 	@Before
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("Flak");
 		em = emf.createEntityManager();
+		convo = em.find(Conversation.class, 1);
 	}
 	
 	@After
@@ -34,9 +37,7 @@ public class ConversationTest {
 	}
 
 	@Test
-	public void test_group_name_mapping() {
-		Group g = em.find(Group.class, 1);
-		assertEquals(g.getName(), "FlakFamily");
+	public void test_convo_name_mapping() {
 	}
 
 }
