@@ -15,7 +15,7 @@ public class EntitiesTesting {
 	
 	@Before
 	public void setUp() {
-		emf = Persistence.createEntityManagerFactory("VideoStore");
+		emf = Persistence.createEntityManagerFactory("Flak");
 		em = emf.createEntityManager();
 	}
 	
