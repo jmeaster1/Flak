@@ -36,5 +36,12 @@ public class PostTest {
 	     User user = post.getUser();
 	     assertEquals("Jimmy", user.getUsername());
 	  }
+	@Test
+	  public void test_user_post_association() {
+		System.out.println(em.equals(null));
+	     User user = em.find(User.class, 1);
+	     Post post = user.getPosts().get(0);
+	     assertEquals("This test works.", post.getMessage());
+	  }
 
 }
