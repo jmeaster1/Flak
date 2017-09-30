@@ -38,6 +38,7 @@ public class ConversationTest {
 
 	@Test
 	public void test_convo_name_mapping() {
+		assertEquals(convo.getTitle(), "family stuff");
 	}
 
 }
