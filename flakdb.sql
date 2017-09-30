@@ -335,6 +335,17 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `user_activity`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `flakdb`;
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (1, 1);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (2, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `qrl`
 -- -----------------------------------------------------
 START TRANSACTION;

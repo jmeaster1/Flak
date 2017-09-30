@@ -41,18 +41,18 @@ public class ActivityTests {
 	  public void test_user_activity_association() {
 	     User user = em.find(User.class, 1);
 	     Activity activity = user.getActivities().get(0);
-	     assertEquals("", activity.getName());
+	     assertEquals("Garbage", activity.getName());
 	  }
 	@Test
 	  public void test_activity_type_association() {
 	     Activity activity = em.find(Activity.class, 1);
 	     Type type = activity.getType();
-	     assertEquals("Jimmy", type);
+	     assertEquals("task", type.getName());
 	  }
 	@Test
 	  public void test_type_activity_association() {
-	     User user = em.find(User.class, 1);
-	     Activity activity = user.getActivities().get(0);
-	     assertEquals("", activity.getName());
+	     Type type = em.find(Type.class, 1);
+	     Activity activity = type.getActivities().get(0);
+	     assertEquals("Garbage", activity.getName());
 	  }
 }
