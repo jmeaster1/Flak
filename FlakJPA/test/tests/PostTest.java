@@ -1,24 +1,28 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import entities.Group;
 
-public class EntitiesTesting {
+import entities.Post;
+import entities.User;
+
+
+public class PostTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
 	
-	@Before
+	@Before 
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("Flak");
 		em = emf.createEntityManager();
-	}
-	
+		}
 	@After
 	public void tearDown() {
 		em.close();
@@ -26,14 +30,11 @@ public class EntitiesTesting {
 	}
 	
 	@Test
-	public void smoke_test() {
-		assertEquals(true, true);
-	}
-
-	@Test
-	public void test_group_name_mapping() {
-		Group g = em.find(Group.class, 1);
-		assertEquals(g.getName(), "FlakFamily");
-	}
+	  public void test_post_user_association() {
+		System.out.println(em.equals(null));
+	     Post post = em.find(Post.class, 1);
+	     User user = post.getUser();
+	     assertEquals("Jimmy", user.getUsername());
+	  }
 
 }

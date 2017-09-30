@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `flakdb` DEFAULT CHARACTER SET utf8 ;
 USE `flakdb` ;
 
 -- -----------------------------------------------------
--- Table `flak_group`
+-- Table `group`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `flak_group` ;
+DROP TABLE IF EXISTS `group` ;
 
-CREATE TABLE IF NOT EXISTS `flak_group` (
+CREATE TABLE IF NOT EXISTS `group` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `group_user` (
   INDEX `fk_group_user_user_id_idx` (`user_id` ASC),
   CONSTRAINT `fk_group_user_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `flak_group` (`id`)
+    REFERENCES `group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_group_user_user_id`
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `conversation` (
   INDEX `fk_converation_group_id_idx` (`group_id` ASC),
   CONSTRAINT `fk_conversation_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `flak_group` (`id`)
+    REFERENCES `group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `activity` (
   INDEX `fk_activity_type_id_idx` (`type_id` ASC),
   CONSTRAINT `fk_activity_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `flak_group` (`id`)
+    REFERENCES `group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_activity_type_id`
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `qrl` (
   INDEX `fk_qrl_group_id_idx` (`group_id` ASC),
   CONSTRAINT `fk_qrl_group_id`
     FOREIGN KEY (`group_id`)
-    REFERENCES `flak_group` (`id`)
+    REFERENCES `group` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -253,11 +253,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `flak_group`
+-- Data for table `group`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'FlakFamily');
+INSERT INTO `group` (`id`, `name`) VALUES (1, 'FlakFamily');
 
 COMMIT;
 
@@ -286,6 +286,26 @@ INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 2);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 3);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 4);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 5);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `conversation`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `flakdb`;
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (1, 'family stuff', 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `post`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `flakdb`;
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (1, '2017-12-31 23:59:59', 'This test works.', 1, 1);
 
 COMMIT;
 
