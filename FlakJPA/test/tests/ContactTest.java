@@ -10,11 +10,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Group;
-import entities.Post;
+import entities.Contact;
+import entities.PhoneNumber;
+import entities.QRL;
 import entities.User;
 
-public class UserTests {
+public class ContactTest {
+
 	
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
@@ -35,26 +37,25 @@ public class UserTests {
 	public void smoke_test() {
 		assertEquals(true, true);
 	}
-
-	@Test
-	public void testUserUserNameHasData() {
-		User u = em.find(User.class, 1);
-		assertEquals("Jimmy", u.getUsername());
+	
+	@Test 
+	public void testGetFirstNameFromContact() {
+		Contact c = em.find(Contact.class, 1);
+		assertEquals("Test", c.getFirstName());
+	}
+	@Test 
+	public void testGetDescriptionFromContact() {
+		Contact c = em.find(Contact.class, 1);
+		assertEquals("testing date", c.getDescription());
 	}
 	
-	@Test
-	public void userToPostTest() {
-		User u = em.find(User.class, 1);
-		Post p = u.getPosts().get(0);
-		assertEquals("This test works.", p.getMessage());
-		
+	@Test 
+	public void testGetQrlDescriptionFromContact() {
+		Contact c = em.find(Contact.class, 1);
+		QRL q = c.getQrl();
+		assertEquals("Test", q.getDescription());
 	}
-	@Test
-	public void testUserToFlakGroup() {
-		User u = em.find(User.class, 1);
-		Group g = u.getGroups().get(0);
-		assertEquals("FlakFamily", g.getName());
-		
-	}
+
+	
 
 }
