@@ -11,9 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entities.Conversation;
-import entities.Group;
 
-public class ConversationTest {
+public class PhoneNumberTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
 	Conversation convo;
@@ -40,5 +39,6 @@ public class ConversationTest {
 	public void test_convo_name_mapping() {
 		assertEquals(convo.getTitle(), "family stuff");
 	}
+
 
 }
