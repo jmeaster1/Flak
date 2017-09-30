@@ -1,15 +1,18 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import entities.Group;
 
-public class EntitiesTesting {
+public class ConversationTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
 	
