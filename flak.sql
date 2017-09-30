@@ -291,26 +291,6 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `conversation`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `flakdb`;
-INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (1, 'Test convo', 1);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `post`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `flakdb`;
-INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (1, '2017-12-31 23:59:59', 'This test works.', 1, 1);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `type`
 -- -----------------------------------------------------
 START TRANSACTION;
