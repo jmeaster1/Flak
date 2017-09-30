@@ -21,7 +21,7 @@
         value="flakadmin" /><!-- password for DB. Will change-->
       <property name="javax.persistence.jdbc.driver"
         value="com.mysql.jdbc.Driver" /><!-- Getting the driver that will manage connections -->
-       <!-- No longer necessary to create instance of Conneciton anymore -->
+       <!-- No longer necessary to create instance of Connection anymore -->
       <property name="hibernate.connection.zeroDateTimeBehavior" value="convertToNull"></property>
   
       <property name="hibernate.show_sql" value="true" />
