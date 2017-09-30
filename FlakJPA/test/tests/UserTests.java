@@ -10,6 +10,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.Group;
+import entities.Post;
+import entities.User;
+
 public class UserTests {
 	
 	private EntityManagerFactory emf = null;
@@ -17,7 +21,7 @@ public class UserTests {
 	
 	@Before
 	public void setUp() {
-		emf = Persistence.createEntityManagerFactory("VideoStore");
+		emf = Persistence.createEntityManagerFactory("Flak");
 		em = emf.createEntityManager();
 	}
 	
@@ -33,8 +37,24 @@ public class UserTests {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testUserUserNameHasData() {
+		User u = em.find(User.class, 1);
+		assertEquals("Jimmy", u.getUsername());
+	}
+	
+	@Test
+	public void userToPostTest() {
+		User u = em.find(User.class, 1);
+		Post p = u.getPosts().get(0);
+		assertEquals("This test works.", p.getMessage());
+		
+	}
+	@Test
+	public void testUserToFlakGroup() {
+		User u = em.find(User.class, 1);
+		Group g = u.getGroups().get(0);
+		assertEquals("FlakFamily", g.getName());
+		
 	}
 
 }

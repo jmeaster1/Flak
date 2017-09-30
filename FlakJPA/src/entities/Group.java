@@ -38,6 +38,14 @@ public class Group {
 		return name;
 	}
 
+	public List<QRL> getRefLists() {
+		return refLists;
+	}
+
+	public void setRefLists(List<QRL> refLists) {
+		this.refLists = refLists;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}

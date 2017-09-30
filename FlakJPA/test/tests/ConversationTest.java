@@ -11,7 +11,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import entities.Conversation;
-import entities.Group;
 
 public class ConversationTest {
 	private EntityManagerFactory emf = null;
@@ -37,8 +36,16 @@ public class ConversationTest {
 	}
 
 	@Test
-	public void test_convo_name_mapping() {
-		assertEquals(convo.getTitle(), "family stuff");
+	public void test_Data_In_Convo_Table() {
+		assertEquals(convo.getTitle(), "Test convo");
+	}
+	
+	@Test
+	public void test_Many_Convos_To_One_Flak_Group() {
+		assertEquals(convo.getGroup().getId(), 1);
+		assertEquals(convo.getGroup().getName(), "FlakFamily");
+		assertEquals(convo.getGroup().getUsers().get(0).getUsername(), "Jimmy");
+		assertEquals(convo.getGroup().getRefLists().get(0).getDescription(), "Test");
 	}
 
 }

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@Table(name="phone_number")
 public class PhoneNumber {
 	
 	@Id
