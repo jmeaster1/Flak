@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Activity {
@@ -27,12 +28,20 @@ public class Activity {
 	private boolean isAssigned;
 	@Column(name="complete")
 	private boolean isComplete;
+	
+	@ManyToOne
+	@JoinColumn(name="type_id")
+	private Type type;
+	
 	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinTable(name="user_activity",
 	joinColumns=@JoinColumn(name="activity_id"),
 	inverseJoinColumns=@JoinColumn(name="user_id")
 	)
-	List<User> users;
+	private List<User> users;
+	
+	
+	
 	public String getName() {
 		return name;
 	}
