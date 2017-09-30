@@ -26,6 +26,9 @@ public class Group {
 	// many users can have many groups
 	@ManyToMany(mappedBy="groups")
 	private List<User> users;
+	
+	@OneToMany(mappedBy = "group")
+	private List<QRL> refLists;
 
 	public int getId() {
 		return id;

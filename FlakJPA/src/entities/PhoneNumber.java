@@ -2,34 +2,32 @@ package entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="qrl")
-public class QRL {
+public class PhoneNumber {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String description;
 	
-	@ManyToOne
-	@JoinColumn(name = "group_id")
-	private Group group;
+	@Column(name="number")
+	private int phoneDigits;
 	
-	@OneToMany(mappedBy = "contact")
-	private List<Contact> contacts;
-
-	public int getId() {
-		return id;
-	}
+	@ManyToOne
+	@JoinColumn(name = "contact_id")
+	private Contact contact;
 
 	public String getDescription() {
 		return description;
@@ -39,34 +37,40 @@ public class QRL {
 		this.description = description;
 	}
 
-	public Group getGroup() {
-		return group;
+	public int getPhoneDigits() {
+		return phoneDigits;
 	}
 
-	public void setGroup(Group group) {
-		this.group = group;
+	public void setPhoneDigits(int phoneDigits) {
+		this.phoneDigits = phoneDigits;
 	}
 
-	public List<Contact> getContacts() {
-		return contacts;
+	public Contact getContact() {
+		return contact;
 	}
 
-	public void setContacts(List<Contact> contacts) {
-		this.contacts = contacts;
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	@Override
 	public String toString() {
-		return "QRL [id=" + id + ", description=" + description + ", group=" + group + "]";
+		return "PhoneNumber [id=" + id + ", description=" + description + ", phoneDigits=" + phoneDigits + ", contact="
+				+ contact + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((group == null) ? 0 : group.hashCode());
 		result = prime * result + id;
+		result = prime * result + phoneDigits;
 		return result;
 	}
 
@@ -78,23 +82,21 @@ public class QRL {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		QRL other = (QRL) obj;
+		PhoneNumber other = (PhoneNumber) obj;
+		if (contact == null) {
+			if (other.contact != null)
+				return false;
+		} else if (!contact.equals(other.contact))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (group == null) {
-			if (other.group != null)
-				return false;
-		} else if (!group.equals(other.group))
-			return false;
 		if (id != other.id)
+			return false;
+		if (phoneDigits != other.phoneDigits)
 			return false;
 		return true;
 	}
-	
-	
-	
-	
 }
