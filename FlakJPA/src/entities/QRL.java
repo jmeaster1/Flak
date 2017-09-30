@@ -24,7 +24,7 @@ public class QRL {
 	@JoinColumn(name = "group_id")
 	private Group group;
 	
-	@OneToMany(mappedBy = "contact")
+	@OneToMany(mappedBy = "qrl")
 	private List<Contact> contacts;
 
 	public int getId() {
