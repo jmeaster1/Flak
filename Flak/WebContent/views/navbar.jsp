@@ -23,24 +23,6 @@
 
 	<div class="collapse navbar-collapse" id="myNavbar">
 
-
-		<ul class="nav navbar-nav navbar-right">
-
-			<ul class="nav navbar-nav ">
-
-
-				<li><a href="about.do">What is Flak?</a></li>
-				<li class="dropdown"><a class="dropdown-toggle"
-					data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
-					<ul class="dropdown-menu">
-
-					</ul> <%-- <c:forEach var="group" items="${user.groups}">
-							<li><a href="getGroups.do?id=${user.group.id}">${user.group.name}
-							</a></li>
-							<br />
-						</c:forEach> --%>
-				<li><a href="login.do">LOGIN</a></li>
-				</li>
 			<ul class="nav navbar-nav navbar-right">
 				<ul class="nav navbar-nav ">
 				<c:choose>

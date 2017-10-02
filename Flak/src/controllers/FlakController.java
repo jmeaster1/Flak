@@ -97,7 +97,7 @@ public class FlakController {
 		
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("posts",flakDAO.showConversation(cid).getPosts());
+		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
