@@ -39,6 +39,8 @@ public class User {
 	@ManyToMany(mappedBy="users")
 	private List<Activity> activities;
 
+	
+	
 	public List<Activity> getActivities() {
 		return activities;
 	}
