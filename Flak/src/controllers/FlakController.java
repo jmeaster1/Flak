@@ -27,6 +27,10 @@ public class FlakController {
 	public String signup( Model model) {
 		return "signup.jsp";
 	}
+	@RequestMapping(path = "", method = RequestMethod.GET)
+	public String dashboard(Model model) {
+		return "dashboard.jsp";
+	}
 	
 	
 	
