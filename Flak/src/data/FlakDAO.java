@@ -37,6 +37,8 @@ public interface FlakDAO {
 	
 	public List<Activity> getActivitiesByType(String type);
 	
+	public Group findGroupByName(String name);
+	
 	//Create, Edit, Delete for all 9 items
 	
 	public Group createGroup(Group group);

@@ -74,6 +74,12 @@ public class FlakDAOImpl implements FlakDAO {
 		//DO LAST
 		return null;
 	}
+	
+	@Override
+	public Group findGroupByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Group createGroup(Group group) {
@@ -122,10 +128,13 @@ public class FlakDAOImpl implements FlakDAO {
 			if(user.getPassword() != "" && user.getPassword()!= null) {
 				managedUser.setPassword(user.getPassword());
 			}
-			if(user.isAdmin() != "" && user.getPassword()!= null) {
-				managedUser.setPassword(user.getPassword());
+			if(user.getActivities() != null) {
+				managedUser.setActivities(user.getActivities());
 			}
-			
+			if(user.getPosts() != null) {
+				managedUser.setPosts(user.getPosts());
+			}
+			managedUser.setAdmin(user.getAdmin());
 		}
 		return managedUser;
 	}
@@ -268,5 +277,6 @@ public class FlakDAOImpl implements FlakDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }
