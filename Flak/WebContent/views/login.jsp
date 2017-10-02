@@ -29,7 +29,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body>
+<body class="login_body">
 	<h1 class="header_class">
 		<!-- login.jsp -->
 	</h1>

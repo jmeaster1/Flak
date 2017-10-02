@@ -17,10 +17,23 @@ public class FlakController {
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET) // unfinished view
 	public String show( Model model) {
-		model.addAttribute("user", flakDAO.showUser(1));
+		return "index.jsp";
+	}
+	@RequestMapping(path = "login.do", method = RequestMethod.GET) // unfinished view
+	public String login( Model model) {
 		return "login.jsp";
 	}
-	@RequestMapping(path="GetLoginForm.do", method=RequestMethod.GET)
+	@RequestMapping(path = "signup.do", method = RequestMethod.GET) // unfinished view
+	public String signup( Model model) {
+		return "signup.jsp";
+	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping(path="GetLoginForm.do", method=RequestMethod.GET)// form validation
 	public ModelAndView getLoginForm() {
 	  User u = new User();
 	  ModelAndView mv = new ModelAndView();
