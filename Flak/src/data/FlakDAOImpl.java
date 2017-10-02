@@ -96,6 +96,15 @@ public class FlakDAOImpl implements FlakDAO {
 		return groups;
 	}
 	
+	public List<Conversation> getConversationsByGroupId(int id) {
+		List<Conversation> conversations;
+		String queryString = "Select c from Conversation c join fetch c.posts where flak_group.id = :id";
+		conversations =  em.createQuery(queryString, Conversation.class)
+						.setParameter("id", id)
+						.getResultList();
+		return conversations;
+	}
+	
 	@Override
 	public boolean doesUsernameAndPasswordMatch(String name, String pw) {
 		boolean answer = false;
