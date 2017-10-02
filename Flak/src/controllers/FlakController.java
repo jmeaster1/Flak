@@ -136,8 +136,8 @@ public class FlakController {
 
 	@RequestMapping(path = "events.do", method = RequestMethod.GET)
 	public String eventList(Model model,
-			@RequestParam("gid") int gid,
-			@ModelAttribute("user") User user) {
+							@RequestParam("gid") int gid,
+							@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("list",flakDAO.getActivitiesByType("event"));
@@ -149,6 +149,19 @@ public class FlakController {
 	@RequestMapping(path = "error.do", method = RequestMethod.GET) // unfinished view
 	public String errorView(Model model) {
 		return "error.jsp";
+	}
+	
+	@RequestMapping(path = "editActivity.do", method = RequestMethod.GET)
+	public String editActivity(Model model,
+								@RequestParam("aid") int aid,
+								@RequestParam("gid") int gid,
+								@ModelAttribute("user") User user) {
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("activity", flakDAO.showActivity(aid));
+		//model.addAttribute("types", ) a way to send over the types
+		model.addAttribute("user", user);
+		return "editactivity.jsp";
 	}
 
 	

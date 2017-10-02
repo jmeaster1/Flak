@@ -31,52 +31,25 @@
 </head>
 	<div class="dashboard_container">
 <body>
-		<h1 class="header_class">dashboard.jsp</h1>
-
 		<div class="no-show">
 			<h1>hide</h1>
 		</div>
-		<c:if test="${not empty posts}">
-				<ul>
-			<c:forEach var="post" items="${posts}">
-					<li>${post}</li>
-			</c:forEach>
-				</ul>
-		</c:if>
 		
-		<c:if test="${not empty conversations}">
-				<ul>
-			<c:forEach var="convo" items="${conversations}">
-					<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
-			</c:forEach>
-				</ul>
-		</c:if>
-		
-		<c:if test="${not empty list}">
-				<table>
-			<c:forEach var="item" items="${list}">
-					<tr>
-					<td>${item.name}</td>
-					<td>${item.description}</td>
-					<td><a href="selectActivity.do?aid=${item.id}&gid=${group.id}"><input type="submit" value="Edit"/></a></td>
-					<c:if test="${user.admin}">
-						<td><a href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input type="submit" value="Delete"/></a></td>
-					</c:if>
-					</tr>
-			</c:forEach>
-				</table>
-		</c:if>
+	<form action="save.do" method="post" modelAttribute="task">
+			<input type="hidden" name="id" value="${activity.id}"></input>
+			Name: <input name="item" value="${activity.name}"></form><br>
+			Description: <input name="description" value="${activity.description}"></form><br>
+			Type:
+			<select value="${}">
+				<c:forEach var="type" items="${}">
+					<option value="${type}">${type}</option>
+				</c:forEach>
+			</select>
+			Assigned: <form:input path="priority" name="priority" value="${activity.assigned}"></form:input><br>
+			<input type="submit" name="submit" value="Save"></input>
+		</form>
 
 
-		<div class="buttons">
-			<ul>
-				<li class="button"><a href="getDashboardByUser.do?gid=${group.id}">&nbsp;Message
-						Board&nbsp;</a></li>
-				<li class="button"><a href="tasks.do?gid=${group.id}">Tasks</a></li>
-				<li class="button"><a href="shopping.do?gid=${group.id}">Shopping</a></li>
-				<li class="button"><a href="events.do?gid=${group.id}">Events</a></li>
-			</ul>
-		</div>
 </body>
 	</div>
 </html>
