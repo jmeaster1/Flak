@@ -29,7 +29,7 @@
 	<div class="grouplist_container">
 		<h1>grouplist.jsp</h1>
 		<c:forEach var="group" items="${groups}">
-			<li><a href="getGroups.do?id=${group.id}">${group.name}
+			<li><a href="getDashboardByUser.do?id=${group.id}">${group.name}
 			</a></li>
 			<br />
 		</c:forEach>

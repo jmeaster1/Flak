@@ -37,6 +37,12 @@
   <div class="no-show">
     <h1>hide</h1>
   </div>
+  
+  <c:forEach var="convo" items="${user.conversations}">
+  	<ul>
+  		<li></li>
+  	</ul>
+  </c:forEach>
 
 </body>
 </html>

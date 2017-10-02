@@ -59,6 +59,10 @@ body {
 	font-size: 40px;
 	background-color: white;
 }
+
+/* .groups_hidden {
+	visibility: hidden;
+} */
 .about_container {
 	font-family: 'Cabin Sketch', cursive;
 	margin: auto;
