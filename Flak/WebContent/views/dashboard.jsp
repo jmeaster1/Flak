@@ -29,8 +29,8 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body>
 	<div class="dashboard_container">
+<body>
 		<h1 class="header_class">dashboard.jsp</h1>
 
 		<div class="no-show">
@@ -53,13 +53,13 @@
 
 		<div class="buttons">
 			<ul>
-				<li class="button"><a href="messageBoard.do">&nbsp;Message
+				<li class="button"><a href="messageBoard.do?gid">&nbsp;Message
 						Board&nbsp;</a></li>
-				<li class="button"><a href="tasks.do">Tasks</a></li>
-				<li class="button"><a href="shopping.do">Shopping</a></li>
-				<li class="button"><a href="events.do">Events</a></li>
+				<li class="button"><a href="tasks.do?gid">Tasks</a></li>
+				<li class="button"><a href="shopping.do?gid">Shopping</a></li>
+				<li class="button"><a href="events.do?gid">Events</a></li>
 			</ul>
 		</div>
-	</div>
 </body>
+	</div>
 </html>
