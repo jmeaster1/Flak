@@ -57,10 +57,6 @@ public class FlakController {
 		return "signup.jsp";
 	}
 
-	@RequestMapping(path = "dashboard.do", method = RequestMethod.GET)
-	public String dashboardPage(Model model, @ModelAttribute("user") User user) {
-		return "dashboard.jsp";
-	}
 
 	@RequestMapping(path = "about.do", method = RequestMethod.GET) // unfinished view
 	public String about(Model model) {
@@ -106,22 +102,28 @@ public class FlakController {
 		return "messagebrd.jsp";
 	}
 
-	@RequestMapping(path = "qrl.do", method = RequestMethod.GET) // unfinished view
+	@RequestMapping(path = "qrl.do", method = RequestMethod.GET) 
 	public String QRL(Model model, @ModelAttribute("user") User user) {
 		return "qrl.jsp";
 	}
 
-	@RequestMapping(path = "regstatus.do", method = RequestMethod.GET) // unfinished view
+	@RequestMapping(path = "regstatus.do", method = RequestMethod.GET)
 	public String regStatus(Model model) {
 		return "regstatus.jsp";
 	}
 
-	@RequestMapping(path = "shopping.do", method = RequestMethod.GET) // unfinished view
-	public String shopping(Model model, @ModelAttribute("user") User user) {
-		return "shopping.jsp";
+	@RequestMapping(path = "shopping.do", method = RequestMethod.GET)
+	public String shopping(Model model,
+						@RequestParam("gid") int gid,
+						@ModelAttribute("user") User user) {
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("list",flakDAO.getActivitiesByType("shopping"));
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
 	}
 
-	@RequestMapping(path = "task.do", method = RequestMethod.GET) // unfinished view
+	@RequestMapping(path = "task.do", method = RequestMethod.GET) 
 	public String task(Model model, @ModelAttribute("user") User user) {
 		return "task.jsp";
 	}
@@ -131,13 +133,5 @@ public class FlakController {
 		return "error.jsp";
 	}
 
-	// @RequestMapping(path="GetLoginForm.do", method=RequestMethod.GET)// form
-	// validation
-	// public ModelAndView getLoginForm() {
-	// User u = new User();
-	// ModelAndView mv = new ModelAndView();
-	// mv.setViewName("login.jsp");
-	// mv.addObject("user", u);
-	// return mv;
-	// }
+	
 }
