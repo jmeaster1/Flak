@@ -5,6 +5,10 @@ body {
 	background-repeat: no-repeat;
 	font-family: 'Cabin Sketch', cursive;
 }
+.dashboard_container {
+	background-color:white;
+	font-family: 'Cabin Sketch', cursive;
+}
 .login_body{
 	/* background-image:
 		url("https://aspartame.org/wp-content/uploads/2016/10/AdobeStock_59246143-1024x683.jpeg");
