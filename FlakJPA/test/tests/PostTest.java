@@ -23,6 +23,7 @@ public class PostTest {
 		emf = Persistence.createEntityManagerFactory("Flak");
 		em = emf.createEntityManager();
 		}
+	
 	@After
 	public void tearDown() {
 		em.close();
