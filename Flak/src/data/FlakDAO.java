@@ -35,9 +35,10 @@ public interface FlakDAO {
 	public QRL showQRL(int id);
 	
 	
+	//Special Searches
 	public List<Activity> getActivitiesByType(String type);
 	
-	public Group findGroupByName(String name);
+	public List<Group> findGroupByWord(String word);
 	
 	//Create, Edit, Delete for all 9 items
 	

@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
 <%-- core --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%-- form --%>
@@ -13,7 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
-<jsp:include page ="navbar.jsp"></jsp:include>
+<jsp:include page="navbar.jsp"></jsp:include>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -32,10 +30,20 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-<h1 class="header_class">login.jsp</h1>
-
-<form:form action="login.do" method="POST" modelAttribute="user">
-  </form:form>
+	<h1 class="header_class">
+		<!-- login.jsp -->
+	</h1>
+	<div class="login_container">
+	<div class="login_content">
+		<form:form action="login.do" method="POST" modelAttribute="user">
+USERNAME:
+<input type="text" name="username" /> 
+PASSWORD:
+<input type="text" name="username" />
+			<input type="submit" value="Log In" />
+		</form:form>
+		</div>
+	</div>
 
 </body>
 </html>
