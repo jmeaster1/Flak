@@ -28,20 +28,38 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-	<h1>Sign Up</h1>
+	<div class="signup_container">
+		<h1>Sign Up</h1>
+		<br>
+		<br>
 
-	<form action="signUp.do" method="POST">
-		First Name: <input type="text" name="firstName" value="" />
-		 Last Name:
-		<input type="text" name="lastName" value="" />
-		 User Name: <input
-			type="text" name="userName" value="" />
-			 Password: <input
-			type="password" name="lastName" value="" />
-			 Confirm Password: <input
-			type="password" name="lastName" value="" />
-			 <input type="submit"
-			name="submit" value="Create Account" />
-	</form>
+		<form action="signUp.do" method="POST">
+		<br>
+			<div class="signup_field" >
+				<label>First Name: <input class="signup_field" type="text" name="firstName" value="" /></label> 
+			</div>
+			<br>
+			<div class="signup_field" >
+				<label>Last Name: <input class="signup_field" type="text" name="lastName" value="" /></label>
+			</div>
+			<br>
+			<div class="signup_field" >
+				<label>User Name: <input class="signup_field" type="text" name="userName" value="" /></label>
+			</div>
+			<br>
+			<div class="signup_field" >
+				<label>Password:<input class="signup_field" type="password" name="lastName" value="" /></label>
+			</div>
+			<br>
+			<div class="signup_field">
+				<label>Confirm Password: <input class="signup_field" type="password" name="lastName" value="" /></label>
+			</div>
+			<br>
+			<br>
+			<div>
+				<input class="signup_button" type="submit" name="submit" value="Create Account" />
+			</div>
+		</form>
+	</div>
 </body>
 </html>
