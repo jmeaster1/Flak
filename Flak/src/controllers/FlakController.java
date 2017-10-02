@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import data.FlakDAO;
@@ -29,9 +30,26 @@ public class FlakController {
 //		return "error.jsp";
 	}
 	@RequestMapping(path = "login.do", method = RequestMethod.GET) // unfinished view
-	public String login( Model model) {
+	public String loginPage( Model model) {
 		return "login.jsp";
 	}
+	
+	@RequestMapping(path = "login.do", method = RequestMethod.POST) 
+	public String login(@RequestParam("username") String username,
+						@RequestParam("password") String password,
+						Model model) {
+		
+		if(flakDAO.doesUsernameAndPasswordMatch(username, password)) {
+			User user = flakDAO.getUserByUsername(username);
+			model.addAttribute("user", user);
+			model.addAttribute("groups", user.getGroups());
+			return "grouplist.jsp";
+		}
+		else {
+			return "error.jsp";
+		}
+	}
+	
 	@RequestMapping(path = "signup.do", method = RequestMethod.GET) // unfinished view
 	public String signup( Model model) {
 		return "signup.jsp";

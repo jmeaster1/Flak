@@ -115,6 +115,20 @@ public class FlakDAOImpl implements FlakDAO {
 		}
 		return answer;
 	}
+	
+	@Override
+	public User getUserByUsername(String name) {
+		User user = null;
+		String queryString = "Select u from User u join fetch u.groups where u.username = :name";
+		List<User> users =  em.createQuery(queryString, User.class)
+								.setParameter("name", name)
+								.getResultList();
+		if(users.size() > 0) {
+			user = users.get(0);
+		}
+		return user;
+	}
+
 
 	@Override
 	public Group createGroup(Group group) {

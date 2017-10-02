@@ -42,6 +42,8 @@ public interface FlakDAO {
 	
 	public boolean doesUsernameAndPasswordMatch(String name, String pw);
 	
+	public User getUserByUsername(String name);
+	
 	//Create, Edit, Delete for all 9 items
 	
 	public Group createGroup(Group group);
