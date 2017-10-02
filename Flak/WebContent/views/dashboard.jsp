@@ -30,26 +30,36 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-	<h1 class="header_class">
-		dashboard.jsp
-	</h1>
+	<div class="dashboard_container">
+		<h1 class="header_class">dashboard.jsp</h1>
 
-  <div class="no-show">
-    <h1>hide</h1>
-  </div>
- 	<c:if test="${not empty posts}"> 
-	  <c:forEach var="post" items="${posts}">
-	  	<ul>
-	  		<li>${post}</li>
-	  	</ul>
-	  </c:forEach>
-	 </c:if>
-	<c:if test="${not empty conversations}">	
-	  <c:forEach var="convo" items="${conversations}">
-	  	<ul>
-	  		<li><a href ="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
-	  	</ul>
-	  </c:forEach>
-	</c:if>
+		<div class="no-show">
+			<h1>hide</h1>
+		</div>
+		<c:if test="${not empty posts}">
+			<c:forEach var="post" items="${posts}">
+				<ul>
+					<li>${post}</li>
+				</ul>
+			</c:forEach>
+		</c:if>
+		<c:if test="${not empty conversations}">
+			<c:forEach var="convo" items="${conversations}">
+				<ul>
+					<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
+				</ul>
+			</c:forEach>
+		</c:if>
+
+		<div class="buttons">
+			<ul>
+				<li class="button"><a href="messageBoard.do">&nbsp;Message
+						Board&nbsp;</a></li>
+				<li class="button"><a href="tasks.do">Tasks</a></li>
+				<li class="button"><a href="shopping.do">Shopping</a></li>
+				<li class="button"><a href="events.do">Events</a></li>
+			</ul>
+		</div>
+	</div>
 </body>
 </html>
