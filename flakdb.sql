@@ -257,7 +257,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'FlakFamily');
+INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'Flak Development Team');
 
 COMMIT;
 
@@ -295,7 +295,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (1, 'Test convo', 1);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (1, 'Hello Team!', 1);
 
 COMMIT;
 
@@ -305,7 +305,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (1, '2017-12-31 23:59:59', 'This test works.', 1, 1);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (1, '2017-12-31 23:59:59', 'Hey, team! Let\'s go build a killer app!', 1, 1);
 
 COMMIT;
 
@@ -350,7 +350,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (1, 'Test', 1);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (1, 'Important Info', 1);
 
 COMMIT;
 
@@ -360,7 +360,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (1, 'Test', 'Testing', 'testing date', 1);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (1, 'Meira', 'Pentermann', 'co-creator', 1);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (2, 'Doug', 'Kucera', 'co-creator', 1);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (3, 'Daniel', 'Clark', 'co-creator', 1);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (4, 'Jimmy', 'Easter', 'co-creator', 1);
 
 COMMIT;
 
@@ -370,7 +373,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (1, 'Test Complete', 3035551111, 1);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (1, 'Meira Cell', 3035555555, 1);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (2, 'Doug Home', 3033333333, 2);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (3, 'Daniel Work', 8281111111, 3);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (4, 'Jimmy iPhone', 3049999999, 4);
 
 COMMIT;
 
