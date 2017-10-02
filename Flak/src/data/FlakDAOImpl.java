@@ -22,76 +22,78 @@ public class FlakDAOImpl implements FlakDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	
+	@Override
+	public Group showGroup(int id) {
+		return em.find(Group.class, id);
+	}
+	
 	@Override
 	public User showUser(int id) {
 		return em.find(User.class, id);
-		
-	}
-
-	@Override
-	public Group showGroup(int id) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
 	public Post showPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Post.class, id);
 	}
 
 	@Override
 	public Conversation showConversation(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Conversation.class, id);
 	}
 
 	@Override
 	public Activity showActivity(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Activity.class, id);
 	}
 
 	@Override
 	public Type showType(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Type.class, id);
 	}
 
 	@Override
 	public Contact showContact(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Contact.class, id);
 	}
 
 	@Override
 	public PhoneNumber showPhoneNumber(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(PhoneNumber.class, id);
 	}
 
 	@Override
 	public QRL showQRL(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(QRL.class, id);
 	}
 
 	@Override
 	public List<Activity> getActivitiesByType(String type) {
 		// TODO Auto-generated method stub
+		//DO LAST
 		return null;
 	}
 
 	@Override
 	public Group createGroup(Group group) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(group);
+		em.flush();
+		return group;
 	}
 
 	@Override
-	public Group editGroup(Group group) {
-		// TODO Auto-generated method stub
-		return null;
+	public Group editGroup(int id, Group group) {
+		Group managedGroup = em.find(Group.class, id);
+		if (managedGroup !=null) {
+			if(group.getName() != "" && group.getName() != null) {
+				managedGroup.setName(group.getName());
+			}
+			if(group.getUsers() != null) {
+				managedGroup.setUsers(group.getUsers());
+			}
+		}
+		return managedGroup;
 	}
 
 	@Override
@@ -102,14 +104,30 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public User createUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(user);
+		em.flush();
+		return user;
 	}
 
 	@Override
-	public User editUser(User user) {
-		// TODO Auto-generated method stub
-		return null;
+	public User editUser(int id, User user) {
+		User managedUser = em.find(User.class, id);
+		if (managedUser !=null) {
+			if(user.getUsername() != "" && user.getUsername() != null) {
+				managedUser.setUsername(user.getUsername());
+			}
+			if(user.getGroups() != null) {
+				managedUser.setGroups(user.getGroups());
+			}
+			if(user.getPassword() != "" && user.getPassword()!= null) {
+				managedUser.setPassword(user.getPassword());
+			}
+			if(user.isAdmin() != "" && user.getPassword()!= null) {
+				managedUser.setPassword(user.getPassword());
+			}
+			
+		}
+		return managedUser;
 	}
 
 	@Override
@@ -120,12 +138,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Post createPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(post);
+		em.flush();
+		return post;
 	}
 
 	@Override
-	public Post editPost(Post post) {
+	public Post editPost(int id, Post post) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -138,12 +157,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Conversation createConversation(Conversation conv) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(conv);
+		em.flush();
+		return conv;
 	}
 
 	@Override
-	public Conversation editConversation(Conversation conv) {
+	public Conversation editConversation(int id, Conversation conv) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -156,12 +176,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Activity createActivity(Activity activity) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(activity);
+		em.flush();
+		return activity;
 	}
 
 	@Override
-	public Activity editActivity(Activity activity) {
+	public Activity editActivity(int id, Activity activity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -174,12 +195,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Type createType(Type type) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(type);
+		em.flush();
+		return type;
 	}
 
 	@Override
-	public Type editType(Type type) {
+	public Type editType(int id, Type type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -192,12 +214,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Contact createContact(Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(contact);
+		em.flush();
+		return contact;
 	}
 
 	@Override
-	public Contact editContact(Contact contact) {
+	public Contact editContact(int id, Contact contact) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -210,12 +233,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public PhoneNumber createPhoneNumber(PhoneNumber phone) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(phone);
+		em.flush();
+		return phone;
 	}
 
 	@Override
-	public PhoneNumber editPhoneNumber(PhoneNumber phone) {
+	public PhoneNumber editPhoneNumber(int id, PhoneNumber phone) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -228,12 +252,13 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public QRL createQRL(QRL qrl) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(qrl);
+		em.flush();
+		return qrl;
 	}
 
 	@Override
-	public QRL editQRL(QRL qrl) {
+	public QRL editQRL(int id, QRL qrl) {
 		// TODO Auto-generated method stub
 		return null;
 	}

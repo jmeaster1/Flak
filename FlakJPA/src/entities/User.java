@@ -69,7 +69,7 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 
@@ -103,6 +103,5 @@ public class User {
 		builder.append("]");
 		return builder.toString();
 	}
-
 
 }

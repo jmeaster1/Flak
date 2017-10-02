@@ -41,55 +41,55 @@ public interface FlakDAO {
 	
 	public Group createGroup(Group group);
 	
-	public Group editGroup(Group group);
+	public Group editGroup(int id, Group group);
 	
 	public boolean deleteGroup(int id); //only available to Flak Administration
 	
 	public User createUser(User user);
 	
-	public User editUser(User user);
+	public User editUser(int id, User user);
 	
 	public boolean deleteUser(int id);
 	
 	public Post createPost(Post post);
 	
-	public Post editPost(Post post);
+	public Post editPost(int id, Post post);
 	
 	public boolean deletePost(int id);
 
 	public Conversation createConversation(Conversation conv);
 	
-	public Conversation editConversation(Conversation conv);
+	public Conversation editConversation(int id, Conversation conv);
 	
 	public boolean deleteConversation(int id);
 	
 	public Activity createActivity(Activity activity);
 	
-	public Activity editActivity(Activity activity);
+	public Activity editActivity(int id, Activity activity);
 	
 	public boolean deleteActivity(int id);
 	
 	public Type createType(Type type);
 	
-	public Type editType(Type type);
+	public Type editType(int id, Type type);
 	
 	public boolean deleteType(int id);
 	
 	public Contact createContact(Contact contact);
 	
-	public Contact editContact(Contact contact);
+	public Contact editContact(int id, Contact contact);
 	
 	public boolean deleteContact(int id);
 	
 	public PhoneNumber createPhoneNumber(PhoneNumber phone);
 	
-	public PhoneNumber editPhoneNumber(PhoneNumber phone);
+	public PhoneNumber editPhoneNumber(int id, PhoneNumber phone);
 	
 	public boolean deletePhoneNumber(int id);
 	
 	public QRL createQRL(QRL qrl);
 	
-	public QRL editQRL(QRL qrl);
+	public QRL editQRL(int id, QRL qrl);
 	
 	public boolean deleteQRL(int id);
 	
