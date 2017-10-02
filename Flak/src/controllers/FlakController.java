@@ -19,6 +19,6 @@ public class FlakController {
 	@RequestMapping(path = "index.do", method = RequestMethod.GET) // unfinished view
 	public String show( Model model) {
 		model.addAttribute("user", flakDAO.showUser(1));
-		return "index.jsp";
+		return "navbar.jsp";
 	}
 }
