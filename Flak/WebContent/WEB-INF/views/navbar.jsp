@@ -22,7 +22,7 @@
 	crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="practice.css" />
+<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
 
@@ -35,9 +35,9 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="practice.html"> <span class="logoF">F</span><span
-				class="logoL">L</span><span class="logoA">A</span><span
-				class="logoK">K</span></a>
+			<a class="navbar-brand" href="practice.html"> <span
+				class="logoF">F</span><span class="logoL">L</span><span
+				class="logoA">A</span><span class="logoK">K</span></a>
 			<div class="login-link"></div>
 		</div>
 
@@ -66,17 +66,16 @@
 						data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
 						<ul class="dropdown-menu">
 
-						<%-- 	<li><a href="#">${group.name}</a></li>
+							<%-- 	<li><a href="#">${group.name}</a></li>
 							<li><a href="#">${group }</a></li>
 							<li><a href="#">Stuff 3</a></li> --%>
-							
-						</ul> <c:forEach var="group" items="${groups}">
-							<li><a href="getGroups.do?id=${group.id}">${group.name}
-									${group.name} </a></li>
+
+						</ul> <c:forEach var="group" items="${user.groups}">
+							<li><a href="getGroups.do?id=${user.group.id}">${user.group.name}
+							</a></li>
 							<br />
 						</c:forEach>
-
-					<li><a href="#">LOGIN</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
 					</li>
 		</div>
 	</div>
