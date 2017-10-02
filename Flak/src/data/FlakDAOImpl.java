@@ -99,7 +99,7 @@ public class FlakDAOImpl implements FlakDAO {
 				managedGroup.setUsers(group.getUsers());
 			}
 		}
-		return managedGroup;
+		return group;
 	}
 
 	@Override
@@ -136,7 +136,7 @@ public class FlakDAOImpl implements FlakDAO {
 			}
 			managedUser.setAdmin(user.getAdmin());
 		}
-		return managedUser;
+		return user;
 	}
 
 	@Override
@@ -159,11 +159,19 @@ public class FlakDAOImpl implements FlakDAO {
 			if(post.getMessage() != "" && post.getMessage() != null) {
 				managedPost.setMessage(post.getMessage());
 			}
+			if(post.getConversation() != null) {
+				managedPost.setConversation(post.getConversation());
+			}
+			if(post.getTimestamp() != null) {
+				managedPost.setTimestamp(post.getTimestamp());
+			}
 		}
 		else {
-			User user = post.getUser();
-			Conversation conv = showConversation(post.getConversationId());
+			List<Post> posts = post.getConversation().getPosts();
+			posts.add(post);
+			post.getConversation().setPosts(posts);
 		}
+		return post;
 	}
 
 	@Override
@@ -181,8 +189,19 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Conversation editConversation(int id, Conversation conv) {
-		// TODO Auto-generated method stub
-		return null;
+		Conversation managedConv = em.find(Conversation.class, id);
+		if (managedConv !=null) {
+			if(conv.getGroup() != null) {
+				managedConv.setGroup(conv.getGroup());
+			}
+			if(conv.getPosts() != null) {
+				managedConv.setPosts(conv.getPosts());
+			}
+			if(conv.getTitle() != "" && conv.getTitle() != null) {
+				managedConv.setTitle(conv.getTitle());
+			}
+		}
+		return conv;
 	}
 
 	@Override
@@ -200,8 +219,16 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Activity editActivity(int id, Activity activity) {
-		// TODO Auto-generated method stub
-		return null;
+		Activity managedAct = em.find(Activity.class, id);
+		if (managedAct !=null) {
+			if(activity.getDescription() != "" && activity.getDescription() != null) {
+				managedAct.setDescription(activity.getDescription());
+			}
+			if(activity.getName() != "" && activity.getName() != null) {
+				managedAct.setName(activity.getName());
+			}
+		}
+		return activity;
 	}
 
 	@Override
