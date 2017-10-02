@@ -16,7 +16,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="practice.html"> <span
+			<a class="navbar-brand" href="index.do"> <span
 				class="logoF">F</span><span class="logoL">L</span><span
 				class="logoA">A</span><span class="logoK">K</span></a>
 			<div class="login-link"></div>
@@ -30,7 +30,7 @@
 				<ul class="nav navbar-nav ">
 
 
-					<li><a href="about.jsp">What is Flak?</a></li>
+					<li><a href="about.do">What is Flak?</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
 						<ul class="dropdown-menu">
@@ -40,7 +40,7 @@
 							</a></li>
 							<br />
 						</c:forEach> --%>
-					<li><a href="login.jsp">LOGIN</a></li>
+					<li><a href="login.do">LOGIN</a></li>
 					</li>
 		</div>
 	</div>

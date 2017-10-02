@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<title>Error</title>
 <jsp:include page="navbar.jsp"></jsp:include>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,21 +29,10 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body class="login_body">
+<body>
 	<h1 class="header_class">
-		<!-- login.jsp -->
+		error.jsp
 	</h1>
-	<div class="login_container">
-	<div class="login_content">
-		<form:form action="login.do" method="POST" modelAttribute="user">
-USERNAME:
-<input type="text" name="username" /> 
-PASSWORD:
-<input type="text" name="username" />
-			<input type="submit" value="Log In" />
-		</form:form>
-		</div>
-	</div>
 
 </body>
 </html>

@@ -31,17 +31,17 @@
 </head>
 <body class="login_body">
 	<h1 class="header_class">
-		<!-- login.jsp -->
 	</h1>
-	<div class="login_container">
-	<div class="login_content">
-		<form:form action="login.do" method="POST" modelAttribute="user">
-USERNAME:
-<input type="text" name="username" /> 
-PASSWORD:
-<input type="text" name="username" />
-			<input type="submit" value="Log In" />
-		</form:form>
+	<div class="about_container">
+		<div class="about_content">
+			<h1>About Flak</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+				culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 	</div>
 

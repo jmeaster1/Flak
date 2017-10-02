@@ -95,6 +95,26 @@ public class FlakDAOImpl implements FlakDAO {
 								.getResultList();
 		return groups;
 	}
+	
+	@Override
+	public boolean doesUsernameAndPasswordMatch(String name, String pw) {
+		boolean answer = false;
+		String queryString = "Select u from User u where username = :name";
+		List<User> users =  em.createQuery(queryString, User.class)
+								.setParameter("name", name)
+								.getResultList();
+		User user = null;
+		if(users.size() > 0) {
+			user = users.get(0);
+		}
+		if(user != null) {
+			String pass = user.getPassword();
+			if (pass.equals(pw)) {
+				answer = true;
+			}
+		}
+		return answer;
+	}
 
 	@Override
 	public Group createGroup(Group group) {

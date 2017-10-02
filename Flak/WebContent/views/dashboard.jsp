@@ -29,21 +29,14 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body class="login_body">
+<body>
 	<h1 class="header_class">
-		<!-- login.jsp -->
+		dashboard.jsp
 	</h1>
-	<div class="login_container">
-	<div class="login_content">
-		<form:form action="login.do" method="POST" modelAttribute="user">
-USERNAME:
-<input type="text" name="username" /> 
-PASSWORD:
-<input type="text" name="username" />
-			<input type="submit" value="Log In" />
-		</form:form>
-		</div>
-	</div>
+
+  <div class="no-show">
+    <h1>hide</h1>
+  </div>
 
 </body>
 </html>
