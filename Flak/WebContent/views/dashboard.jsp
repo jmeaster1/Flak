@@ -53,11 +53,18 @@
 		</c:if>
 		
 		<c:if test="${not empty list}">
-				<ul>
+				<table>
 			<c:forEach var="item" items="${list}">
-					<li>${item.name}: ${item.description}</li>
+					<tr>
+					<td>${item.name}</td>
+					<td>${item.description}</td>
+					<td><a href="selectActivity.do?aid=${item.id}"><input type="submit" value="Edit"/></a></td>
+					<c:if test="${user.admin}">
+						<td><a href="deleteActivity.do?aid=${item.id}"><input type="submit" value="Delete"/></a></td>
+					</c:if>
+					</tr>
 			</c:forEach>
-				</ul>
+				</table>
 		</c:if>
 
 
