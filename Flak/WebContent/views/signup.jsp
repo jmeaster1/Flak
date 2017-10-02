@@ -27,7 +27,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body>
+<body id="signup_body">
 	<div class="signup_container">
 		<h1>Sign Up</h1>
 		<br>

@@ -3,7 +3,7 @@ body {
 		url("https://aspartame.org/wp-content/uploads/2016/10/AdobeStock_59246143-1024x683.jpeg");
 	background-size: cover;
 	background-repeat: no-repeat; */
-	background-color:white;
+	background-color:blue;
 	font-family: 'Cabin Sketch', cursive;
 }
 .dashboard_container {
@@ -63,6 +63,9 @@ body {
 	/* padding-left: 30px; */
 	display:block;
 	margin:0 auto;
+}
+.signup_body{
+	background-color: black;
 }
 .signup_button{
 	margin:0 auto;
