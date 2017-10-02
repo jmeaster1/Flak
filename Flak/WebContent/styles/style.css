@@ -1,6 +1,6 @@
 body {
-  background-image: url("https://aspartame.org/wp-content/uploads/2016/10/AdobeStock_59246143-1024x683.jpeg");
-  background-size: cover;
+/*   background-image: url("https://aspartame.org/wp-content/uploads/2016/10/AdobeStock_59246143-1024x683.jpeg");
+ */  background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Cabin Sketch', cursive;
 }
@@ -38,6 +38,11 @@ body {
 }
 
 .content-container h1 {
+  font-family: 'Cabin Sketch', cursive;
+  margin: auto;
+  font-size: 100px;
+}
+.login_container{
   font-family: 'Cabin Sketch', cursive;
   margin: auto;
   font-size: 100px;
@@ -184,6 +189,10 @@ h1 {
   font-size: 4em;
   font-weight: 400;
   text-shadow: 0 1px white, 0 2px black;
+  
+  .header_class{
+  color:red;
+  }
 }
 .container2 {
   margin: 4% auto;
