@@ -57,6 +57,15 @@ public class Post {
 		this.user = user;
 	}
 
+
+	public Conversation getConversation() {
+		return conversation;
+	}
+
+	public void setConversation(Conversation conversation) {
+		this.conversation = conversation;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
