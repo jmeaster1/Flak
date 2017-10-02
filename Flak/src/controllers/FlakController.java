@@ -74,13 +74,13 @@ public class FlakController {
 	}
 
 	@RequestMapping(path = "getDashboardByUser.do", method = RequestMethod.GET)
-	public String groupsByUserToDashboard(@RequestParam("id") int id, 
+	public String groupsByUserToDashboard(@RequestParam("gid") int gid, 
 										Model model,  
 										@ModelAttribute("user") User user) {
 		
-		model.addAttribute("group", flakDAO.showGroup(id));
+		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(id));
+		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -134,13 +134,13 @@ public class FlakController {
 		return "dashboard.jsp";
 	}
 
-	@RequestMapping(path = "task.do", method = RequestMethod.GET)
-	public String taskList(Model model,
+	@RequestMapping(path = "events.do", method = RequestMethod.GET)
+	public String eventList(Model model,
 			@RequestParam("gid") int gid,
 			@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getActivitiesByType("task"));
+		model.addAttribute("list",flakDAO.getActivitiesByType("event"));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}

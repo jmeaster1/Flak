@@ -38,7 +38,7 @@
 							data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
 							<ul class="dropdown-menu">
 							<c:forEach var="group" items="${groups}">
-								<li><a href="getDashboardByUser.do?id=${group.id}">${group.name}
+								<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
 								</a></li>
 								<br />
 							</c:forEach>

@@ -37,23 +37,40 @@
 			<h1>hide</h1>
 		</div>
 		<c:if test="${not empty posts}">
+				<ul>
 			<c:forEach var="post" items="${posts}">
-				<ul>
 					<li>${post}</li>
-				</ul>
 			</c:forEach>
+				</ul>
 		</c:if>
+		
 		<c:if test="${not empty conversations}">
-			<c:forEach var="convo" items="${conversations}">
 				<ul>
+			<c:forEach var="convo" items="${conversations}">
 					<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
-				</ul>
 			</c:forEach>
+				</ul>
 		</c:if>
+		
+		<c:if test="${not empty list}">
+				<table>
+			<c:forEach var="item" items="${list}">
+					<tr>
+					<td>${item.name}</td>
+					<td>${item.description}</td>
+					<td><a href="selectActivity.do?aid=${item.id}"><input type="submit" value="Edit"/></a></td>
+					<c:if test="${user.admin}">
+						<td><a href="deleteActivity.do?aid=${item.id}"><input type="submit" value="Delete"/></a></td>
+					</c:if>
+					</tr>
+			</c:forEach>
+				</table>
+		</c:if>
+
 
 		<div class="buttons">
 			<ul>
-				<li class="button"><a href="messageBoard.do?gid=${group.id}">&nbsp;Message
+				<li class="button"><a href="getDashboardByUser.do?gid=${group.id}">&nbsp;Message
 						Board&nbsp;</a></li>
 				<li class="button"><a href="tasks.do?gid=${group.id}">Tasks</a></li>
 				<li class="button"><a href="shopping.do?gid=${group.id}">Shopping</a></li>
