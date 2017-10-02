@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -70,15 +71,29 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public List<Activity> getActivitiesByType(String type) {
-		// TODO Auto-generated method stub
-		//DO LAST
-		return null;
+		List<Activity> answer = new ArrayList<>();
+		type = type.toLowerCase();
+		String queryString = "Select a from Activity a";
+		List<Activity> allActivities =  em.createQuery(queryString, Activity.class)
+								.getResultList();
+		for (int i = 0; i < allActivities.size(); i++) {
+			String current = allActivities.get(i).getType().getName().toLowerCase();
+			if(current.equals(type)) {
+				answer.add(allActivities.get(i));
+			}
+		}
+		return answer;
 	}
 	
 	@Override
-	public Group findGroupByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Group> findGroupByWord(String word) {
+		List<Group> groups;
+		String queryString = "Select g from Flak_Group g where name LIKE :name";
+		String searchString = "%" + word + "%";
+		groups =  em.createQuery(queryString, Group.class)
+								.setParameter("name", searchString)
+								.getResultList();
+		return groups;
 	}
 
 	@Override
@@ -104,8 +119,14 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public boolean deleteGroup(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Group managedGroup = em.find(Group.class, id);
+		if(managedGroup==null) {
+			return false;
+		}
+		else {
+			em.remove(managedGroup);
+			return true;
+		}
 	}
 
 	@Override
@@ -141,8 +162,14 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public boolean deleteUser(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		User managedUser = em.find(User.class, id);
+		if(managedUser==null) {
+			return false;
+		}
+		else {
+			em.remove(managedUser);
+			return true;
+		}
 	}
 
 	@Override
@@ -176,8 +203,14 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public boolean deletePost(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Post managedPost = em.find(Post.class, id);
+		if(managedPost==null) {
+			return false;
+		}
+		else {
+			em.remove(managedPost);
+			return true;
+		}
 	}
 
 	@Override
@@ -206,8 +239,14 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public boolean deleteConversation(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Conversation managedConv = em.find(Conversation.class, id);
+		if(managedConv==null) {
+			return false;
+		}
+		else {
+			em.remove(managedConv);
+			return true;
+		}
 	}
 
 	@Override
@@ -227,14 +266,29 @@ public class FlakDAOImpl implements FlakDAO {
 			if(activity.getName() != "" && activity.getName() != null) {
 				managedAct.setName(activity.getName());
 			}
+			if(activity.getTimeStamp()  != null) {
+				managedAct.setTimeStamp(activity.getTimeStamp());
+			}
+			if(activity.getType()  != null) {
+				managedAct.setType(activity.getType());
+			}
+			if(activity.getUsers() != null) {
+				managedAct.setUsers(activity.getUsers());
+			}
 		}
 		return activity;
 	}
 
 	@Override
 	public boolean deleteActivity(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Activity managedActivity = em.find(Activity.class, id);
+		if(managedActivity==null) {
+			return false;
+		}
+		else {
+			em.remove(managedActivity);
+			return true;
+		}
 	}
 
 	@Override
@@ -246,14 +300,25 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Type editType(int id, Type type) {
-		// TODO Auto-generated method stub
-		return null;
+		Type managedType = em.find(Type.class, id);
+		if (managedType !=null) {
+			if(type.getName() != "" && type.getName() != null) {
+				managedType.setName(type.getName());
+			}
+		}
+		return type;
 	}
 
 	@Override
 	public boolean deleteType(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Type managedType = em.find(Type.class, id);
+		if(managedType==null) {
+			return false;
+		}
+		else {
+			em.remove(managedType);
+			return true;
+		}
 	}
 
 	@Override
@@ -265,14 +330,37 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Contact editContact(int id, Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
+		Contact managedContact = em.find(Contact.class, id);
+		if (managedContact !=null) {
+			if(contact.getDescription() != "" && contact.getDescription() != null) {
+				managedContact.setDescription(contact.getDescription());
+			}
+			if(contact.getFirstName() != "" && contact.getFirstName() != null) {
+				managedContact.setFirstName(contact.getFirstName());
+			}
+			if(contact.getLastName() != "" && contact.getLastName() != null) {
+				managedContact.setLastName(contact.getLastName());
+			}
+			if(contact.getPhoneNumbers() != null) {
+				managedContact.setPhoneNumbers(contact.getPhoneNumbers());
+			}
+			if(contact.getQrl() != null) {
+				managedContact.setQrl(contact.getQrl());
+			}
+		}
+		return contact;
 	}
 
 	@Override
 	public boolean deleteContact(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		Contact managedContact = em.find(Contact.class, id);
+		if(managedContact==null) {
+			return false;
+		}
+		else {
+			em.remove(managedContact);
+			return true;
+		}
 	}
 
 	@Override
@@ -284,14 +372,31 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public PhoneNumber editPhoneNumber(int id, PhoneNumber phone) {
-		// TODO Auto-generated method stub
-		return null;
+		PhoneNumber managedPhone = em.find(PhoneNumber.class, id);
+		if (managedPhone !=null) {
+			if(phone.getContact() != null) {
+				managedPhone.setContact(phone.getContact());
+			}
+			if(phone.getDescription() != "" && phone.getDescription() != null) {
+				managedPhone.setDescription(phone.getDescription());
+			}
+			if(phone.getPhoneDigits() != 0) {
+				managedPhone.setPhoneDigits(phone.getPhoneDigits());
+			}
+		}
+		return phone;
 	}
 
 	@Override
 	public boolean deletePhoneNumber(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		PhoneNumber managedPhone = em.find(PhoneNumber.class, id);
+		if(managedPhone==null) {
+			return false;
+		}
+		else {
+			em.remove(managedPhone);
+			return true;
+		}
 	}
 
 	@Override
@@ -303,14 +408,31 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public QRL editQRL(int id, QRL qrl) {
-		// TODO Auto-generated method stub
-		return null;
+		QRL managedQRL = em.find(QRL.class, id);
+		if (managedQRL !=null) {
+			if(qrl.getDescription()  != "" && qrl.getDescription() != null) {
+				managedQRL.setDescription(qrl.getDescription());
+			}
+			if(qrl.getGroup() != null) {
+				managedQRL.setGroup(qrl.getGroup());
+			}
+			if(qrl.getContacts() != null) {
+				managedQRL.setContacts(qrl.getContacts());
+			}
+		}
+		return qrl;
 	}
 
 	@Override
 	public boolean deleteQRL(int id) {
-		// TODO Auto-generated method stub
-		return false;
+		QRL managedQRL = em.find(QRL.class, id);
+		if(managedQRL==null) {
+			return false;
+		}
+		else {
+			em.remove(managedQRL);
+			return true;
+		}
 	}
 
 
