@@ -56,7 +56,13 @@ body {
 .login_container {
 	font-family: 'Cabin Sketch', cursive;
 	margin: auto;
-	font-size: 100px;
+	font-size: 40px;
+	background-color: white;
+}
+.about_container {
+	font-family: 'Cabin Sketch', cursive;
+	margin: auto;
+	font-size: 40px;
 	background-color: white;
 }
 
