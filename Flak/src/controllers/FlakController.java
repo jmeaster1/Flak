@@ -17,7 +17,7 @@ public class FlakController {
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET) // unfinished view
 	public String show( Model model) {
-//		return "index.jsp";
+		return "index.jsp";
 //		return "calendar.jsp";
 //		return "dashboard.jsp";
 //		return "messagebrd.jsp";
@@ -25,7 +25,8 @@ public class FlakController {
 //		return "qrl.jsp";
 //		return "grouplist.jsp";
 //		return "shopping.jsp";
-		return "task.jsp";
+//		return "task.jsp";
+//		return "error.jsp";
 	}
 	@RequestMapping(path = "login.do", method = RequestMethod.GET) // unfinished view
 	public String login( Model model) {
@@ -81,6 +82,10 @@ public class FlakController {
 		return "task.jsp";
 	}	
 	
+	@RequestMapping(path = "error.do", method = RequestMethod.GET) // unfinished view
+	public String errorView( Model model) {
+		return "error.jsp";
+	}	
 	@RequestMapping(path="GetLoginForm.do", method=RequestMethod.GET)// form validation
 	public ModelAndView getLoginForm() {
 	  User u = new User();
