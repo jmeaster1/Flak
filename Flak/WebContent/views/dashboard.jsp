@@ -37,19 +37,29 @@
 			<h1>hide</h1>
 		</div>
 		<c:if test="${not empty posts}">
+				<ul>
 			<c:forEach var="post" items="${posts}">
-				<ul>
 					<li>${post}</li>
-				</ul>
 			</c:forEach>
+				</ul>
 		</c:if>
+		
 		<c:if test="${not empty conversations}">
-			<c:forEach var="convo" items="${conversations}">
 				<ul>
+			<c:forEach var="convo" items="${conversations}">
 					<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
-				</ul>
 			</c:forEach>
+				</ul>
 		</c:if>
+		
+		<c:if test="${not empty list}">
+				<ul>
+			<c:forEach var="item" items="${list}">
+					<li>${item.name}: ${item.description}</li>
+			</c:forEach>
+				</ul>
+		</c:if>
+
 
 		<div class="buttons">
 			<ul>
