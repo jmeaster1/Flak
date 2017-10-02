@@ -1,13 +1,28 @@
-# Our Project
+# FLAK
+### A family organization/communication platform
+###### A [Skill Distillery](http://skilldistillery.com/) Group Project, October 2017
+---
+### Group Members
+* [Meira Pentermann](https://github.com/Meira1427)
+* [Doug Kucera](https://github.com/dougkucera)
+* [Daniel Clark](https://github.com/dclarkasu)
+* [Jimmy Easter](https://github.com/jmeaster1)
 
-### Jimmy, Daniel, Doug, Meira
+### Technologies Used
+###### Backend
+* Java
+* Spring MVC
+* Gradle
+* JPA
+* Hibernate
+* SQL
 
-## Tech used
+###### Frontend
+* HTML
+* CSS
+* Bootstrap
 
-## Purpose
+### Description
+FLAK is a full-stack web application designed to facilitate communication and planning amongst families.
 
-## Methodologies used
-
-
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+### Describe features here...
