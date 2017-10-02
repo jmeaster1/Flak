@@ -19,7 +19,10 @@ public class Post {
 	
 	private String message;
 	
-	private int conversationId;
+	//many posts belong to one conversation
+	@ManyToOne
+	@JoinColumn(name="conversation_id")
+	private Conversation conversation;
 	
 	//many posts belong to one user
 	@ManyToOne
@@ -52,14 +55,6 @@ public class Post {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public int getConversationId() {
-		return conversationId;
-	}
-
-	public void setConversationId(int conversationId) {
-		this.conversationId = conversationId;
 	}
 
 	@Override

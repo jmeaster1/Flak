@@ -154,8 +154,16 @@ public class FlakDAOImpl implements FlakDAO {
 
 	@Override
 	public Post editPost(int id, Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		Post managedPost = em.find(Post.class, id);
+		if (managedPost !=null) {
+			if(post.getMessage() != "" && post.getMessage() != null) {
+				managedPost.setMessage(post.getMessage());
+			}
+		}
+		else {
+			User user = post.getUser();
+			Conversation conv = showConversation(post.getConversationId());
+		}
 	}
 
 	@Override
