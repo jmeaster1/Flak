@@ -1,11 +1,14 @@
 package entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Conversation {
@@ -20,6 +23,9 @@ public class Conversation {
 	@ManyToOne
 	@JoinColumn(name="group_id")
 	private Group group;
+	
+	@OneToMany(mappedBy="conversation")
+	private List<Post> posts;
 
 	public int getId() {
 		return id;
@@ -40,7 +46,15 @@ public class Conversation {
 	public void setGroup(Group group) {
 		this.group = group;
 	}
-	
+
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 
 	@Override
 	public String toString() {

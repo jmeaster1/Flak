@@ -38,16 +38,8 @@ public class User {
 	//many users have many activities
 	@ManyToMany(mappedBy="users")
 	private List<Activity> activities;
-
 	
-	
-	public List<Activity> getActivities() {
-		return activities;
-	}
 
-	public void setActivities(List<Activity> activities) {
-		this.activities = activities;
-	}
 
 	public int getId() {
 		return id;
@@ -69,7 +61,7 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 
@@ -92,6 +84,14 @@ public class User {
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+	
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
 
 	@Override
 	public String toString() {
@@ -103,6 +103,5 @@ public class User {
 		builder.append("]");
 		return builder.toString();
 	}
-
 
 }
