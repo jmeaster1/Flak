@@ -21,7 +21,7 @@ public class Post {
 	
 	//many posts belong to one conversation
 	@ManyToOne
-	@JoinColumn(name="conversation_id")
+	@JoinColumn(name="conv_id")
 	private Conversation conversation;
 	
 	//many posts belong to one user

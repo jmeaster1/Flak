@@ -77,19 +77,31 @@ public class FlakController {
 		return "grouplist.jsp";
 	}
 
-	@RequestMapping(path = "getDashboardByUser.do", method = RequestMethod.GET) // unfinished view
+	@RequestMapping(path = "getDashboardByUser.do", method = RequestMethod.GET)
 	public String groupsByUserToDashboard(@RequestParam("id") int id, 
 										Model model,  
 										@ModelAttribute("user") User user) {
 		
 		model.addAttribute("group", flakDAO.showGroup(id));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("conversations",flakDAO.showConversation(id).getPosts().get(0).getMessage());
+		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(id));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
 
-	@RequestMapping(path = "messagebrd.do", method = RequestMethod.GET) // unfinished view
+	@RequestMapping(path = "getConvos.do", method = RequestMethod.GET) 
+	public String getPostsByConversation(@RequestParam("cid") int cid,
+			@RequestParam("gid") int gid,
+			Model model,  
+			@ModelAttribute("user") User user) {
+		
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("posts",flakDAO.showConversation(cid).getPosts());
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
+	}
+	@RequestMapping(path = "messagebrd.do", method = RequestMethod.GET) 
 	public String messageBoard(Model model, @ModelAttribute("user") User user) {
 		return "messagebrd.jsp";
 	}

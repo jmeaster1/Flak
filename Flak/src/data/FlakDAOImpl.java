@@ -95,14 +95,24 @@ public class FlakDAOImpl implements FlakDAO {
 								.getResultList();
 		return groups;
 	}
-	
+	@Override
 	public List<Conversation> getConversationsByGroupId(int id) {
 		List<Conversation> conversations;
-		String queryString = "Select c from Conversation c join fetch c.posts where flak_group.id = :id";
+		String queryString = "Select c from Conversation c join fetch c.posts where c.group.id = :id";
 		conversations =  em.createQuery(queryString, Conversation.class)
 						.setParameter("id", id)
 						.getResultList();
 		return conversations;
+	}
+	
+	@Override
+	public List<Post> getPostsByConvoId(int id) {
+		List<Post> posts;
+		String queryString = "Select p from Post p where p.conversation.id = :id";
+		posts =  em.createQuery(queryString, Post.class)
+				.setParameter("id", id)
+				.getResultList();
+		return posts;
 	}
 	
 	@Override

@@ -46,6 +46,8 @@ public interface FlakDAO {
 	
 	public User getUserByUsername(String name);
 	
+	List<Post> getPostsByConvoId(int id);
+
 	//Create, Edit, Delete for all 9 items
 	
 	public Group createGroup(Group group);
@@ -101,5 +103,6 @@ public interface FlakDAO {
 	public QRL editQRL(int id, QRL qrl);
 	
 	public boolean deleteQRL(int id);
+
 	
 }

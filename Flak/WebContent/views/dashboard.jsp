@@ -37,12 +37,19 @@
   <div class="no-show">
     <h1>hide</h1>
   </div>
-  
-  <c:forEach var="convo" items="${conversations}">
-  	<ul>
-  		<li><a href ="getConvos.do?id=${convo.id}">${convo.title}</a></li>
-  	</ul>
-  </c:forEach>
-
+ 	<c:if test="${not empty posts}"> 
+	  <c:forEach var="post" items="${posts}">
+	  	<ul>
+	  		<li>${post}</li>
+	  	</ul>
+	  </c:forEach>
+	 </c:if>
+	<c:if test="${not empty conversations}">	
+	  <c:forEach var="convo" items="${conversations}">
+	  	<ul>
+	  		<li><a href ="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
+	  	</ul>
+	  </c:forEach>
+	</c:if>
 </body>
 </html>
