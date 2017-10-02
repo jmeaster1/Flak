@@ -23,6 +23,7 @@
 * Bootstrap
 
 ### Description
-FLAK is a full-stack web application designed to facilitate communication and planning amongst families.
+FLAK is a full-stack web application designed to help people involved in a common task to achieve their goals.
 
-### Describe features here...
+### About
+This program allows a user to sign up, create a new family/group, and interact with other group members by sharing appointments, grocery lists, important phone numbers, reminders, etc. It also allows group members to chat amongst each other via a message board.
