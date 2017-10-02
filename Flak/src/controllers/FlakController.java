@@ -122,11 +122,29 @@ public class FlakController {
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
-
-	@RequestMapping(path = "task.do", method = RequestMethod.GET) 
-	public String task(Model model, @ModelAttribute("user") User user) {
-		return "task.jsp";
+	
+	@RequestMapping(path = "tasks.do", method = RequestMethod.GET)
+	public String taskList(Model model,
+			@RequestParam("gid") int gid,
+			@ModelAttribute("user") User user) {
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("list",flakDAO.getActivitiesByType("task"));
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
 	}
+
+	@RequestMapping(path = "task.do", method = RequestMethod.GET)
+	public String taskList(Model model,
+			@RequestParam("gid") int gid,
+			@ModelAttribute("user") User user) {
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("list",flakDAO.getActivitiesByType("task"));
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
+	}
+
 
 	@RequestMapping(path = "error.do", method = RequestMethod.GET) // unfinished view
 	public String errorView(Model model) {
