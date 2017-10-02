@@ -40,6 +40,8 @@ public interface FlakDAO {
 	
 	public List<Group> findGroupByWord(String word);
 	
+	public boolean doesUsernameAndPasswordMatch(String name, String pw);
+	
 	//Create, Edit, Delete for all 9 items
 	
 	public Group createGroup(Group group);
