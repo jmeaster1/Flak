@@ -19,6 +19,11 @@ public class Post {
 	
 	private String message;
 	
+	//many posts belong to one conversation
+	@ManyToOne
+	@JoinColumn(name="conversation_id")
+	private Conversation conversation;
+	
 	//many posts belong to one user
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -50,6 +55,15 @@ public class Post {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+
+	public Conversation getConversation() {
+		return conversation;
+	}
+
+	public void setConversation(Conversation conversation) {
+		this.conversation = conversation;
 	}
 
 	@Override

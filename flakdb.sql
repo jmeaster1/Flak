@@ -258,6 +258,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `flakdb`;
 INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'Flak Development Team');
+INSERT INTO `flak_group` (`id`, `name`) VALUES (2, 'The Simpsons');
 
 COMMIT;
 
@@ -351,6 +352,7 @@ COMMIT;
 START TRANSACTION;
 USE `flakdb`;
 INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (1, 'Important Info', 1);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (2, 'Important Numbers', 2);
 
 COMMIT;
 
@@ -364,6 +366,11 @@ INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`)
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (2, 'Doug', 'Kucera', 'co-creator', 1);
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (3, 'Daniel', 'Clark', 'co-creator', 1);
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (4, 'Jimmy', 'Easter', 'co-creator', 1);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (5, 'Homer', 'Simpson', 'Father', 2);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (6, 'Marge', 'Simpson', 'Mother', 2);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (7, 'Bart', 'Simpson', 'Son', 2);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (8, 'Maggie', 'Simpson', 'Baby Girl', 2);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (9, 'Lisa', 'Simpson', 'Daughter', 2);
 
 COMMIT;
 
@@ -377,6 +384,11 @@ INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES 
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (2, 'Doug Home', 3033333333, 2);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (3, 'Daniel Work', 8281111111, 3);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (4, 'Jimmy iPhone', 3049999999, 4);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (5, 'Homer Mobile', 2222222222, 5);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (6, 'Marge Cell', 3333333333, 6);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (7, 'Bart Pager', 4444444444, 7);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (8, 'Maggie Home', 5555555555, 8);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (9, 'Lisa Work', 3434343434, 9);
 
 COMMIT;
 
