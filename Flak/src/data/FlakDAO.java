@@ -40,6 +40,8 @@ public interface FlakDAO {
 	
 	public List<Group> findGroupByWord(String word);
 	
+	public List<Conversation> getConversationsByGroupId(int id);
+	
 	public boolean doesUsernameAndPasswordMatch(String name, String pw);
 	
 	public User getUserByUsername(String name);

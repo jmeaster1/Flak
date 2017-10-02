@@ -41,6 +41,31 @@
 						</c:forEach> --%>
 				<li><a href="login.do">LOGIN</a></li>
 				</li>
+			<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav ">
+				<c:choose>
+					<c:when test="${not empty user}">
+					
+					</c:when>
+						<c:otherwise>
+							<li><a href="about.do">What is Flak?</a></li>
+						</c:otherwise>
+				</c:choose>
+						 <c:if test="${not empty groups}">
+					<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
+							<ul class="dropdown-menu">
+							<c:forEach var="group" items="${groups}">
+								<li><a href="getDashboardByUser.do?id=${group.id}">${group.name}
+								</a></li>
+								<br />
+							</c:forEach>
+						</c:if>
+							</ul> 
+					<li><a href="login.do">LOGIN</a></li>
+				</ul>
+			</ul>
+		</div>
 	</div>
 </div>
 </nav>

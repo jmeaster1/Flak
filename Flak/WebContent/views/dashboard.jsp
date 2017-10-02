@@ -37,6 +37,12 @@
   <div class="no-show">
     <h1>hide</h1>
   </div>
+  
+  <c:forEach var="convo" items="${conversations}">
+  	<ul>
+  		<li><a href ="getConvos.do?id=${convo.id}">${convo.title}</a></li>
+  	</ul>
+  </c:forEach>
 
 </body>
 </html>

@@ -38,8 +38,6 @@ public class User {
 	//many users have many activities
 	@ManyToMany(mappedBy="users")
 	private List<Activity> activities;
-	
-
 
 	public int getId() {
 		return id;
