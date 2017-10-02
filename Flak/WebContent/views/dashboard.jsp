@@ -53,11 +53,11 @@
 
 		<div class="buttons">
 			<ul>
-				<li class="button"><a href="messageBoard.do?gid">&nbsp;Message
+				<li class="button"><a href="messageBoard.do?gid=${group.id}">&nbsp;Message
 						Board&nbsp;</a></li>
-				<li class="button"><a href="tasks.do?gid">Tasks</a></li>
-				<li class="button"><a href="shopping.do?gid">Shopping</a></li>
-				<li class="button"><a href="events.do?gid">Events</a></li>
+				<li class="button"><a href="tasks.do?gid=${group.id}">Tasks</a></li>
+				<li class="button"><a href="shopping.do?gid=${group.id}">Shopping</a></li>
+				<li class="button"><a href="events.do?gid=${group.id}">Events</a></li>
 			</ul>
 		</div>
 </body>
