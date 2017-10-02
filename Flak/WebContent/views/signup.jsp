@@ -3,13 +3,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<jsp:include page="/views/navbar.jsp"></jsp:include> 
+<jsp:include page="/views/navbar.jsp"></jsp:include>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Sign Up</title>
-<jsp:include page ="navbar.jsp"></jsp:include>
+<jsp:include page="navbar.jsp"></jsp:include>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -28,16 +28,20 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-<h1>Sign Up</h1>
+	<h1>Sign Up</h1>
 
-<form action="signUp.do" method="POST">
-	First Name:
-		<input type="text" name="firstName" value=""/>
-	Last Name:
-		<input type="text" name="lastName" value=""/>
-	User Name:
-		<input type="text" name="userName" value=""/>
-		<input type="submit" name="submit" value="Create Account"/>
-</form>
+	<form action="signUp.do" method="POST">
+		First Name: <input type="text" name="firstName" value="" />
+		 Last Name:
+		<input type="text" name="lastName" value="" />
+		 User Name: <input
+			type="text" name="userName" value="" />
+			 Password: <input
+			type="password" name="lastName" value="" />
+			 Confirm Password: <input
+			type="password" name="lastName" value="" />
+			 <input type="submit"
+			name="submit" value="Create Account" />
+	</form>
 </body>
 </html>

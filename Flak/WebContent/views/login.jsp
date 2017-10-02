@@ -42,6 +42,7 @@ PASSWORD:
 <input type="password" name="password" />
 			<input type="submit" value="Log In" />
 		</form:form>
+		<a href="signup.do">New User? Sign Up here.</a>
 		</div>
 	</div>
 
