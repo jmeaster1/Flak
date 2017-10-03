@@ -127,6 +127,12 @@ body {
 	text-shadow:1px 1px 1px black;
 	background-color:white;
 }
+#login_successful{
+	font-size: 30px;
+	color: green;
+	text-shadow:1px 1px 1px black;
+	background-color:white;
+}
 .login_content1 input{
 	width: 50%;
 	margin: auto;
