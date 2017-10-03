@@ -70,7 +70,23 @@ public class FlakDAOImpl implements FlakDAO {
 	}
 
 	@Override
-	public List<Activity> getActivitiesByType(String type) {
+	public List<Activity> getAllActivitiesByType(String type) {
+		List<Activity> answer = new ArrayList<>();
+		type = type.toLowerCase();
+		String queryString = "Select a from Activity a";
+		List<Activity> allActivities =  em.createQuery(queryString, Activity.class)
+								.getResultList();
+		for (int i = 0; i < allActivities.size(); i++) {
+			String current = allActivities.get(i).getType().getName().toLowerCase();
+			if(current.equals(type)) {
+				answer.add(allActivities.get(i));
+			}
+		}
+		return answer;
+	}
+	
+	@Override
+	public List<Activity> getUserActivitiesByType(User user, String type) {
 		List<Activity> answer = new ArrayList<>();
 		type = type.toLowerCase();
 		String queryString = "Select a from Activity a";

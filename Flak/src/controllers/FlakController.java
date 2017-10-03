@@ -118,7 +118,7 @@ public class FlakController {
 						@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getActivitiesByType("shopping"));
+		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -129,7 +129,7 @@ public class FlakController {
 			@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getActivitiesByType("task"));
+		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "task"));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -140,7 +140,7 @@ public class FlakController {
 							@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getActivitiesByType("event"));
+		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "event"));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}

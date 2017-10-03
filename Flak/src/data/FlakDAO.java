@@ -36,7 +36,9 @@ public interface FlakDAO {
 	
 	
 	//Special Searches
-	public List<Activity> getActivitiesByType(String type);
+	public List<Activity> getAllActivitiesByType(String type);
+	
+	public List<Activity> getUserActivitiesByType(User user, String type);
 	
 	public List<Group> findGroupByWord(String word);
 	
