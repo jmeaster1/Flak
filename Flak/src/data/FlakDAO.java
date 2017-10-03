@@ -53,7 +53,11 @@ public interface FlakDAO {
 	public User getUserByUsername(String name);
 	
 	List<Post> getPostsByConvoId(int id);
+	
+	public boolean isUsernameUnique(String name);
 
+	
+	
 	//Create, Edit, Delete for all 9 items
 	
 	public Group createGroup(Group group);
