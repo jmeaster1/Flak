@@ -40,8 +40,8 @@
 			Name: <input name="item" value="${activity.name}"></form><br>
 			Description: <input name="description" value="${activity.description}"></form><br>
 			Type:
-			<select value="${}">
-				<c:forEach var="type" items="${}">
+			<select>
+				<c:forEach var="type" items="${types}">
 					<option value="${type}">${type}</option>
 				</c:forEach>
 			</select>

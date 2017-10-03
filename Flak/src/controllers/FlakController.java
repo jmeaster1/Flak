@@ -159,7 +159,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("activity", flakDAO.showActivity(aid));
-		//model.addAttribute("types", ) a way to send over the types
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "editactivity.jsp";
 	}

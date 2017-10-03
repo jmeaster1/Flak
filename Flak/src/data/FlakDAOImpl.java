@@ -135,8 +135,11 @@ public class FlakDAOImpl implements FlakDAO {
 	}
 	
 	@Override
-	public List<Type> getAllTypesByGroupId(int id) {
+	public List<Type> getAllTypes() {
 		List<Type> answer = new ArrayList<>();
+		String queryString = "Select t from Type t";
+		answer =  em.createQuery(queryString, Type.class)
+								.getResultList();
 		return answer;
 	}
 	
