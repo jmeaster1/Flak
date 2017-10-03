@@ -47,10 +47,11 @@ public class FlakController {
 			return "error.jsp";
 		}
 	}
-	@RequestMapping(value="logout.do",method=RequestMethod.GET)
-	public String closeSession(SessionStatus status){
-	    status.setComplete();
-	    return "index.jsp";
+
+	@RequestMapping(value = "logout.do", method = RequestMethod.GET)
+	public String closeSession(SessionStatus status) {
+		status.setComplete();
+		return "index.jsp";
 	}
 
 	@RequestMapping(path = "signup.do", method = RequestMethod.GET) // unfinished view
@@ -58,25 +59,54 @@ public class FlakController {
 		return "signup.jsp";
 	}
 
+	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
+	public String signUp(@RequestParam("username") String username, @RequestParam("password1") String password1,
+			@RequestParam("password2") String password2, Model model) {
+		if (username.length() > 0 && flakDAO.isUsernameUnique(username)) {
+			User user = new User();
+			user.setUsername(username);
+			if (password1.equals(password2)) {
+				user.setPassword(password1);
+				flakDAO.createUser(user);
+				model.addAttribute("user", user);
+				model.addAttribute("groups", user.getGroups());
+				return "grouplist.jsp";
+			} else {
+				model.addAttribute("message", "Password does not match");
+				return "signup.jsp";
+
+			}
+		}
+		model.addAttribute("message", "Username is already in use.");
+		return "signup.jsp";
+	}
+
+	// if (flakDAO.doesUsernameAndPasswordMatch(username, password)) {
+	// User user = flakDAO.getUserByUsername(username);
+	// model.addAttribute("user", user);
+	// model.addAttribute("groups", user.getGroups());
+	// return "grouplist.jsp";
+	// } else {
+	// return "error.jsp";
+	// }
 
 	@RequestMapping(path = "about.do", method = RequestMethod.GET) // unfinished view
 	public String about(Model model) {
 		return "about.jsp";
 	}
 
-	@RequestMapping(path = "grouplist.do", method = RequestMethod.GET) 
+	@RequestMapping(path = "grouplist.do", method = RequestMethod.GET)
 	public String groupListPage(Model model, @ModelAttribute("user") User user) {
 		return "grouplist.jsp";
 	}
 
 	@RequestMapping(path = "getDashboardByUser.do", method = RequestMethod.GET)
-	public String groupsByUserToDashboard(@RequestParam("gid") int gid, 
-										Model model,  
-										@ModelAttribute("user") User user) {
-		
+	public String groupsByUserToDashboard(@RequestParam("gid") int gid, Model model,
+			@ModelAttribute("user") User user) {
+
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
 		System.out.println("Size:" + flakDAO.getConversationsByGroupId(gid).size());
 		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
@@ -85,20 +115,18 @@ public class FlakController {
 		return "dashboard.jsp";
 	}
 
-	@RequestMapping(path = "getConvos.do", method = RequestMethod.GET) 
-	public String getPostsByConversation(@RequestParam("cid") int cid,
-			@RequestParam("gid") int gid,
-			Model model,  
+	@RequestMapping(path = "getConvos.do", method = RequestMethod.GET)
+	public String getPostsByConversation(@RequestParam("cid") int cid, @RequestParam("gid") int gid, Model model,
 			@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("posts", flakDAO.getPostsByConvoId(cid));
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
 
-	@RequestMapping(path = "qrl.do", method = RequestMethod.GET) 
+	@RequestMapping(path = "qrl.do", method = RequestMethod.GET)
 	public String QRL(Model model, @ModelAttribute("user") User user) {
 		return "qrl.jsp";
 	}
@@ -112,12 +140,10 @@ public class FlakController {
 	public String errorView(Model model) {
 		return "error.jsp";
 	}
-	
+
 	@RequestMapping(path = "editActivity.do", method = RequestMethod.GET)
-	public String editActivity(Model model,
-								@RequestParam("aid") int aid,
-								@RequestParam("gid") int gid,
-								@ModelAttribute("user") User user) {
+	public String editActivity(Model model, @RequestParam("aid") int aid, @RequestParam("gid") int gid,
+			@ModelAttribute("user") User user) {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("activity", flakDAO.showActivity(aid));
@@ -126,16 +152,13 @@ public class FlakController {
 		model.addAttribute("user", user);
 		return "editactivity.jsp";
 	}
-	
+
 	@RequestMapping(path = "newPost.do", method = RequestMethod.POST)
-	public String newPostToAdd(Model model,
-								@RequestParam("gid") int gid,
-								@RequestParam("cid") int cid,
-								@RequestParam("message") String message,
-								@ModelAttribute("user") User user) {
-		if(message.length() > 0) {
+	public String newPostToAdd(Model model, @RequestParam("gid") int gid, @RequestParam("cid") int cid,
+			@RequestParam("message") String message, @ModelAttribute("user") User user) {
+		if (message.length() > 0) {
 			Post newPost = new Post();
-			newPost.setMessage(message); 
+			newPost.setMessage(message);
 			newPost.setConversation(flakDAO.showConversation(cid));
 			newPost.setUser(user);
 			newPost.setTimestamp(new java.sql.Date(new java.util.Date().getTime()));
@@ -143,51 +166,44 @@ public class FlakController {
 		}
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("posts", flakDAO.getPostsByConvoId(cid));
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
-	
+
 	@RequestMapping(path = "editThread.do", method = RequestMethod.GET)
-	public String editThread(Model model,
-			@RequestParam("gid") int gid,
-			@RequestParam("cid") int cid,
+	public String editThread(Model model, @RequestParam("gid") int gid, @RequestParam("cid") int cid,
 			@ModelAttribute("user") User user) {
 
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
-		model.addAttribute("conversation",flakDAO.showConversation(cid));
+		model.addAttribute("posts", flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("conversation", flakDAO.showConversation(cid));
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "editMessageBoard.jsp";
 	}
-	
+
 	@RequestMapping(path = "saveThread.do", method = RequestMethod.POST)
-	public String saveEditedThread(Model model,
-			@RequestParam("gid") int gid,
-			@RequestParam("cid") int cid,
-			@RequestParam("title") String title,
-			@ModelAttribute("user") User user) {
+	public String saveEditedThread(Model model, @RequestParam("gid") int gid, @RequestParam("cid") int cid,
+			@RequestParam("title") String title, @ModelAttribute("user") User user) {
 		Conversation convo = flakDAO.showConversation(cid);
 		convo.setTitle(title);
 		System.out.println(flakDAO.editConversation(cid, convo));
-		
+
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
-	
+
 	@RequestMapping(path = "newThread.do", method = RequestMethod.POST)
-	public String newThreadToAdd(Model model,
-								@RequestParam("gid") int gid,
-								@RequestParam("newthread") String threadName,
-								@ModelAttribute("user") User user) {
-		if(threadName.length() > 0) {
+	public String newThreadToAdd(Model model, @RequestParam("gid") int gid,
+			@RequestParam("newthread") String threadName, @ModelAttribute("user") User user) {
+		if (threadName.length() > 0) {
 			Conversation convo = new Conversation();
 			convo.setGroup(flakDAO.showGroup(gid));
 			convo.setTitle(threadName);
@@ -205,7 +221,7 @@ public class FlakController {
 		}
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
 		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
@@ -213,5 +229,4 @@ public class FlakController {
 		return "dashboard.jsp";
 	}
 
-	
 }

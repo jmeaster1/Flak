@@ -187,6 +187,21 @@ public class FlakDAOImpl implements FlakDAO {
 		}
 		return user;
 	}
+	
+	@Override
+	public boolean isUsernameUnique(String name) {
+		boolean answer = true;
+		String queryString = "Select u from User u";
+		List<User> users =  em.createQuery(queryString, User.class)
+							.getResultList();
+		for (int i = 0; i < users.size(); i++) {
+			if(users.get(i).getUsername().equals(name)) {
+				answer = false;
+				break;
+			}
+		}
+		return answer;
+	}
 
 
 	@Override

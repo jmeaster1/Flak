@@ -29,39 +29,44 @@
 </head>
 <body>
 	<div class="login_container">
-	<div class="login_content"></div>
+		<div class="login_content"></div>
 		<h2 id="signup_header">Sign Up</h2>
-	
 
+		<c:if test="${not empty message}">
+			<h3>${message}</h3>
+		</c:if>
+		
+		
 		<form action="signUp.do" method="POST">
-		<br>
-			<div class="signup_field" >
+			<br>
+			<!-- <div class="signup_field" >
 				<label>First Name: <input class="signup_field" type="text" name="firstName" value="" /></label> 
 			</div>
 			<br>
 			<div class="signup_field" >
 				<label>Last Name: <input class="signup_field" type="text" name="lastName" value="" /></label>
-			</div>
+			</div> -->
 			<br>
-			<div class="signup_field" >
-				<label>User Name: <input class="signup_field" type="text" name="userName" value="" /></label>
-			</div>
-			<br>
-			<div class="signup_field" >
-				<label>Password:<input class="signup_field" type="password" name="lastName" value="" /></label>
+			<div class="signup_field">
+				<label>User Name: <input class="signup_field" type="text"
+					name="username" value="" /></label>
 			</div>
 			<br>
 			<div class="signup_field">
-				<label>Confirm Password: <input class="signup_field" type="password" name="lastName" value="" /></label>
+				<label>Password:<input class="signup_field" type="password"
+					name="password1" value="" /></label>
 			</div>
 			<br>
-			<br>
-							<input class="signup_button" type="submit" name="submit" value="Create Account" />
-			
-			<div>
+			<div class="signup_field">
+				<label>Confirm Password: <input class="signup_field"
+					type="password" name="password2" value="" /></label>
 			</div>
+			<br> <br> <input class="signup_button" type="submit"
+				name="submit" value="Create Account" />
+
+			<div></div>
 		</form>
-		</div>
+	</div>
 	</div>
 </body>
 </html>
