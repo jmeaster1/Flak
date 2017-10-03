@@ -32,15 +32,12 @@
 <body>
 	<div class="content-container">
     <h1><span class="logoF">F</span><span class="logoL">l</span><span class="logoA">a</span><span class="logoK">k</span></h1>
-
-    <div class="buttons">
-    <ul>
-      <li class="button"> <a href="login.do">&nbsp;LOGIN&nbsp;</a></li>
-      <li class="button"><a href="signup.do">SIGN UP</a></li>
-    </ul>
+     <div class="buttons">
+	     <ul>
+	      <li class="button"> <a href="login.do">&nbsp;LOGIN&nbsp;</a></li>
+	      <li class="button"><a href="signup.do">SIGN UP</a></li>
+	   	 </ul>
     </div>
-
-
   </div>
 
   <div class="no-show">
