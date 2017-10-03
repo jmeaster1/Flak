@@ -137,18 +137,24 @@
 			<div id="home" class="tab-pane fade in active">
 				<h3>Message Board</h3>
 				<hr>
-				<!-- <p>MESSAGES WILL BE DISPLAYED HERE.</p> -->
+				<c:if test="${not empty conversations}">
+					<c:forEach var="convo" items="${conversations}">
+						<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
+					</c:forEach>
+				</c:if>
 				<c:if test="${not empty posts}">
 					<c:forEach var="post" items="${posts}">
 						<p>${post.timestamp}</p>
 						<span class="username">${post.user.username}:</span>&emsp;&emsp;${post.message}
-			</c:forEach>
+					</c:forEach>
+					<!-- Add New Message Form - Only within a thread -->
+					<form class="messages" action="newPost.do" method="post">
+						<input type="text" style="width: 500px;" name="message" value="">
+						<input type="submit" name="submit" value="Post">
+					</form>
+					<br>
+					<a href="getDashboardByUser.do?gid=${group.id}">See All Threads</a>
 				</c:if>
-				<!-- Add New Message Form -->
-				<form class="messages" action="index.html" method="post">
-					<input type="text" style="width: 500px;" name="message" value="">
-					<input type="submit" name="submit" value="Post">
-				</form>
 				<!-- Message Image -->
 				<div class="msg_img">
 					<img
