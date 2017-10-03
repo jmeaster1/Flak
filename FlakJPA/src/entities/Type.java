@@ -16,8 +16,6 @@ public class Type {
 	private String name;
 	@OneToMany(mappedBy = "type")
 	private List<Activity> activities;
-
-	
 	
 	public String getName() {
 		return name;

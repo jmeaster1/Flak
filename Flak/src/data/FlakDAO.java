@@ -44,6 +44,8 @@ public interface FlakDAO {
 	
 	public List<Conversation> getConversationsByGroupId(int id);
 	
+	public List<Type> getAllTypesByGroupId(int id);
+	
 	public boolean doesUsernameAndPasswordMatch(String name, String pw);
 	
 	public User getUserByUsername(String name);

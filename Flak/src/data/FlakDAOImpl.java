@@ -89,13 +89,16 @@ public class FlakDAOImpl implements FlakDAO {
 	public List<Activity> getUserActivitiesByType(User user, String type) {
 		List<Activity> answer = new ArrayList<>();
 		type = type.toLowerCase();
-		String queryString = "Select a from Activity a";
+		String queryString = "Select a from Activity a join fetch a.users where a.type.name = :name";
 		List<Activity> allActivities =  em.createQuery(queryString, Activity.class)
+								.setParameter("name", type)
 								.getResultList();
 		for (int i = 0; i < allActivities.size(); i++) {
-			String current = allActivities.get(i).getType().getName().toLowerCase();
-			if(current.equals(type)) {
-				answer.add(allActivities.get(i));
+			List<User> aUsers = allActivities.get(i).getUsers();
+			for (int j = 0; j < aUsers.size(); j++) {
+				if(aUsers.get(i).getId()==user.getId()) {
+					answer.add(allActivities.get(i));
+				}	
 			}
 		}
 		return answer;
@@ -129,6 +132,12 @@ public class FlakDAOImpl implements FlakDAO {
 				.setParameter("id", id)
 				.getResultList();
 		return posts;
+	}
+	
+	@Override
+	public List<Type> getAllTypesByGroupId(int id) {
+		List<Type> answer = new ArrayList<>();
+		return answer;
 	}
 	
 	@Override
