@@ -90,7 +90,7 @@ DROP TABLE IF EXISTS `post` ;
 
 CREATE TABLE IF NOT EXISTS `post` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `timestamp` DATETIME NOT NULL,
+  `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `message` VARCHAR(500) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   `conv_id` INT UNSIGNED NOT NULL,
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `activity` (
   `description` VARCHAR(200) NULL,
   `group_id` INT UNSIGNED NOT NULL,
   `type_id` INT UNSIGNED NOT NULL,
-  `timestamp` DATETIME NULL,
+  `timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `assigned` TINYINT(1) NOT NULL DEFAULT 0,
   `complete` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`, `group_id`, `type_id`),
@@ -259,6 +259,8 @@ START TRANSACTION;
 USE `flakdb`;
 INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'Flak Development Team');
 INSERT INTO `flak_group` (`id`, `name`) VALUES (2, 'The Simpsons');
+INSERT INTO `flak_group` (`id`, `name`) VALUES (3, 'Smith Family');
+INSERT INTO `flak_group` (`id`, `name`) VALUES (4, 'Rugby Team');
 
 COMMIT;
 
@@ -272,7 +274,16 @@ INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (1, 'Jimmy', '
 INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (2, 'Doug', 'pass1', 1);
 INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (3, 'Daniel', 'pass1', 1);
 INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (4, 'Meira', 'pass1', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (5, 'Billy', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (5, 'Homer', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (6, 'SueSmith', 'pass1', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (7, 'BobSmith', 'pass1', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (8, 'TommySmith', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (9, 'KimmySmith', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (10, 'Marge', 'pass1', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (11, 'Maggie', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (12, 'Bart', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (13, 'Lisa', 'pass1', 0);
+INSERT INTO `user` (`id`, `username`, `password`, `admin`) VALUES (14, 'Coach', 'pass1', 1);
 
 COMMIT;
 
@@ -286,7 +297,14 @@ INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 1);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 2);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 3);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 4);
-INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (1, 5);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 5);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (4, 1);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (4, 5);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 6);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 7);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 8);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 9);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 10);
 
 COMMIT;
 
@@ -297,6 +315,12 @@ COMMIT;
 START TRANSACTION;
 USE `flakdb`;
 INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (1, 'Hello Team!', 1);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (2, 'Family Meeting', 3);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (3, 'Clean the car', 3);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (4, 'Practice Tuesday', 4);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (5, 'Away game - Ft Collins', 4);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (6, 'Eat a donut', 2);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (7, 'Feed Dog', 2);
 
 COMMIT;
 
@@ -307,6 +331,11 @@ COMMIT;
 START TRANSACTION;
 USE `flakdb`;
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (1, '2017-12-31 23:59:59', 'Hey, team! Let\'s go build a killer app!', 1, 1);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (2, '2017-10-6 08:30:00', 'We\'ll meet in the kitchen at 10:00', 6, 2);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (3, '2017-10-8 10:00:00', 'Kids clean car today', 7, 3);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (4, '2017-10-10 9:30:30', 'Carpool to practice w Homer', 1, 4);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (5, '2017-10-12 12:00:00', 'Bring first-aid kit to game', 5, 5);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (6, '', 'Don\'t eat it all in one bite', 5, 6);
 
 COMMIT;
 
@@ -328,9 +357,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (1, 'Garbage', 'Take out garbage', 1, 1, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (2, 'Dishes', 'Wash dishes', 1, 1, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (3, 'Meeting', 'Family Meeting', 1, 2, NULL, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (1, 'Garbage', 'Take out garbage', 1, 1, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (2, 'Dishes', 'Wash dishes', 1, 1, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (3, 'Meeting', 'Family Meeting', 1, 2, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (4, 'Wash car', 'Wash the car', 3, 1, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (5, 'Clean Room', 'Clean your room by the end of the day', 3, 1, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (6, 'Rugby Practice', 'Focus on holding the ball', 4, 2, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (7, 'Rugby Game', 'Bart\'s 6 pm Rugby Game', 2, 2, DEFAULT, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (8, 'Get Game Supplies', 'Buy Caprisuns and bananas', 4, 3, DEFAULT, DEFAULT, DEFAULT);
 
 COMMIT;
 
@@ -342,6 +376,12 @@ START TRANSACTION;
 USE `flakdb`;
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (1, 1);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (2, 1);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (3, 3);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (9, 4);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (8, 5);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (1, 6);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (10, 7);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (14, 8);
 
 COMMIT;
 
@@ -351,8 +391,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (1, 'Important Info', 1);
-INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (2, 'Important Numbers', 2);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (1, 'Doc\'s office', 1);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (2, 'Homer\'s Office', 2);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (3, 'Coach', 4);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (4, 'Homer\'s Cell', 4);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (5, 'School', 3);
+INSERT INTO `qrl` (`id`, `description`, `group_id`) VALUES (6, 'Bob\'s work', 3);
 
 COMMIT;
 
@@ -371,6 +415,10 @@ INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`)
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (7, 'Bart', 'Simpson', 'Son', 2);
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (8, 'Maggie', 'Simpson', 'Baby Girl', 2);
 INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (9, 'Lisa', 'Simpson', 'Daughter', 2);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (10, 'Bob', 'Smith', 'Work', 6);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (11, 'George', 'Halas', 'Coach', 3);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (12, 'Mary', 'Class', 'School Reception', 5);
+INSERT INTO `contact` (`id`, `first_name`, `last_name`, `description`, `qrl_id`) VALUES (13, 'Homer', 'Simpson', 'Father', 4);
 
 COMMIT;
 
@@ -384,11 +432,15 @@ INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES 
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (2, 'Doug Home', 3033333333, 2);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (3, 'Daniel Work', 8281111111, 3);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (4, 'Jimmy iPhone', 3049999999, 4);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (5, 'Homer Mobile', 2222222222, 5);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (5, 'Homer Office', 2222222222, 5);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (6, 'Marge Cell', 3333333333, 6);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (7, 'Bart Pager', 4444444444, 7);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (8, 'Maggie Home', 5555555555, 8);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (9, 'Lisa Work', 3434343434, 9);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (10, 'Homer\'s Cell', 9992322234, 13);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (11, 'School Office', 3334445567, 12);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (12, 'Bob\'s Office', 5557797979, 10);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (13, 'Coach', 3334445678, 11);
 
 COMMIT;
 
