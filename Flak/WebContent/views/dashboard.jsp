@@ -88,7 +88,7 @@
 							</c:forEach>
 						</c:if>
 							</ul> 
-					<li><a href="login.do">LOGOUT</a></li>
+					<li><a href="logout.do">LOGOUT</a></li>
 				</ul>
 			</ul>
 		</div>
@@ -157,8 +157,9 @@
 				<c:if test="${not empty posts}">
 					<c:forEach var="post" items="${posts}">
 						<p>${post.timestamp}</p>
-						<span class="username">${post.user.username}:</span>&emsp;&emsp;${post.message}
+						<div class="message_display"><span class="username">${post.user.username}:</span>&emsp;&emsp;${post.message}</div>
 					</c:forEach>
+					
 					<!-- Add New Message Form - Only within a thread -->
 					<form class="messages" action="newPost.do" method="post">
 						<input type="hidden" name="gid" value="${group.id}"></input> <input

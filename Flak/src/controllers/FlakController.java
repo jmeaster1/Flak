@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import data.FlakDAO;
 import entities.Conversation;
@@ -54,6 +55,11 @@ public class FlakController {
 		} else {
 			return "error.jsp";
 		}
+	}
+	@RequestMapping(value="logout.do",method=RequestMethod.GET)
+	public String closeSession(SessionStatus status){
+	    status.setComplete();
+	    return "index.jsp";
 	}
 
 	@RequestMapping(path = "signup.do", method = RequestMethod.GET) // unfinished view

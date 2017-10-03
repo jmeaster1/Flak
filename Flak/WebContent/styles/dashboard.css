@@ -94,6 +94,9 @@ li.button a:hover {
   margin-top: 100px;
   visibility: hidden;
 }
+p{
+	margin-bottom: 0;
+}
 
 .nav-tabs {
   background-color: #333;
@@ -156,6 +159,11 @@ li.button a:hover {
   font-weight: bold;
   font-style: oblique;
   text-shadow: 1px 1px 1px lightblue;
+  margin-bottom: 12px;
+}
+.message_display{
+	margin-bottom:15px;
+	margin-left: 15px;
 }
 .msg_img{
   display: inline;
