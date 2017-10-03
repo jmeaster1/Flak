@@ -335,6 +335,7 @@ INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (4, '2017-10-10 9:30:30', 'Carpool to practice w Homer', 1, 4);
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (5, '2017-10-12 12:00:00', 'Bring first-aid kit to game', 5, 5);
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (6, '2017-10-20 04:15:30', 'Don\'t eat it all in one bite', 5, 6);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (7, '2017-10-11 09:45:00', 'Remember to feed Santa\'s Little Helper', 10, 7);
 
 COMMIT;
 
