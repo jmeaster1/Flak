@@ -424,8 +424,8 @@ INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES 
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (5, 'Homer Office', 2222222222, 5);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (6, 'Marge Cell', 3333333333, 6);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (7, 'Bart Pager', 4444444444, 7);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (8, 'Maggie Home', 5555555555, DEFAULT);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (9, 'Lisa Work', 3434343434, DEFAULT);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (8, 'Maggie Home', 5555555555, 8);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (9, 'Lisa Work', 3434343434, 9);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (10, 'Homer\'s Cell', 9992322234, 13);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (11, 'School Office', 3334445567, 12);
 INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (12, 'Bob\'s Office', 5557797979, 10);
