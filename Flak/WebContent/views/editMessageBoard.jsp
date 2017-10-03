@@ -53,11 +53,14 @@
 	<div class="no-show">
 		<h1>hide</h1>
 	</div>
-
-	<form action="saveThread.do" method="post">
-		<input type="hidden" name="cid" value="${conversation.id}"></input>
-		<input type="hidden" name="gid" value="${group.id}"></input>
-		Title: <input name="title" value="${conversation.title}"></input><br>
+	<c:if test="${not empty conversation}">
+		<form action="saveThread.do" method="post">
+			<input type="hidden" name="cid" value="${conversation.id}"></input>
+			<input type="hidden" name="gid" value="${group.id}"></input>
+			Title: <input name="title" value="${conversation.title}"></input><br>
+			<input type="submit" name="submit" value="Save Changes"></input>
+		</form>
+		<br>
 		Posts:
 		<c:forEach var="post" items="${posts}">
 			<p>${post.timestamp}</p>
@@ -67,8 +70,17 @@
 				<input type="submit" name="submit" value="Edit"></input></a>
 			</div>
 		</c:forEach>
-		<input type="submit" name="submit" value="Save"></input>
-	</form>
+	</c:if>
+	
+	<c:if test="${not empty pid}">
+		<form action="savePost.do" method="post">
+			<input type="hidden" name="pid" value="${pid}"></input>
+			<input type="hidden" name="gid" value="${group.id}"></input>
+			<p>${post.timestamp}</p>
+			Message: <input name="message" value="${post.message}"></input><br>
+			<input type="submit" name="submit" value="Save"></input>
+		</form>
+	</c:if>
 
 </body>
 </html>

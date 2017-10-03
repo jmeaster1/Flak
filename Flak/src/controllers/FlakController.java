@@ -81,15 +81,6 @@ public class FlakController {
 		return "signup.jsp";
 	}
 
-	// if (flakDAO.doesUsernameAndPasswordMatch(username, password)) {
-	// User user = flakDAO.getUserByUsername(username);
-	// model.addAttribute("user", user);
-	// model.addAttribute("groups", user.getGroups());
-	// return "grouplist.jsp";
-	// } else {
-	// return "error.jsp";
-	// }
-
 	@RequestMapping(path = "about.do", method = RequestMethod.GET) // unfinished view
 	public String about(Model model) {
 		return "about.jsp";
@@ -175,7 +166,6 @@ public class FlakController {
 	@RequestMapping(path = "editThread.do", method = RequestMethod.GET)
 	public String editThread(Model model, @RequestParam("gid") int gid, @RequestParam("cid") int cid,
 			@ModelAttribute("user") User user) {
-
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("posts", flakDAO.getPostsByConvoId(cid));
@@ -190,14 +180,26 @@ public class FlakController {
 			@RequestParam("title") String title, @ModelAttribute("user") User user) {
 		Conversation convo = flakDAO.showConversation(cid);
 		convo.setTitle(title);
-		System.out.println(flakDAO.editConversation(cid, convo));
-
+		flakDAO.editConversation(cid, convo);
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
+	}
+	
+	@RequestMapping(path = "editPost.do", method = RequestMethod.GET)
+	public String editPost(Model model, 
+							@RequestParam("gid") int gid, 
+							@RequestParam("pid") int pid,
+							@ModelAttribute("user") User user) {
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("pid", pid);
+		model.addAttribute("post", flakDAO.showPost(pid));
+		model.addAttribute("user", user);
+		return "editMessageBoard.jsp";
 	}
 
 	@RequestMapping(path = "newThread.do", method = RequestMethod.POST)
