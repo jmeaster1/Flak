@@ -22,7 +22,11 @@
 * CSS
 * Bootstrap
 
-##### In addition, we used Agile project management methodologies that allowed us to work creatively and effectively while increasing our productivity.
+##### Additionally, we utilized a little bit of:
+* Javascript
+* jQuery
+
+##### We used Agile project management methodologies that allowed us to work creatively and effectively while increasing our productivity.
 
 ### Description
 FLAK is a full-stack web application designed to help people involved in a common task to achieve their goals.
