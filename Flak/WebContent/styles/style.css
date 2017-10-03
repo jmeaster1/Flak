@@ -98,6 +98,29 @@ body {
 .login_content2 h1{
 	font-size: 36px;
 }
+.login_container3 {
+	width: 50%;
+	margin: auto;
+	margin-top: 30%
+	padding: 2%;
+	background-color: #25bbbf;
+}
+.login_content3{
+	width: 50%;
+	margin: auto;
+	text-align:center;
+	margin-top: 10%;
+	padding: 2%;
+	padding-left: 15px;
+	background-color: rgba(187, 187, 187, .7);
+	font-size: 16px;
+}
+.login_content3 h1{
+	font-size: 36px;
+}
+.login_content3 li{
+	font-size: 20px;
+}
 .login_content1 input{
 	width: 50%;
 	margin: auto;
