@@ -31,8 +31,8 @@
        <!-- No longer necessary to create instance of Connection anymore -->
       <property name="hibernate.connection.zeroDateTimeBehavior" value="convertToNull"></property>
   
-      <property name="hibernate.show_sql" value="true" />
-      <property name="hibernate.format_sql" value="true" />
+      <property name="hibernate.show_sql" value="false" />
+      <property name="hibernate.format_sql" value="false" />
   
       <property name="hibernate.dialect"
         value="org.hibernate.dialect.MySQLDialect" />

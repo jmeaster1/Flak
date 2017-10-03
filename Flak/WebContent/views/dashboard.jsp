@@ -147,6 +147,12 @@
 					<c:forEach var="convo" items="${conversations}">
 						<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
 					</c:forEach>
+					<form class="messages" action="newThread.do" method="post">
+						<input type="hidden" name="gid" value="${group.id}"></input>
+						<input type="text" style="width: 500px;" name="newthread" value="">
+						<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
+						<input type="submit" name="submit" value="New Thread">
+					</form>
 				</c:if>
 				<c:if test="${not empty posts}">
 					<c:forEach var="post" items="${posts}">

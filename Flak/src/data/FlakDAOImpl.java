@@ -90,7 +90,7 @@ public class FlakDAOImpl implements FlakDAO {
 	public List<Activity> getUserActivitiesByType(User user, String type) {
 		List<Activity> answer = new ArrayList<>();
 		type = type.toLowerCase();
-		String queryString = "Select a from Activity a join fetch a.users where a.type.name = :name";
+		String queryString = "Select distinct a from Activity a join fetch a.users where a.type.name = :name";
 		List<Activity> allActivities =  em.createQuery(queryString, Activity.class)
 								.setParameter("name", type)
 								.getResultList();
@@ -119,7 +119,7 @@ public class FlakDAOImpl implements FlakDAO {
 	@Override
 	public List<Conversation> getConversationsByGroupId(int id) {
 		List<Conversation> conversations;
-		String queryString = "Select c from Conversation c join fetch c.posts where c.group.id = :id";
+		String queryString = "Select distinct c from Conversation c where c.group.id = :id";
 		conversations =  em.createQuery(queryString, Conversation.class)
 						.setParameter("id", id)
 						.getResultList();
