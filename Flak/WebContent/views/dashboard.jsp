@@ -67,21 +67,31 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 
-					<ul class="nav navbar-nav navbar-right">
-						<ul class="nav navbar-nav ">
-							<c:if test="${not empty groups}">
-								<li class="dropdown"><a class="dropdown-toggle"
-									data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
-									<ul class="dropdown-menu">
-										<c:forEach var="group" items="${groups}">
-											<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
-											</a></li>
-											<br />
-										</c:forEach>
-							</c:if>
-						</ul>
-					</ul>
-				</div>
+			<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav ">
+				<c:choose>
+					<c:when test="${not empty user}">
+					
+					</c:when>
+						<c:otherwise>
+							<li><a href="about.do">What is Flak?</a></li>
+						</c:otherwise>
+				</c:choose>
+						 <c:if test="${not empty groups}">
+					<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
+							<ul class="dropdown-menu">
+							<c:forEach var="group" items="${groups}">
+								<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
+								</a></li>
+								<br />
+							</c:forEach>
+						</c:if>
+							</ul> 
+					<li><a href="login.do">LOGOUT</a></li>
+				</ul>
+			</ul>
+		</div>
 			</div>
 </div>
 </nav>
@@ -96,24 +106,20 @@
 			<li>Jimmy Easter <span class="numbers"><br>(304)552-0965</span></li>
 			<br>
 			<li>Denver Fire Dept. <span class="numbers"><br>(720)
-					989-2000</span></li>
-			<br>
+					989-2000</span></li> <br>
 			<li>Greenwood Village PD<span class="numbers"><br>(303)
-					773-2525</span></li>
-			<br>
+					773-2525</span></li> <br>
 			<li>WIFI Password<span class="numbers"><br>GetSkilled</span></li>
 			<br>
 			<li>Shanghai Kitchen<span class="numbers"><br>(303)
-					290-6666</span></li>
-			<br>
+					290-6666</span></li> <br>
 			<!-- </ul> -->
 
 
 		</div>
 		<form class="messages" action="index.html" method="post">
-			<input type="text" name="qrlItem" value=""> <br>
-			<br> &emsp; <input type="submit" name="submit"
-				value="Add to QRL">
+			<input type="text" name="qrlItem" value=""> <br> <br>
+			&emsp; <input type="submit" name="submit" value="Add to QRL">
 		</form>
 
 
@@ -149,9 +155,9 @@
 					</c:forEach>
 					<!-- Add New Message Form - Only within a thread -->
 					<form class="messages" action="newPost.do" method="post">
-						<input type="hidden" name="gid" value="${group.id}"></input>
-						<input type="hidden" name="cid" value="${cid}"></input>
-						<input type="text" style="width: 500px;" name="message" value="">
+						<input type="hidden" name="gid" value="${group.id}"></input> <input
+							type="hidden" name="cid" value="${cid}"></input> <input
+							type="text" style="width: 500px;" name="message" value="">
 						<input type="submit" name="submit" value="Post">
 					</form>
 					<br>
@@ -270,8 +276,8 @@
 				</div>
 
 			</div>
-			
-			
+
+
 			<div id="menu4" class="tab-pane fade">
 				<h3>Calendar</h3>
 				<hr>
