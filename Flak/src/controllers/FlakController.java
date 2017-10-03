@@ -97,10 +97,11 @@ public class FlakController {
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
-	@RequestMapping(path = "messagebrd.do", method = RequestMethod.GET) 
-	public String messageBoard(Model model, @ModelAttribute("user") User user) {
-		return "messagebrd.jsp";
-	}
+	
+//	@RequestMapping(path = "messagebrd.do", method = RequestMethod.GET) 
+//	public String messageBoard(Model model, @ModelAttribute("user") User user) {
+//		return "messagebrd.jsp";
+//	}
 
 	@RequestMapping(path = "qrl.do", method = RequestMethod.GET) 
 	public String QRL(Model model, @ModelAttribute("user") User user) {
@@ -153,6 +154,19 @@ public class FlakController {
 	
 	@RequestMapping(path = "editActivity.do", method = RequestMethod.GET)
 	public String editActivity(Model model,
+								@RequestParam("aid") int aid,
+								@RequestParam("gid") int gid,
+								@ModelAttribute("user") User user) {
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("activity", flakDAO.showActivity(aid));
+		model.addAttribute("types", flakDAO.getAllTypes());
+		model.addAttribute("user", user);
+		return "editactivity.jsp";
+	}
+	
+	@RequestMapping(path = "newPost.do", method = RequestMethod.POST)
+	public String newPostToAdd(Model model,
 								@RequestParam("aid") int aid,
 								@RequestParam("gid") int gid,
 								@ModelAttribute("user") User user) {
