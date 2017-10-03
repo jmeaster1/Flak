@@ -27,11 +27,11 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body id="signup_body">
-	<div class="signup_container">
-		<h1>Sign Up</h1>
-		<br>
-		<br>
+<body>
+	<div class="login_container">
+	<div class="login_content"></div>
+		<h2 id="signup_header">Sign Up</h2>
+	
 
 		<form action="signUp.do" method="POST">
 		<br>
@@ -56,10 +56,12 @@
 			</div>
 			<br>
 			<br>
+							<input class="signup_button" type="submit" name="submit" value="Create Account" />
+			
 			<div>
-				<input class="signup_button" type="submit" name="submit" value="Create Account" />
 			</div>
 		</form>
+		</div>
 	</div>
 </body>
 </html>
