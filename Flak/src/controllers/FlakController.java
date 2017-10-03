@@ -59,26 +59,26 @@ public class FlakController {
 		return "signup.jsp";
 	}
 
-	@RequestMapping(path = "signup.do", method = RequestMethod.POST)
-	public String signUp(@RequestParam("username") String username, @RequestParam("password1") String password1, @RequestParam("password2") String password2,
-			Model model) {
-		if(username.length() > 0) {
+	@RequestMapping(path = "signUp.do", method = RequestMethod.POST)
+	public String signUp(@RequestParam("username") String username, @RequestParam("password1") String password1,
+			@RequestParam("password2") String password2, Model model) {
+		if (username.length() > 0 && flakDAO.isUsernameUnique(username)) {
 			User user = new User();
 			user.setUsername(username);
-			if(password1.equals(password2)){
-			user.setPassword(password1);
-			flakDAO.createUser(user);
-			model.addAttribute("user", user);	
+			if (password1.equals(password2)) {
+				user.setPassword(password1);
+				flakDAO.createUser(user);
+				model.addAttribute("user", user);
+				model.addAttribute("groups", user.getGroups());
+				return "grouplist.jsp";
+			} else {
+				model.addAttribute("message", "Password does not match");
+				return "signup.jsp";
+
+			}
 		}
-			
-//		model.addAttribute("group", flakDAO.showGroup(gid));
-//		model.addAttribute("groups", user.getGroups());
-//		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
-//		model.addAttribute("cid", cid);
-		return "dashboard.jsp";
-	}
-		return password2;
-		
+		model.addAttribute("message", "Username is already in use.");
+		return "signup.jsp";
 	}
 
 	// if (flakDAO.doesUsernameAndPasswordMatch(username, password)) {
