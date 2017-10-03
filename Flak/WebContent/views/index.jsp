@@ -34,8 +34,8 @@
     <h1><span class="logoF">F</span><span class="logoL">l</span><span class="logoA">a</span><span class="logoK">k</span></h1>
      <div class="buttons">
 	     <ul>
-	      <li class="button"> <a href="login.do">&nbsp;LOGIN&nbsp;</a></li>
-	      <li class="button"><a href="signup.do">SIGN UP</a></li>
+	      <a href="login.do"><li class="button">&nbsp;LOGIN&nbsp;</li></a>
+	      <a href="signup.do"><li class="button">SIGN UP</li></a>
 	   	 </ul>
     </div>
   </div>

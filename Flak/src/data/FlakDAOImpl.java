@@ -98,7 +98,6 @@ public class FlakDAOImpl implements FlakDAO {
 			List<User> aUsers = allActivities.get(i).getUsers();
 			for (int j = 0; j < aUsers.size(); j++) {
 				if(aUsers.get(j).getId()==user.getId()) {
-					System.out.println("i" + i + ":" + allActivities.get(i));
 					answer.add(allActivities.get(i));
 				}	
 			}

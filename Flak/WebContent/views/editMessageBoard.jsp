@@ -66,8 +66,12 @@
 			<p>${post.timestamp}</p>
 			<div class="message_display">
 				<span>${post.user.username}</span>
-				<span>${post.message}</span><a href="editPost.do?pid=${post.id}&gid=${group.id}">
+				<span>${post.message}</span>
+				<a href="editPost.do?pid=${post.id}&gid=${group.id}">
 				<input type="submit" name="submit" value="Edit"></input></a>
+				<a href="deletePost.do?pid=${post.id}&gid=${group.id}">
+				<input type="submit" name="submit" value="Delete"></input></a>
+				
 			</div>
 		</c:forEach>
 	</c:if>

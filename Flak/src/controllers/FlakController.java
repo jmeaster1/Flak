@@ -98,7 +98,6 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
-		System.out.println("Size:" + flakDAO.getConversationsByGroupId(gid).size());
 		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
 		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
@@ -202,6 +201,35 @@ public class FlakController {
 		return "editMessageBoard.jsp";
 	}
 
+	@RequestMapping(path = "savePost.do", method = RequestMethod.POST)
+	public String saveEditedPost(Model model, 
+								@RequestParam("gid") int gid, 
+								@RequestParam("pid") int pid,
+								@RequestParam("message") String message, 
+								@ModelAttribute("user") User user) {
+		Post post = flakDAO.showPost(pid);
+		post.setMessage(message);
+		flakDAO.editPost(pid, post);
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
+	}
+	
+	@RequestMapping(path = "deletePost.do", method = RequestMethod.GET)
+	public String deletePost(Model model, 
+			@RequestParam("gid") int gid, 
+			@RequestParam("pid") int pid,
+			@ModelAttribute("user") User user) {
+		flakDAO.deletePost(pid);
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
+	}
+	
 	@RequestMapping(path = "newThread.do", method = RequestMethod.POST)
 	public String newThreadToAdd(Model model, @RequestParam("gid") int gid,
 			@RequestParam("newthread") String threadName, @ModelAttribute("user") User user) {
