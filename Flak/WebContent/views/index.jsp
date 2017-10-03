@@ -27,12 +27,9 @@
 	crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="stylesheet" type="text/css" href="styles/index.css" />
 </head>
 <body>
-	<h1 class="header_class">
-		<!-- index.jsp -->
-	</h1>
 	<div class="content-container">
     <h1><span class="logoF">F</span><span class="logoL">l</span><span class="logoA">a</span><span class="logoK">k</span></h1>
 

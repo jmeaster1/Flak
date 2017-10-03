@@ -34,12 +34,12 @@
 		<!-- login.jsp -->
 	</h1>
 	<div class="login_container">
-	<div class="login_content">
+	<div class="login_content1">
 		<form:form action="login.do" method="POST" modelAttribute="user">
-USERNAME:
-<input type="text" name="username" /> 
-PASSWORD:
-<input type="password" name="password" />
+USERNAME:<br>
+<input type="text" style="width: 200px;" name="username" /> <br>
+PASSWORD:<br>
+<input type="password" style="width: 200px;" name="password" /><br><br>
 			<input type="submit" value="Log In" />
 		</form:form>
 		<a href="signup.do">New User? Sign Up here.</a>
