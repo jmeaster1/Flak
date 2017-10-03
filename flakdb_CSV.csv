@@ -1,0 +1,14 @@
+id,username,password,admin
+1,Jimmy,pass1,1
+2,Doug,pass1,1
+3,Daniel,pass1,1
+4,Meira,pass1,1
+5,Homer,pass1,0
+6,SueSmith,pass1,1
+7,BobSmith,pass1,1
+8,TommySmith,pass1,0
+9,KimmySmith,pass1,0
+10,Marge,pass1,1
+11,Maggie,pass1,0
+12,Bart,pass1,0
+13,Lisa,pass1,0
