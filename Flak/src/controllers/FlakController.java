@@ -170,9 +170,9 @@ public class FlakController {
 			@RequestParam("cid") int cid,
 			@RequestParam("title") String title,
 			@ModelAttribute("user") User user) {
-		Conversation convo = flakDAO.
-		flakDAO.showConversation(cid).setTitle(title);
-		System.out.println(flakDAO.editConversation(cid, flakDAO.showConversation(cid)));
+		Conversation convo = flakDAO.showConversation(cid);
+		convo.setTitle(title);
+		System.out.println(flakDAO.editConversation(cid, convo));
 		
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
