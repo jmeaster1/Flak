@@ -1,0 +1,254 @@
+body {
+  /*background-image: url("https://aspartame.org/wp-content/uploads/2016/10/AdobeStock_59246143-1024x683.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;*/
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.navbar-brand {
+  font-family: 'Cabin Sketch', cursive;
+}
+
+.footer_bar {
+  padding: 60px;
+  width: 100%;
+  text-align: center;
+  background-color: #333;
+}
+
+.logoF {
+  color: #446fa9;
+  font-weight: bold;
+  font-size: 34px;
+}
+
+.logoL {
+  color: #3b94bf;
+  font-weight: bold;
+  font-size: 34px;
+}
+
+.logoA {
+  color: #25bbbf;
+  font-weight: bold;
+  font-size: 34px;
+}
+
+.logoK {
+  color: #66bae3;
+  font-weight: bold;
+  font-size: 34px;
+}
+
+.content-container {
+  width: 50%;
+  margin: auto;
+  margin-top: 30%;
+  padding: 2%;
+  background-color: rgba(14, 13, 15, .7);
+}
+
+.content-container h1 {
+  font-family: 'Cabin Sketch', cursive;
+  margin: auto;
+  font-size: 100px;
+}
+
+.buttons {
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  margin-left: 24%;
+}
+
+li.button {
+  padding: 2%;
+  /*width: 40%;*/
+  margin: 0 auto;
+  margin-left: 1%;
+  margin-right: 1%;
+  text-align: center;
+  display: inline;
+  font-family: arial;
+  border-style: outset;
+  background-color: black;
+}
+
+li.button a {
+  padding: .5%;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: black;
+  /*margin-left: 18%;*/
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-family: 'Cabin Sketch', cursive;
+}
+
+li.button a:hover {
+  background-color: #006899;
+}
+
+.no-show {
+  margin-top: 100px;
+  visibility: hidden;
+}
+
+.nav-tabs {
+  background-color: #333;
+  color: #66bae3;
+}
+
+.inner-qrl-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 20%;
+  margin-bottom: -30px;
+  padding: 2%;
+  background-color: rgba(68, 111, 169, .7);
+  margin-left: 15px;
+}
+#home {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  height: 700px;
+}
+
+#home p {
+  color: #cc0000;
+  font-weight: bold;
+  font-size: 1.3em;
+
+}
+
+#menu1 {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  height: 700px;
+}
+
+#menu2 {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  height: 700px;
+}
+
+#menu3 {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  height: 1000px;
+}
+
+.messages {
+  margin-top: 90px;
+}
+.numbers{
+  color: yellow;
+  text-shadow: 1px 1px 1px black;
+}
+.username{
+  color:#3745ab;
+  font-weight: bold;
+  font-style: oblique;
+  text-shadow: 1px 1px 1px lightblue;
+}
+.msg_img{
+  display: inline;
+  float: right;
+  margin-top: -25%;
+}
+
+.content1-left {
+  background-color: #333;
+  height: 1100px;
+  font-size: 14px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  padding-left: 2px;
+  padding-right: 5px;
+  margin-right: -5px;
+}
+
+.content1-left h5 {
+  margin-top: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.content1-left p {
+  font-size: 16px;
+}
+
+.content1-center {
+  color: white;
+  background-color: red;
+  height: 400px;
+  padding: 0px;
+}
+
+.content1-right {
+  background-color: #446fa9;
+  height: 1100px;
+}
+
+.content1-right h5 {
+  color: black;
+  /*margin-top: 60px;*/
+}
+
+.content2-left {
+  background-color: blue;
+  height: 200px;
+}
+
+.content2-center {
+  background-color: black;
+  height: 200px;
+  padding: 0px;
+}
+
+.content2-right {
+  background-color: green;
+  height: 200px;
+}
+
+.tab-content p {
+  margin-right: 15%;
+}
+
+.tab-content h3 {
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: underline;
+  font-family: 'Special Elite', cursive;
+}
+
+.messages {
+  color: black;
+}
+
+.main-container {
+  padding-top: 50px;
+}
+
+.googleCalendar {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.googleCalendar iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
