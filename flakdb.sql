@@ -304,6 +304,9 @@ INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 7);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 8);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (3, 9);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 10);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 11);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 12);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 13);
 
 COMMIT;
 
