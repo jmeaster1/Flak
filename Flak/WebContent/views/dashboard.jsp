@@ -169,9 +169,9 @@
 				<h3>Tasks</h3>
 				<hr>
 				<p>TASKS WILL BE DISPLAYED HERE.</p>
-				<c:if test="${not empty list}">
+				<c:if test="${not empty tasklist}">
 					<table>
-						<c:forEach var="item" items="${list}">
+						<c:forEach var="item" items="${tasklist}">
 							<tr>
 								<td>${item.name}</td>
 								<td>${item.description}</td>
@@ -205,9 +205,9 @@
 				<h3>Shopping</h3>
 				<hr>
 				<p>SHOPPING LIST WILL BE DISPLAYED HERE.</p>
-				<c:if test="${not empty list}">
+				<c:if test="${not empty shoplist}">
 					<table>
-						<c:forEach var="item" items="${list}">
+						<c:forEach var="item" items="${shoplist}">
 							<tr>
 								<td>${item.name}</td>
 								<td>${item.description}</td>
@@ -239,9 +239,9 @@
 				<h3>Events</h3>
 				<hr>
 				<p>Events WILL BE DISPLAYED HERE.</p>
-				<c:if test="${not empty list}">
+				<c:if test="${not empty eventlist}">
 					<table>
-						<c:forEach var="item" items="${list}">
+						<c:forEach var="item" items="${eventlist}">
 							<tr>
 								<td>${item.name}</td>
 								<td>${item.description}</td>

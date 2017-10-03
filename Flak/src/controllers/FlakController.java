@@ -65,12 +65,12 @@ public class FlakController {
 		return "about.jsp";
 	}
 
-	@RequestMapping(path = "calendar.do", method = RequestMethod.GET) // unfinished view
-	public String calendar(Model model, @ModelAttribute("user") User user) {
-		return "calendar.jsp";
-	}
+//	@RequestMapping(path = "calendar.do", method = RequestMethod.GET) 
+//	public String calendar(Model model, @ModelAttribute("user") User user) {
+//		return "calendar.jsp";
+//	}
 
-	@RequestMapping(path = "grouplist.do", method = RequestMethod.GET) // unfinished view
+	@RequestMapping(path = "grouplist.do", method = RequestMethod.GET) 
 	public String groupListPage(Model model, @ModelAttribute("user") User user) {
 		return "grouplist.jsp";
 	}
@@ -83,6 +83,9 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
+		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
+		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -116,38 +119,38 @@ public class FlakController {
 		return "regstatus.jsp";
 	}
 
-	@RequestMapping(path = "shopping.do", method = RequestMethod.GET)
-	public String shopping(Model model,
-						@RequestParam("gid") int gid,
-						@ModelAttribute("user") User user) {
-		model.addAttribute("group", flakDAO.showGroup(gid));
-		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "shopping"));
-		model.addAttribute("user", user);
-		return "dashboard.jsp";
-	}
-	
-	@RequestMapping(path = "tasks.do", method = RequestMethod.GET)
-	public String taskList(Model model,
-			@RequestParam("gid") int gid,
-			@ModelAttribute("user") User user) {
-		model.addAttribute("group", flakDAO.showGroup(gid));
-		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "task"));
-		model.addAttribute("user", user);
-		return "dashboard.jsp";
-	}
-
-	@RequestMapping(path = "events.do", method = RequestMethod.GET)
-	public String eventList(Model model,
-							@RequestParam("gid") int gid,
-							@ModelAttribute("user") User user) {
-		model.addAttribute("group", flakDAO.showGroup(gid));
-		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "event"));
-		model.addAttribute("user", user);
-		return "dashboard.jsp";
-	}
+//	@RequestMapping(path = "shopping.do", method = RequestMethod.GET)
+//	public String shopping(Model model,
+//						@RequestParam("gid") int gid,
+//						@ModelAttribute("user") User user) {
+//		model.addAttribute("group", flakDAO.showGroup(gid));
+//		model.addAttribute("groups", user.getGroups());
+//		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "shopping"));
+//		model.addAttribute("user", user);
+//		return "dashboard.jsp";
+//	}
+//	
+//	@RequestMapping(path = "tasks.do", method = RequestMethod.GET)
+//	public String taskList(Model model,
+//			@RequestParam("gid") int gid,
+//			@ModelAttribute("user") User user) {
+//		model.addAttribute("group", flakDAO.showGroup(gid));
+//		model.addAttribute("groups", user.getGroups());
+//		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "task"));
+//		model.addAttribute("user", user);
+//		return "dashboard.jsp";
+//	}
+//
+//	@RequestMapping(path = "events.do", method = RequestMethod.GET)
+//	public String eventList(Model model,
+//							@RequestParam("gid") int gid,
+//							@ModelAttribute("user") User user) {
+//		model.addAttribute("group", flakDAO.showGroup(gid));
+//		model.addAttribute("groups", user.getGroups());
+//		model.addAttribute("list",flakDAO.getUserActivitiesByType(user, "event"));
+//		model.addAttribute("user", user);
+//		return "dashboard.jsp";
+//	}
 
 
 	@RequestMapping(path = "error.do", method = RequestMethod.GET) // unfinished view
