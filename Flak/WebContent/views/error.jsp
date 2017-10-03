@@ -30,9 +30,15 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-	<h1 class="header_class">
+	<!-- <h1 class="header_class">
 		error.jsp
-	</h1>
+	</h1> -->
+	<div class="login_container3">
+		<div class="login_content3">
+			<h1 id="error">OOPS! Something went wrong. Have you entered your password correctly?</h1><br>
+			
+		</div>
+	</div>
 
 </body>
 </html>

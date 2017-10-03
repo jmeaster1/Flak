@@ -32,9 +32,9 @@
 <body class="login_body">
 	<h1 class="header_class">
 	</h1>
-	<div class="about_container">
-		<div class="about_content">
-			<h1>About Flak</h1>
+	<div class="login_container2">
+		<div class="login_content2">
+			<h1>About Flak</h1><br>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
 				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi

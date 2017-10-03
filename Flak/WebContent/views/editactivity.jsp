@@ -46,6 +46,12 @@
 				</c:forEach>
 			</select>
 			Assigned: <form:input path="priority" name="priority" value="${activity.assigned}"></form:input><br>
+			User:
+			<select>
+				<c:forEach var="u" items="${users}">
+					<option value="${u}">${u}</option>
+				</c:forEach>
+			</select>
 			<input type="submit" name="submit" value="Save"></input>
 		</form>
 

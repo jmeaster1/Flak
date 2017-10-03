@@ -149,6 +149,8 @@
 					</c:forEach>
 					<!-- Add New Message Form - Only within a thread -->
 					<form class="messages" action="newPost.do" method="post">
+						<input type="hidden" name="gid" value="${group.id}"></input>
+						<input type="hidden" name="cid" value="${cid}"></input>
 						<input type="text" style="width: 500px;" name="message" value="">
 						<input type="submit" name="submit" value="Post">
 					</form>

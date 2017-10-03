@@ -26,13 +26,15 @@
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
 <body>
-	<div class="grouplist_container">
-		<h1>grouplist.jsp</h1>
-		<c:forEach var="group" items="${groups}">
-			<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
-			</a></li>
-			<br />
-		</c:forEach>
+	<div class="login_container3">
+		<div class="login_content3">
+			<h1>Choose A Group</h1><br>
+			<c:forEach var="group" items="${groups}">
+				<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
+				</a></li>
+				<br />
+			</c:forEach>
+		</div>
 	</div>
 </body>
 </html>
