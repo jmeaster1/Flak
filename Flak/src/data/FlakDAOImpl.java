@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import entities.Activity;
 import entities.Contact;
@@ -18,11 +19,11 @@ import entities.QRL;
 import entities.Type;
 import entities.User;
 
+@Transactional
 @Component
 public class FlakDAOImpl implements FlakDAO {
 	@PersistenceContext
 	private EntityManager em;
-
 	
 	@Override
 	public Group showGroup(int id) {
@@ -139,6 +140,16 @@ public class FlakDAOImpl implements FlakDAO {
 		List<Type> answer = new ArrayList<>();
 		String queryString = "Select t from Type t";
 		answer =  em.createQuery(queryString, Type.class)
+								.getResultList();
+		return answer;
+	}
+	
+	@Override
+	public List<User> getAllUsersByGroupId(int id) {
+		List<User> answer = new ArrayList<>();
+		String queryString = "Select u from User u where u.group.id=:id";
+		answer =  em.createQuery(queryString, User.class)
+								.setParameter("id", id)
 								.getResultList();
 		return answer;
 	}

@@ -1,5 +1,7 @@
 package controllers;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import data.FlakDAO;
+import entities.Post;
 import entities.User;
 
 @Controller
@@ -94,6 +96,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -161,21 +164,33 @@ public class FlakController {
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("activity", flakDAO.showActivity(aid));
 		model.addAttribute("types", flakDAO.getAllTypes());
+		model.addAttribute("users", flakDAO.getAllUsersByGroupId(gid));
 		model.addAttribute("user", user);
 		return "editactivity.jsp";
 	}
 	
 	@RequestMapping(path = "newPost.do", method = RequestMethod.POST)
 	public String newPostToAdd(Model model,
-								@RequestParam("aid") int aid,
 								@RequestParam("gid") int gid,
+								@RequestParam("cid") int cid,
+								@RequestParam("message") String message,
 								@ModelAttribute("user") User user) {
+		System.out.println("Inside the Method");
+		Post newPost = new Post();
+		System.out.println("Message: " + message);
+		System.out.println("CID: " + cid);
+		System.out.println("User: " + user);
+		newPost.setMessage(message);
+		newPost.setConversation(flakDAO.showConversation(cid));
+		newPost.setUser(user);
+		flakDAO.createPost(newPost);
+		System.out.println("After Create Post");
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("activity", flakDAO.showActivity(aid));
-		model.addAttribute("types", flakDAO.getAllTypes());
+		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
-		return "editactivity.jsp";
+		return "dashboard.jsp";
 	}
 
 	

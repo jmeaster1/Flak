@@ -46,6 +46,8 @@ public interface FlakDAO {
 	
 	public List<Type> getAllTypes();
 	
+	public List<User> getAllUsersByGroupId(int id);
+	
 	public boolean doesUsernameAndPasswordMatch(String name, String pw);
 	
 	public User getUserByUsername(String name);
