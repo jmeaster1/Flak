@@ -183,6 +183,7 @@ public class FlakController {
 		newPost.setMessage(message);
 		newPost.setConversation(flakDAO.showConversation(cid));
 		newPost.setUser(user);
+		System.out.println("timestamp" + newPost.getTimestamp());
 		flakDAO.createPost(newPost);
 		System.out.println("After Create Post");
 		model.addAttribute("group", flakDAO.showGroup(gid));
