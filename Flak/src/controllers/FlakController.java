@@ -27,15 +27,6 @@ public class FlakController {
 	@RequestMapping(path = "index.do", method = RequestMethod.GET) // unfinished view
 	public String show(Model model) {
 		return "index.jsp";
-		// return "calendar.jsp";
-		// return "dashboard.jsp";
-		// return "messagebrd.jsp";
-		// return "regstatus.jsp";
-		// return "qrl.jsp";
-		// return "grouplist.jsp";
-		// return "shopping.jsp";
-		// return "task.jsp";
-		// return "error.jsp";
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.GET) // unfinished view
@@ -153,6 +144,39 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("cid", cid);
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
+	}
+	
+	@RequestMapping(path = "editThread.do", method = RequestMethod.GET)
+	public String editThread(Model model,
+			@RequestParam("gid") int gid,
+			@RequestParam("cid") int cid,
+			@ModelAttribute("user") User user) {
+
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("posts",flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("conversation",flakDAO.showConversation(cid));
+		model.addAttribute("cid", cid);
+		model.addAttribute("user", user);
+		return "editMessageBoard.jsp";
+	}
+	
+	@RequestMapping(path = "saveThread.do", method = RequestMethod.POST)
+	public String saveEditedThread(Model model,
+			@RequestParam("gid") int gid,
+			@RequestParam("cid") int cid,
+			@RequestParam("title") String title,
+			@ModelAttribute("user") User user) {
+		Conversation convo = flakDAO.
+		flakDAO.showConversation(cid).setTitle(title);
+		System.out.println(flakDAO.editConversation(cid, flakDAO.showConversation(cid)));
+		
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("conversations",flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";

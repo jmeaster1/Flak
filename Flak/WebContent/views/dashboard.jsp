@@ -145,7 +145,13 @@
 				<hr>
 				<c:if test="${not empty conversations}">
 					<c:forEach var="convo" items="${conversations}">
-						<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
+						<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a>
+						<!-- Edit Thread Method -->
+						<c:if test="${user.admin}">
+						<a href="editThread.do?cid=${convo.id}&gid=${group.id}">
+						<input type="submit" name="submit" value="Edit Thread"/></a>
+						</c:if>
+						</li>
 					</c:forEach>
 					<form class="messages" action="newThread.do" method="post">
 						<input type="hidden" name="gid" value="${group.id}"></input>

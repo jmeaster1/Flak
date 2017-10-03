@@ -50,30 +50,25 @@
 </head>
 
 <body>
-		<div class="no-show">
-			<h1>hide</h1>
-		</div>
-		
-	<form action="save.do" method="post">
-			<input type="hidden" name="id" value="${activity.id}"></input>
-			Name: <input name="item" value="${activity.name}"></input><br>
-			Description: <input name="description" value="${activity.description}"></input><br>
-			Type:
-			<select>
-				<c:forEach var="type" items="${types}">
-					<option value="${type}">${type}</option>
-				</c:forEach>
-			</select>
-			Assigned: <input name="priority" value="${activity.assigned}"></input><br>
-			User:
-			<select>
-				<c:forEach var="u" items="${users}">
-					<option value="${u}">${u}</option>
-				</c:forEach>
-			</select>
-			<input type="submit" name="submit" value="Save"></input>
-	</form>
+	<div class="no-show">
+		<h1>hide</h1>
+	</div>
 
+	<form action="saveThread.do" method="post">
+		<input type="hidden" name="cid" value="${conversation.id}"></input>
+		<input type="hidden" name="gid" value="${group.id}"></input>
+		Title: <input name="title" value="${conversation.title}"></input><br>
+		Posts:
+		<c:forEach var="post" items="${posts}">
+			<p>${post.timestamp}</p>
+			<div class="message_display">
+				<span>${post.user.username}</span>
+				<span>${post.message}</span><a href="editPost.do?pid=${post.id}&gid=${group.id}">
+				<input type="submit" name="submit" value="Edit"></input></a>
+			</div>
+		</c:forEach>
+		<input type="submit" name="submit" value="Save"></input>
+	</form>
 
 </body>
 </html>
