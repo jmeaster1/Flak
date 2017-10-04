@@ -223,7 +223,7 @@ DROP TABLE IF EXISTS `phone_number` ;
 CREATE TABLE IF NOT EXISTS `phone_number` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(60) NOT NULL,
-  `number` MEDIUMTEXT NOT NULL,
+  `number` BIGINT(10) NOT NULL,
   `contact_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `contact_id`),
   INDEX `fk_phone_number_contact_id_idx` (`contact_id` ASC),
@@ -459,19 +459,19 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (1, 'Meira Cell', '3035555555', 1);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (2, 'Doug Home', '3033333333', 2);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (3, 'Daniel Work', '8281111111', 3);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (4, 'Jimmy iPhone', '3049999999', 4);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (5, 'Homer Office', '2222222222', 5);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (6, 'Marge Cell', '3333333333', 6);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (7, 'Bart Pager', '4444444444', 7);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (8, 'Maggie Home', '5555555555', 8);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (9, 'Lisa Work', '3434343434', 9);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (10, 'Homer\'s Cell', '9992322234', 13);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (11, 'School Office', '3334445567', 12);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (12, 'Bob\'s Office', '5557797979', 10);
-INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (13, 'Coach', '3334445678', 11);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (1, 'Meira Cell', 3035555555, 1);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (2, 'Doug Home', 3033333333, 2);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (3, 'Daniel Work', 8281111111, 3);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (4, 'Jimmy iPhone', 3049999999, 4);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (5, 'Homer Office', 2222222222, 5);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (6, 'Marge Cell', 3333333333, 6);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (7, 'Bart Pager', 4444444444, 7);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (8, 'Maggie Home', 5555555555, 8);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (9, 'Lisa Work', 3434343434, 9);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (10, 'Homer\'s Cell', 9992322234, 13);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (11, 'School Office', 3334445567, 12);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (12, 'Bob\'s Office', 5557797979, 10);
+INSERT INTO `phone_number` (`id`, `description`, `number`, `contact_id`) VALUES (13, 'Coach', 3334445678, 11);
 
 COMMIT;
 
