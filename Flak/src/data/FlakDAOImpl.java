@@ -147,10 +147,32 @@ public class FlakDAOImpl implements FlakDAO {
 	@Override
 	public List<User> getAllUsersByGroupId(int id) {
 		List<User> answer = new ArrayList<>();
-		String queryString = "Select u from User u where u.group.id=:id";
-		answer =  em.createQuery(queryString, User.class)
-								.setParameter("id", id)
+		List<User> allUsers = new ArrayList<>();
+		String queryString = "Select distinct u from User u join fetch u.groups";
+		allUsers =  em.createQuery(queryString, User.class)
 								.getResultList();
+		for (int i = 0; i < allUsers.size(); i++) {
+			List<Group> groups = allUsers.get(i).getGroups();
+			for (int j = 0; j < groups.size(); j++) {
+				if(groups.get(j).getId()==id) {
+					answer.add(allUsers.get(i));
+					break;
+				}
+			}
+			
+		}
+		return answer;
+	}
+	
+	@Override
+	public List<User> getUsersByActivityId(int id) {
+		List<User> answer = new ArrayList<>();
+		String queryString = "Select a from Activity a join fetch a.users where a.id = :id";
+		Activity a =  em.createQuery(queryString, Activity.class)
+								.setParameter("id", id)
+								.getResultList()
+								.get(0);
+		answer = a.getUsers();
 		return answer;
 	}
 	
@@ -360,6 +382,24 @@ public class FlakDAOImpl implements FlakDAO {
 	public Activity createActivity(Activity activity) {
 		em.persist(activity);
 		em.flush();
+		return activity;
+	}
+	
+	@Override
+	public Activity addUserToActivity(int uid, int aid, User user, Activity activity) {
+		Activity managedAct = em.find(Activity.class, aid);
+		User managedUser = em.find(User.class, uid);
+		List<User> users = getUsersByActivityId(aid);
+		boolean newUser = true;
+		for (int i = 0; i < users.size(); i++) {
+			if(users.get(i).getId() == uid) {
+				newUser = false;
+			}
+		}
+		if(newUser) {
+			users.add(managedUser);
+			managedAct.setUsers(users);
+		}
 		return activity;
 	}
 

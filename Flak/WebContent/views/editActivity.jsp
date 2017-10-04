@@ -54,21 +54,26 @@
 			<h1>hide</h1>
 		</div>
 		
-	<form action="save.do" method="post">
-			<input type="hidden" name="id" value="${activity.id}"></input>
-			Name: <input name="item" value="${activity.name}"></input><br>
+	<form action="saveActivity.do" method="post">
+			<input type="hidden" name="aid" value="${activity.id}"></input>
+			<input type="hidden" name="gid" value="${group.id}"></input>
+			Name: <input name="name" value="${activity.name}"></input><br>
 			Description: <input name="description" value="${activity.description}"></input><br>
 			Type:
-			<select>
+			<select name="tid">
 				<c:forEach var="type" items="${types}">
-					<option value="${type}">${type}</option>
+					<option value="${type.id}">${type.name}</option>
 				</c:forEach>
 			</select>
-			Assigned: <input name="priority" value="${activity.assigned}"></input><br>
-			User:
-			<select>
+			Assigned: <input name="assigned" value="${activity.assigned}"></input><br>
+			Current Users:
+				<c:forEach var="au" items="${aUsers}">
+					<p>${au.username}</p>
+				</c:forEach>
+			Assign a User:
+			<select name="assignedUser">
 				<c:forEach var="u" items="${users}">
-					<option value="${u}">${u}</option>
+					<option value="${u.id}">${u.username}</option>
 				</c:forEach>
 			</select>
 			<input type="submit" name="submit" value="Save"></input>

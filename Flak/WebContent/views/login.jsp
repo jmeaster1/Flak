@@ -40,9 +40,9 @@ USERNAME:<br>
 <input type="text" style="width: 200px;" name="username" /> <br>
 PASSWORD:<br>
 <input type="password" style="width: 200px;" name="password" /><br><br>
-			<input type="submit" value="Log In" />
+			<span id="login_button"><input type="submit" value="Log In" /></span>
 		</form:form>
-		<a href="signup.do">New User? Sign Up here.</a>
+		<a href="signup.do"><span id="new_user">New User? Sign Up here.</span></a>
 		</div>
 	</div>
 

@@ -1,19 +1,19 @@
-
 body {
-	background-color:black;
+	background-color: black;
 	font-family: 'Cabin Sketch', cursive;
 }
 
 .dashboard_container {
-	background-color:white;
+	background-color: white;
 	font-family: 'Cabin Sketch', cursive;
 }
-.login_body{
+
+.login_body {
 	/* background-image:
 		url("https://aspartame.org/wp-content/uploads/2016/10/AdobeStock_59246143-1024x683.jpeg");
 	background-size: cover;
 	background-repeat: no-repeat; */
-	background-color:black;
+	background-color: black;
 	font-family: 'Cabin Sketch', cursive;
 }
 
@@ -48,97 +48,136 @@ body {
 	padding: 2%;
 	background-color: rgba(187, 187, 187, .7);
 }
-#index_body{
-	background-image:url("https://images.techhive.com/images/article/2016/11/wall_covered_with_sticky_notes-100693853-large.3x2.jpg");
+
+#index_body {
+	background-image:
+		url("https://images.techhive.com/images/article/2016/11/wall_covered_with_sticky_notes-100693853-large.3x2.jpg");
 	backround-size: cover;
 	background-repeat: no-repeat;
 }
+
 .login_container {
 	width: 50%;
 	margin: auto;
-	margin-top: 30%
-	padding: 2%;
+	margin-top: 30% padding: 2%;
 	background-color: rgba(187, 187, 187, .7);
 }
-.login_content{
+
+.login_content {
 	width: 50%;
 	margin: auto;
-	text-align:center;
+	text-align: center;
 	margin-top: 30%;
 	padding: 2%;
 	padding-left: 15px;
 	background-color: rgba(187, 187, 187, .7);
 }
-.login_content1{
+
+.login_content1 {
 	width: 50%;
 	margin: auto;
-	text-align:center;
+	text-align: center;
 	margin-top: 10%;
 	padding: 2%;
 	padding-left: 15px;
 	background-color: rgba(187, 187, 187, .7);
 }
+
+.login_content1 a:hover {
+	text-decoration: none;
+}
+
+#new_user {
+	font-size: 14px;
+}
+
 .login_container2 {
 	width: 50%;
 	margin: auto;
-	margin-top: 30%
-	padding: 2%;
+	margin-top: 30% padding: 2%;
 	background-color: #25bbbf;
 }
-.login_content2{
+#login_button input{
+	width: 50%;
+	margin-bottom: 10px;
+}
+#login_button input:hover{
+	background-color: black;
+	color: white;
+}
+.login_content2 {
 	width: 50%;
 	margin: auto;
-	text-align:center;
+	text-align: center;
 	margin-top: 10%;
 	padding: 2%;
 	padding-left: 15px;
 	background-color: rgba(187, 187, 187, .7);
 	font-size: 16px;
 }
-.login_content2 h1{
+
+.login_content2 h1 {
 	font-size: 36px;
 }
+
 .login_container3 {
 	width: 50%;
 	margin: auto;
-	margin-top: 30%
-	padding: 2%;
+	margin-top: 30% padding: 2%;
 	background-color: #25bbbf;
 }
-.login_content3{
+
+.login_content3 {
 	width: 50%;
 	margin: auto;
-	text-align:center;
+	text-align: center;
 	margin-top: 10%;
 	padding: 2%;
 	padding-left: 15px;
 	background-color: rgba(187, 187, 187, .7);
 	font-size: 16px;
 }
-.login_content3 h1{
+.login_content3 a:hover {
+	text-decoration: none; 
+	color: #103a5a
+}
+
+.login_content3 h1 {
 	font-size: 36px;
 }
-.login_content3 li{
+
+.login_content3 li {
 	font-size: 20px;
+	margin: 0 auto;
+	text-align:center;
 }
-#error{
+
+#error {
 	font-size: 30px;
 	color: red;
-	text-shadow:1px 1px 1px black;
-	background-color:white;
+	text-shadow: 1px 1px 1px black;
+	background-color: white;
 }
-#login_successful{
+
+#login_successful {
 	font-size: 30px;
 	color: green;
-	text-shadow:1px 1px 1px black;
-	background-color:white;
+	text-shadow: 1px 1px 1px black;
+	background-color: white;
 }
-.login_content1 input{
+
+.login_content1 input {
 	width: 50%;
 	margin: auto;
-	text-align:center;
+	text-align: center;
 	padding: 2%;
-	/* padding-left: 15px; */
+	font-size: 20px;
+	width:80%;
+}
+.signup_button:hover {
+	background-color: black;
+	color: white;
+
 }
 
 .signup_container {
@@ -147,31 +186,40 @@ body {
 	margin-top: 30%;
 	padding: 2%;
 	background-color: rgba(155, 155, 155, .7);
-	text-align:center;
+	text-align: center;
 	margin-bottom: 60px;
 }
-.signup_field{
+
+.signup_field {
 	/* padding-left: 30px; */
-	display:block;
-	margin:0 auto;
+	display: block;
+	margin: 0 auto;
 	padding-left: 10px;
 	padding-right: 10px;
-	font-size: 20px;
-	text-align:center;
-	
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: -10px;
+	margin-top: -10px;
 }
-#signup_header{
-	text-align:center;
+.signup_field input{
+	width: 80%;
+}
+
+#signup_header {
+	text-align: center;
 	font-weight: bold;
 }
 
-.signup_button{
-	margin:auto;
-	
+.signup_button {
+	margin: auto;
 }
 
-#pass_field{
-	margin-left:-20px;
+#pass_field {
+	margin-left: -20px;
+	font-size:20px;
+}
+label {
+  padding-top: 20px;
 }
 
 .content-container h1 {
@@ -185,7 +233,7 @@ body {
 	margin: auto;
 	font-size: 40px;
 	background-color: #25bbbf;
-	text-align:center;
+	text-align: center;
 	padding-bottom: 15px;
 	padding-top: -25px;
 }
@@ -205,8 +253,6 @@ body {
 	padding-top: 1%;
 	padding-bottom: 1%;
 	margin-left: 24%;
-	
-	
 }
 
 li.button {
