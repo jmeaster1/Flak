@@ -66,11 +66,16 @@
 				</c:forEach>
 			</select>
 			Assigned: <input name="assigned" value="${activity.assigned}"></input><br>
-			Users:
-				<c:forEach var="u" items="${users}">
-					<input type="checkbox" name="assignedUser" value="${u}">${u.username}</input>
+			Current Users:
+				<c:forEach var="au" items="${aUsers}">
+					<p>${au.username}</p>
 				</c:forEach>
-				
+			Assign a User:
+			<select name="assignedUser">
+				<c:forEach var="u" items="${users}">
+					<option value="${u.id}">${u.username}</option>
+				</c:forEach>
+			</select>
 			<input type="submit" name="submit" value="Save"></input>
 	</form>
 

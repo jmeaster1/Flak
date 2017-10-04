@@ -48,6 +48,8 @@ public interface FlakDAO {
 	
 	public List<User> getAllUsersByGroupId(int id);
 	
+	public List<User> getUsersByActivityId(int id);
+	
 	public boolean doesUsernameAndPasswordMatch(String name, String pw);
 	
 	public User getUserByUsername(String name);
@@ -85,6 +87,8 @@ public interface FlakDAO {
 	public boolean deleteConversation(int id);
 	
 	public Activity createActivity(Activity activity);
+	
+	public Activity addUserToActivity(int uid, int aid, User user, Activity activity);
 	
 	public Activity editActivity(int id, Activity activity);
 	

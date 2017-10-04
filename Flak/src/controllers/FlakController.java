@@ -139,6 +139,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("activity", flakDAO.showActivity(aid));
+		model.addAttribute("aUsers", flakDAO.getUsersByActivityId(aid));
 		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("users", flakDAO.getAllUsersByGroupId(gid));
 		model.addAttribute("user", user);
@@ -153,7 +154,7 @@ public class FlakController {
 									@RequestParam("description") String description, 
 									@RequestParam("tid") int tid, 
 									@RequestParam("assigned") boolean assigned, 
-									@ModelAttribute("assignedUser") List<User> assignedUsers, 
+									@RequestParam("assignedUser") int uid, 
 									@ModelAttribute("user") User user) {
 		Activity activity = new Activity();
 		activity.setAssigned(assigned);
@@ -161,7 +162,8 @@ public class FlakController {
 		activity.setName(name);
 		Type type = flakDAO.showType(tid);
 		activity.setType(type);
-		activity.setUsers(assignedUsers);
+		User user1 = flakDAO.showUser(uid);
+		flakDAO.addUserToActivity(uid, aid, user1, activity);
 		flakDAO.editActivity(aid, activity);
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
