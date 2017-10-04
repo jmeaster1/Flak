@@ -176,15 +176,16 @@ public class FlakController {
 	}
 	
 	@RequestMapping(path = "delelteActivity.do", method = RequestMethod.GET)
-	public String deleteActivity(Model model, @RequestParam("aid") int aid, @RequestParam("gid") int gid,
-			@ModelAttribute("user") User user) {
+	public String deleteActivity(Model model, 
+								@RequestParam("aid") int aid, 
+								@RequestParam("gid") int gid,
+								@ModelAttribute("user") User user) {
+		flakDAO.deleteActivity(aid);
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
-		model.addAttribute("activity", flakDAO.showActivity(aid));
-		model.addAttribute("types", flakDAO.getAllTypes());
-		model.addAttribute("users", flakDAO.getAllUsersByGroupId(gid));
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("user", user);
-		return "editActivity.jsp";
+		return "dashboard.jsp";
 	}
 
 	@RequestMapping(path = "newPost.do", method = RequestMethod.POST)
