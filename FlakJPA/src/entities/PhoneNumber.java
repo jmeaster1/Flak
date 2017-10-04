@@ -24,7 +24,7 @@ public class PhoneNumber {
 	private String description;
 	
 	@Column(name="number")
-	private int phoneDigits;
+	private long phoneDigits;
 	
 	@ManyToOne
 	@JoinColumn(name = "contact_id")
@@ -38,11 +38,11 @@ public class PhoneNumber {
 		this.description = description;
 	}
 
-	public int getPhoneDigits() {
+	public long getPhoneDigits() {
 		return phoneDigits;
 	}
 
-	public void setPhoneDigits(int phoneDigits) {
+	public void setPhoneDigits(long phoneDigits) {
 		this.phoneDigits = phoneDigits;
 	}
 
@@ -71,7 +71,6 @@ public class PhoneNumber {
 		result = prime * result + ((contact == null) ? 0 : contact.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + phoneDigits;
 		return result;
 	}
 
