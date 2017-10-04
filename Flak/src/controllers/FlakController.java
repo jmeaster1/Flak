@@ -143,7 +143,7 @@ public class FlakController {
 		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("users", flakDAO.getAllUsersByGroupId(gid));
 		model.addAttribute("user", user);
-		return "editActivity.jsp";
+		return "editactivity.jsp";
 	}
 	
 	@RequestMapping(path = "saveActivity.do", method = RequestMethod.POST)
