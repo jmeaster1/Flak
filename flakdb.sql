@@ -361,14 +361,14 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (1, 'Garbage', 'Take out garbage', 1, 1, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (2, 'Dishes', 'Wash dishes', 1, 1, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (3, 'Meeting', 'Family Meeting', 1, 2, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (4, 'Wash Car', 'Wash the car', 3, 1, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (5, 'Clean Room', 'Clean your room by the end of the day', 3, 1, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (6, 'Rugby Practice', 'Focus on holding the ball', 4, 2, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (7, 'Rugby Game', 'Bart\'s 6:00 pm rugby game', 2, 2, NULL, DEFAULT, DEFAULT);
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (8, 'Get Game Supplies', 'Buy Capri Sun\'s and bananas', 4, 3, NULL, DEFAULT, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (1, 'Garbage', 'Take out garbage', 1, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (2, 'Dishes', 'Wash dishes', 1, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (3, 'Meeting', 'Family Meeting', 1, 2, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (4, 'Wash Car', 'Wash the car', 3, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (5, 'Clean Room', 'Clean your room by the end of the day', 3, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (6, 'Rugby Practice', 'Focus on holding the ball', 4, 2, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (7, 'Rugby Game', 'Bart\'s 6:00 pm rugby game', 2, 2, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (8, 'Get Game Supplies', 'Buy Capri Sun\'s and bananas', 4, 3, NULL, 1, DEFAULT);
 
 COMMIT;
 
