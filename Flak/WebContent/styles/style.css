@@ -83,7 +83,7 @@ body {
 	background-color: rgba(187, 187, 187, .7);
 }
 .login_content4 {
-	width: 50%;
+	width: 60%;
 	margin: auto;
 	text-align: center;
 	margin-top: 10%;
@@ -94,10 +94,21 @@ body {
 }
 .login_content4 input {
 	text-align: center;
+	font-size:16px;
+	margin: 2px 2px;
 }
+#message_span{
+	color:lightgrey;
+	text-shadow: 1px 1px 1px black;
+}
+#user_span{
+	color:blue;
+	text-shadow: 1px 1px 1px black;
+}
+
 .login_content4 p {
 	margin-bottom:-6px;
-	color: green;
+	color: red;
 	text-shadow: 1px 1px 1px black;
 }
 
