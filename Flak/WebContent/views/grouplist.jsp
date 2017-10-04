@@ -75,9 +75,8 @@
 		<div class="login_content3">
 			<h1>Choose A Group</h1><br>
 			<c:forEach var="group" items="${groups}">
-				<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
-				</a></li>
-				<br />
+				<a href="getDashboardByUser.do?gid=${group.id}">${group.name}
+				</a><br><br>
 			</c:forEach>
 		</div>
 	</div>
