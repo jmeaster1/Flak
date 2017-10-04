@@ -65,7 +65,7 @@
 					<option value="${type.id}">${type.name}</option>
 				</c:forEach>
 			</select>
-			Assigned: <input name="assigned" value="${activity.assigned}"></input><br>
+			<%-- Assigned: <input name="assigned" value="${activity.assigned}"></input><br> --%>
 			Current Users:
 				<c:forEach var="au" items="${aUsers}">
 					<p>${au.username}</p>
