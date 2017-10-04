@@ -118,20 +118,20 @@ public class FlakController {
 		return "dashboard.jsp";
 	}
 
-	@RequestMapping(path = "qrl.do", method = RequestMethod.GET)
-	public String QRL(Model model, @ModelAttribute("user") User user) {
-		return "qrl.jsp";
-	}
-
-	@RequestMapping(path = "regstatus.do", method = RequestMethod.GET)
-	public String regStatus(Model model) {
-		return "regstatus.jsp";
-	}
-
-	@RequestMapping(path = "error.do", method = RequestMethod.GET) // unfinished view
-	public String errorView(Model model) {
-		return "error.jsp";
-	}
+//	@RequestMapping(path = "qrl.do", method = RequestMethod.GET)
+//	public String QRL(Model model, @ModelAttribute("user") User user) {
+//		return "qrl.jsp";
+//	}
+//
+//	@RequestMapping(path = "regstatus.do", method = RequestMethod.GET)
+//	public String regStatus(Model model) {
+//		return "regstatus.jsp";
+//	}
+//
+//	@RequestMapping(path = "error.do", method = RequestMethod.GET) // unfinished view
+//	public String errorView(Model model) {
+//		return "error.jsp";
+//	}
 
 	@RequestMapping(path = "editActivity.do", method = RequestMethod.GET)
 	public String editActivity(Model model, @RequestParam("aid") int aid, @RequestParam("gid") int gid,
