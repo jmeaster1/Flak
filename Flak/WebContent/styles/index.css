@@ -49,11 +49,16 @@ body h1{
 }
 
 .content-container {
-	width: 50%;
+	width: 80%;
 	margin: auto;
 	margin-top: 20%;
-	padding: 2%;
+	padding: 3%;
 	background-color: rgba(20,20,20,.9);
+}
+.content-container h1{
+	width: 75%;
+	margin: auto;
+	text-align:center;
 }
 #index_body{
 	background-image:url("https://images.techhive.com/images/article/2016/11/wall_covered_with_sticky_notes-100693853-large.3x2.jpg");
