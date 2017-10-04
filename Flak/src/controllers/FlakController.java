@@ -103,6 +103,7 @@ public class FlakController {
 		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
 		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -113,6 +114,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("posts", flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
@@ -153,11 +155,9 @@ public class FlakController {
 									@RequestParam("name") String name, 
 									@RequestParam("description") String description, 
 									@RequestParam("tid") int tid, 
-									@RequestParam("assigned") boolean assigned, 
 									@RequestParam("assignedUser") int uid, 
 									@ModelAttribute("user") User user) {
 		Activity activity = new Activity();
-		activity.setAssigned(assigned);
 		activity.setDescription(description);
 		activity.setName(name);
 		Type type = flakDAO.showType(tid);
@@ -171,6 +171,37 @@ public class FlakController {
 		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
 		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
+		model.addAttribute("types", flakDAO.getAllTypes());
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
+	}
+	
+	@RequestMapping(path = "newActivity.do", method = RequestMethod.POST)
+	public String newActivity(Model model, 
+									@RequestParam("gid") int gid, 
+									@RequestParam("name") String name, 
+									@RequestParam("description") String description, 
+									@RequestParam("tid") int tid, 
+									@ModelAttribute("user") User user) {
+		Activity activity = new Activity();
+		activity.setDescription(description);
+		activity.setName(name);
+		Type type = flakDAO.showType(tid);
+		activity.setType(type);
+		List<User> users = new ArrayList<>();
+		users.add(user);
+		activity.setUsers(users);
+		activity.setAssigned(true);
+		activity.setGroup(flakDAO.showGroup(gid));
+		activity.setTimeStamp(new java.sql.Date(new java.util.Date().getTime()));
+		flakDAO.createActivity(activity);
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
+		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
+		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -184,6 +215,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -202,6 +234,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("posts", flakDAO.getPostsByConvoId(cid));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
@@ -228,6 +261,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("cid", cid);
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
@@ -258,6 +292,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -271,6 +306,7 @@ public class FlakController {
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}
@@ -300,6 +336,7 @@ public class FlakController {
 		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
 		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
 		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
+		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
 		return "dashboard.jsp";
 	}

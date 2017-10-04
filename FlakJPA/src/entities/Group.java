@@ -29,6 +29,9 @@ public class Group {
 	
 	@OneToMany(mappedBy = "group")
 	private List<QRL> refLists;
+	
+	@OneToMany(mappedBy = "group")
+	private List<Activity> activities;
 
 	public int getId() {
 		return id;
@@ -64,6 +67,14 @@ public class Group {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 
 	@Override

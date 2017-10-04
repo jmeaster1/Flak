@@ -215,12 +215,18 @@
 					</table>
 				</c:if>
 				<!-- Add a New Task Method Here -->
-				<form class="messages" action="index.html" method="post">
-					<input type="text" name="message" value=""> <input
-						type="submit" name="submit" value="Add Task">
-				</form>
-
-
+				<form class="messages" action="newActivity.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> 
+					Name: <input type="text" style="width: 400px;" name="name" value=""><br> 
+					Description: <input type="text" style="width: 400px;" name="description" value="">
+					Type:
+					<select name="tid">
+					<c:forEach var="type" items="${types}">
+						<option value="${type.id}">${type.name}</option>
+					</c:forEach>
+					</select>
+						<input type="submit" name="submit" value="Create">
+					</form>
 
 			</div>
 
