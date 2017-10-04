@@ -224,6 +224,20 @@ public class FlakDAOImpl implements FlakDAO {
 		return answer;
 	}
 
+	@Override
+	public boolean isGroupNameUnique(String name) {
+		boolean answer = true;
+		String queryString = "Select g from Group g";
+		List<Group> groups =  em.createQuery(queryString, Group.class)
+							.getResultList();
+		for (int i = 0; i < groups.size(); i++) {
+			if(groups.get(i).getName().equals(name)) {
+				answer = false;
+				break;
+			}
+		}
+		return answer;
+	}
 
 	@Override
 	public Group createGroup(Group group) {
@@ -581,6 +595,7 @@ public class FlakDAOImpl implements FlakDAO {
 			return true;
 		}
 	}
+
 
 
 }

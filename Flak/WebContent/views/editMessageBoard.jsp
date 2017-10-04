@@ -42,49 +42,51 @@
 	rel="stylesheet">
 
 
-<link rel="stylesheet" type="text/css" href="styles/dashboard.css" />
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
 
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 </head>
 
-<body>
-	<div class="no-show">
-		<h1>hide</h1>
-	</div>
-	<c:if test="${not empty conversation}">
-		<form action="saveThread.do" method="post">
-			<input type="hidden" name="cid" value="${conversation.id}"></input>
-			<input type="hidden" name="gid" value="${group.id}"></input>
-			Title: <input name="title" value="${conversation.title}"></input><br>
-			<input type="submit" name="submit" value="Save Changes"></input>
-		</form>
-		<br>
+<body class="login_body">
+	<h1 class="header_class">
+		<!-- login.jsp -->
+	</h1>
+	<div class="login_container">
+		<div class="login_content4">
+
+
+			<c:if test="${not empty conversation}">
+				<form action="saveThread.do" method="post">
+					<input type="hidden" name="cid" value="${conversation.id}"></input>
+					<input type="hidden" name="gid" value="${group.id}"></input> Title:<br>
+					<input name="title" value="${conversation.title}"></input><br>
+					<a><input type="submit" name="submit" value="Save Changes"></input></a>
+				</form>
+				<br>
 		Posts:
 		<c:forEach var="post" items="${posts}">
-			<p>${post.timestamp}</p>
-			<div class="message_display">
-				<span>${post.user.username}</span>
-				<span>${post.message}</span>
-				<a href="editPost.do?pid=${post.id}&gid=${group.id}">
-				<input type="submit" name="submit" value="Edit"></input></a>
-				<a href="deletePost.do?pid=${post.id}&gid=${group.id}">
-				<input type="submit" name="submit" value="Delete"></input></a>
-				
-			</div>
-		</c:forEach>
-	</c:if>
-	
-	<c:if test="${not empty pid}">
-		<form action="savePost.do" method="post">
-			<input type="hidden" name="pid" value="${pid}"></input>
-			<input type="hidden" name="gid" value="${group.id}"></input>
-			<p>${post.timestamp}</p>
-			Message: <input name="message" value="${post.message}"></input><br>
-			<input type="submit" name="submit" value="Save"></input>
-		</form>
-	</c:if>
+					<p>${post.timestamp}</p>
+					<div class="message_display">
+						<span id="user_span">${post.user.username}</span> <span
+							id="message_span">${post.message}</span><br> <a
+							href="editPost.do?pid=${post.id}&gid=${group.id}"> <br>
+						<input type="submit" name="submit" value="Edit"></input></a> <a
+							href="deletePost.do?pid=${post.id}&gid=${group.id}"> <input
+							type="submit" name="submit" value="Delete"></input></a>
 
+					</div>
+				</c:forEach>
+			</c:if>
+			<c:if test="${not empty pid}">
+				<form action="savePost.do" method="post">
+					<input type="hidden" name="pid" value="${pid}"></input> <input
+						type="hidden" name="gid" value="${group.id}"></input>
+					<p>${post.timestamp}</p>
+					<br> Message: <input name="message" value="${post.message}"></input><br>
+					<input type="submit" name="submit" value="Save"></input>
+				</form>
+			</c:if>
 </body>
 </html>

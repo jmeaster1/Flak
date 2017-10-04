@@ -189,13 +189,11 @@
 				<h3>Tasks</h3>
 				<div class="msg_img">
 					<img src="https://image.flaticon.com/icons/png/128/1/1560.png"
-						alt="img"> 
+						alt="img">
 				</div>
-				<br>
-				<br>
+				<br> <br>
 
 				<hr>
-				<p>TASKS WILL BE DISPLAYED HERE.</p>
 				<c:if test="${not empty tasklist}">
 					<table>
 						<c:forEach var="item" items="${tasklist}">
@@ -216,30 +214,36 @@
 				</c:if>
 				<!-- Add a New Task Method Here -->
 				<form class="messages" action="newActivity.do" method="post">
-					<input type="hidden" name="gid" value="${group.id}"></input> 
-					Name: <input type="text" style="width: 400px;" name="name" value=""><br> 
-					Description: <input type="text" style="width: 400px;" name="description" value="">
-					Type:
-					<select name="tid">
-					<c:forEach var="type" items="${types}">
-						<option value="${type.id}">${type.name}</option>
-					</c:forEach>
-					</select>
-						<input type="submit" name="submit" value="Create">
-					</form>
+					<input type="hidden" name="gid" value="${group.id}"></input> Name:
+					<input type="text" style="width: 400px;" name="name" value=""><br>
+					Description: <input type="text" style="width: 400px;"
+						name="description" value=""> Type: <select name="tid">
+
+						<c:forEach var="type" items="${types}">
+							<c:choose>
+								<c:when test="${type.name == 'task'}">
+									<c:set var="defaultOption" value=" selected"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="defaultOption" value=""></c:set>
+								</c:otherwise>
+							</c:choose>
+							<option value="${type.id}" ${defaultOption}>${type.name}</option>
+						</c:forEach>
+					</select> <input type="submit" name="submit" value="Create">
+				</form>
 
 			</div>
 
 			<div id="menu2" class="tab-pane fade">
-				<h3>Shopping</h3><div class="msg_img">
+				<h3>Shopping</h3>
+				<div class="msg_img">
 					<img
 						src="data:image/png;base64,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"
 						alt="img">
 				</div>
-				<br>
-				<br>
+				<br> <br>
 				<hr>
-				<p>SHOPPING LIST WILL BE DISPLAYED HERE.</p>
 				<c:if test="${not empty shoplist}">
 					<table>
 						<c:forEach var="item" items="${shoplist}">
@@ -259,22 +263,34 @@
 					</table>
 				</c:if>
 				<!-- Add Grocery Item Method -->
-				<form class="messages" action="index.html" method="post">
-					<input type="text" name="message" value=""> <input
-						type="submit" name="submit" value="Add Grocery Item">
+				<form class="messages" action="newActivity.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> Item
+					Name: <input type="text" style="width: 400px;" name="name" value=""><br>
+					Description: <input type="text" style="width: 400px;"
+						name="description" value=""> Type: <select name="tid">
+						<c:forEach var="type" items="${types}">
+							<c:choose>
+								<c:when test="${type.name == 'shopping'}">
+									<c:set var="defaultOption" value=" selected"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="defaultOption" value=""></c:set>
+								</c:otherwise>
+							</c:choose>
+							<option value="${type.id}" ${defaultOption}>${type.name}</option>
+						</c:forEach>
+					</select> <input type="submit" name="submit" value="Add Item">
 				</form>
-				
 			</div>
 
 			<div id="menu3" class="tab-pane fade">
-				<h3>Events</h3><div class="msg_img">
-					<img
-						src="https://image.flaticon.com/icons/png/128/48/48732.png"
+				<h3>Events</h3>
+				<div class="msg_img">
+					<img src="https://image.flaticon.com/icons/png/128/48/48732.png"
 						alt="img">
 				</div>
 				<br> <br>
 				<hr>
-				<p>Events WILL BE DISPLAYED HERE.</p>
 				<c:if test="${not empty eventlist}">
 					<table>
 						<c:forEach var="item" items="${eventlist}">
@@ -294,12 +310,24 @@
 					</table>
 				</c:if>
 				<!-- Add a New Event Method Here -->
-				<form class="messages" action="index.html" method="post">
-					<input type="text" name="message" value=""> <input
-						type="submit" name="submit" value="Add Event">
+				<form class="messages" action="newActivity.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> Event
+					Name: <input type="text" style="width: 400px;" name="name" value=""><br>
+					Description: <input type="text" style="width: 400px;"
+						name="description" value=""> Type: <select name="tid">
+						<c:forEach var="type" items="${types}">
+							<c:choose>
+								<c:when test="${type.name == 'event'}">
+									<c:set var="defaultOption" value=" selected"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="defaultOption" value=""></c:set>
+								</c:otherwise>
+							</c:choose>
+							<option value="${type.id}" ${defaultOption}>${type.name}</option>
+						</c:forEach>
+					</select> <input type="submit" name="submit" value="Create Event">
 				</form>
-
-				
 
 			</div>
 
@@ -318,19 +346,11 @@
 
 			</div>
 		</div>
-		</h5>
-
-
 	</div>
 
 	</article>
 </div>
-
-
 </section>
-
-
-
 
 </div>
 
@@ -344,54 +364,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-<%-- <div class="no-show">
-	<h1>hide</h1>
-</div>
-
-
-<c:if test="${not empty conversations}">
-	<ul>
-		<c:forEach var="convo" items="${conversations}">
-			<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a></li>
-		</c:forEach>
-	</ul>
-</c:if>
-
-<c:if test="${not empty list}">
-	<table>
-		<c:forEach var="item" items="${list}">
-			<tr>
-				<td>${item.name}</td>
-				<td>${item.description}</td>
-				<td><a href="selectActivity.do?aid=${item.id}&gid=${group.id}"><input
-						type="submit" value="Edit" /></a></td>
-				<c:if test="${user.admin}">
-					<td><a href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
-							type="submit" value="Delete" /></a></td>
-				</c:if>
-			</tr>
-		</c:forEach>
-	</table>
-</c:if>
-
-
-<div class="buttons">
-	<ul>
-		<li class="button"><a
-			href="getDashboardByUser.do?gid=${group.id}">&nbsp;Message
-				Board&nbsp;</a></li>
-		<li class="button"><a href="tasks.do?gid=${group.id}">Tasks</a></li>
-		<li class="button"><a href="shopping.do?gid=${group.id}">Shopping</a></li>
-		<li class="button"><a href="events.do?gid=${group.id}">Events</a></li>
-	</ul>
-</div>
-</body>
-</div>
-</html> --%>

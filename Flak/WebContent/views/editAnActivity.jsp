@@ -42,14 +42,46 @@
 	rel="stylesheet">
 
 
-<link rel="stylesheet" type="text/css" href="styles/dashboard.css" />
+<link rel="stylesheet" type="text/css" href="styles/style.css" />
 
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
 </head>
+<body class="login_body">
+	<h1 class="header_class">
+		<!-- login.jsp -->
+	</h1>
+	<div class="login_container">
+		<div class="login_content4">
+			<form action="saveActivity.do" method="post">
+				<input type="hidden" name="aid" value="${activity.id}"></input> <input
+					type="hidden" name="gid" value="${group.id}"></input> Name: <input
+					name="name" value="${activity.name}"></input><br> Description:
+				<input name="description" value="${activity.description}"></input><br>
+				Type:<br> <select name="tid">
+					<c:forEach var="type" items="${types}">
+						<option value="${type.id}">${type.name}</option>
+					</c:forEach>
+				</select> <br><%-- Assigned: <input name="assigned" value="${activity.assigned}"></input> --%><br>
+				Current Users:
+				<c:forEach var="au" items="${aUsers}">
+					<p>${au.username}</p>
+				</c:forEach><br>
+				Assign a User:<br> <select name="assignedUser">
+					<c:forEach var="u" items="${users}">
+						<option value="${u.id}">${u.username}</option>
+					</c:forEach>
+				</select> <input type="submit" name="submit" value="Save"></input>
+			</form>
+		</div>
+	</div>
 
-<body>
+</body>
+
+
+
+<%-- <body>
 		<div class="no-show">
 			<h1>hide</h1>
 		</div>
@@ -65,7 +97,7 @@
 					<option value="${type.id}">${type.name}</option>
 				</c:forEach>
 			</select>
-			<%-- Assigned: <input name="assigned" value="${activity.assigned}"></input><br> --%>
+			Assigned: <input name="assigned" value="${activity.assigned}"></input><br>
 			Current Users:
 				<c:forEach var="au" items="${aUsers}">
 					<p>${au.username}</p>
@@ -80,5 +112,5 @@
 	</form>
 
 
-</body>
+</body> --%>
 </html>
