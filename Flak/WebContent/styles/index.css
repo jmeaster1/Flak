@@ -51,11 +51,9 @@ body h1{
 .content-container {
 	width: 50%;
 	margin: auto;
-	margin-top: 30%;x
+	margin-top: 20%;
 	padding: 2%;
-	background-color: rgba(37,187,191, .7);
-	/* margin-left:20%;
-	margin-right:20%; */
+	background-color: rgba(20,20,20,.9);
 }
 #index_body{
 	background-image:url("https://images.techhive.com/images/article/2016/11/wall_covered_with_sticky_notes-100693853-large.3x2.jpg");
@@ -156,12 +154,17 @@ body h1{
 }
 
 .buttons {
-	width: 100%;
+	width: 50%;
 	padding-top: 1%;
 	padding-bottom: 1%;
 	margin:0 auto;
 /* 	margin-left:20%;
 	margin-right:20%; */
+}
+.buttons a:hover{
+	color:white;
+	text-decoration: none;
+	font-weight:bold;
 }
 .buttons ul{
 	margin:0 auto;
