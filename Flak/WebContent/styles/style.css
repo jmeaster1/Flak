@@ -137,6 +137,10 @@ body {
 	background-color: rgba(187, 187, 187, .7);
 	font-size: 16px;
 }
+.login_content3 a:hover {
+	text-decoration: none; 
+	color: #103a5a
+}
 
 .login_content3 h1 {
 	font-size: 36px;
@@ -144,6 +148,8 @@ body {
 
 .login_content3 li {
 	font-size: 20px;
+	margin: 0 auto;
+	text-align:center;
 }
 
 #error {
