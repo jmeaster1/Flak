@@ -61,7 +61,7 @@
 			Type:
 			<select>
 				<c:forEach var="type" items="${types}">
-					<option value="${type}">${type}</option>
+					<option value="${type.name}">${type}</option>
 				</c:forEach>
 			</select>
 			Assigned: <input name="priority" value="${activity.assigned}"></input><br>

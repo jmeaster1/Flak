@@ -195,7 +195,7 @@
 								<td>${item.name}</td>
 								<td>${item.description}</td>
 								<td><a
-									href="selectActivity.do?aid=${item.id}&gid=${group.id}"><input
+									href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
 										type="submit" value="Edit" /></a></td>
 								<c:if test="${user.admin}">
 									<td><a

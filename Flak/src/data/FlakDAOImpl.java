@@ -147,10 +147,20 @@ public class FlakDAOImpl implements FlakDAO {
 	@Override
 	public List<User> getAllUsersByGroupId(int id) {
 		List<User> answer = new ArrayList<>();
-		String queryString = "Select u from User u where u.group.id=:id";
-		answer =  em.createQuery(queryString, User.class)
-								.setParameter("id", id)
+		List<User> allUsers = new ArrayList<>();
+		String queryString = "Select u from User u join fetch u.groups";
+		allUsers =  em.createQuery(queryString, User.class)
 								.getResultList();
+		for (int i = 0; i < allUsers.size(); i++) {
+			List<Group> groups = allUsers.get(i).getGroups();
+			for (int j = 0; j < groups.size(); j++) {
+				if(groups.get(j).getId()==id) {
+					answer.add(allUsers.get(i));
+					break;
+				}
+			}
+			
+		}
 		return answer;
 	}
 	
