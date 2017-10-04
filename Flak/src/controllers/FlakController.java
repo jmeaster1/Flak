@@ -175,7 +175,7 @@ public class FlakController {
 		return "dashboard.jsp";
 	}
 	
-	@RequestMapping(path = "delelteActivity.do", method = RequestMethod.GET)
+	@RequestMapping(path = "deleteActivity.do", method = RequestMethod.GET)
 	public String deleteActivity(Model model, 
 								@RequestParam("aid") int aid, 
 								@RequestParam("gid") int gid,
