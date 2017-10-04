@@ -159,18 +159,30 @@
 				</c:if>
 				<c:if test="${not empty conversations}">
 					<c:forEach var="convo" items="${conversations}">
-						<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a>
-							<!-- Edit Thread Method --> <c:if test="${user.admin}">
-								<a href="editThread.do?cid=${convo.id}&gid=${group.id}"> <input
+						<!-- Creates Grid for Message Board -->
+						<div class="row">
+							<div class="col-md-3">
+								<a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a>
+								<!-- Edit Thread Method -->
+							</div>
+							<div class="col-md-3">
+								<c:if test="${user.admin}">
+								<a href="editThread.do?cid=${convo.id}&gid=${group.id}"><input
 									type="submit" name="submit" value="Edit Thread" /></a>
-							</c:if></li>
-					</c:forEach>
-					<form class="messages" action="newThread.do" method="post">
-						<input type="hidden" name="gid" value="${group.id}"></input> <input
-							id="input_bar" type="text" name="newthread" value="">
-						<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
-						<input type="submit" name="submit" value="New Thread">
-					</form>
+								</c:if>
+							</div>
+							<div class="col-md-6">
+							</div>
+						</div>
+				
+				<!-- </li> -->
+				</c:forEach>
+				<form class="messages" action="newThread.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> <input
+						id="input_bar" type="text" name="newthread" value="">
+					<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
+					<input type="submit" name="submit" value="New Thread">
+				</form>
 				</c:if>
 				<c:if test="${not empty posts}">
 					<c:forEach var="post" items="${posts}">
@@ -204,43 +216,49 @@
 
 				<hr>
 				<c:if test="${not empty tasklist}">
-					<table>
-						<c:forEach var="item" items="${tasklist}">
-							<tr>
-								<td class="group_activity">(${item.group.name})</td>
-								<td>${item.name}</td>
-								<td>${item.description}</td>
-								<td><a
-									href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
-										type="submit" value="Edit" /></a></td>
+					<c:forEach var="item" items="${tasklist}">
+						<!-- Creates Grid for Tasks -->
+						<div class="wrapper2">
+							<div>(${item.group.name})</div>
+							<div>${item.name}</div>
+							<div>${item.description}</div>
+							<div>
+								<a href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
+									type="submit" value="Edit" /></a>
 								<c:if test="${user.admin}">
-									<td><a
-										href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
-											type="submit" value="Delete" /></a></td>
+									<a href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
+										type="submit" value="Delete" /></a>
 								</c:if>
-							</tr>
-						</c:forEach>
-					</table>
+							</div>
+						</div>
+					
+					</c:forEach>
 				</c:if>
 				<!-- Add a New Task Method Here -->
 				<form class="messages" action="newActivity.do" method="post">
-					<input type="hidden" name="gid" value="${group.id}"></input> Name:
-					<input type="text" style="width: 400px;" name="name" value=""><br>
-					Description: <input type="text" style="width: 400px;"
-						name="description" value=""> Type: <select name="tid">
-
-						<c:forEach var="type" items="${types}">
-							<c:choose>
-								<c:when test="${type.name == 'task'}">
-									<c:set var="defaultOption" value=" selected"></c:set>
-								</c:when>
-								<c:otherwise>
-									<c:set var="defaultOption" value=""></c:set>
-								</c:otherwise>
-							</c:choose>
-							<option value="${type.id}" ${defaultOption}>${type.name}</option>
-						</c:forEach>
-					</select> <input type="submit" name="submit" value="Create">
+					<div>
+						<div>
+							<input type="hidden" name="gid" value="${group.id}"></input>
+							Task Name: &nbsp; <input type="text" style="width: 400px;" name="name"
+								value="">
+						</div>
+						<div>
+							Description: <input type="text" style="width: 400px;"
+								name="description" value=""><br /> Type: <select name="tid">
+								<c:forEach var="type" items="${types}">
+									<c:choose>
+										<c:when test="${type.name == 'task'}">
+											<c:set var="defaultOption" value=" selected"></c:set>
+										</c:when>
+										<c:otherwise>
+											<c:set var="defaultOption" value=""></c:set>
+										</c:otherwise>
+									</c:choose>
+									<option value="${type.id}" ${defaultOption}>${type.name}</option>
+								</c:forEach>
+							</select> <input type="submit" name="submit" value="Create">
+						</div>
+					</div>
 				</form>
 
 			</div>
@@ -257,19 +275,21 @@
 				<c:if test="${not empty shoplist}">
 					<table>
 						<c:forEach var="item" items="${shoplist}">
-							<tr>
-								<td class="group_activity">(${item.group.name})</td>
-								<td>${item.name}</td>
-								<td>${item.description}</td>
-								<td><a
-									href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
-										type="submit" value="Edit" /></a></td>
+						<div class="wrapper2">
+							<div>(${item.group.name})</div>
+							<div>${item.name}</div>
+							<div>${item.description}</div>
+							<div>
+								<a href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
+									type="submit" value="Edit" /></a>
 								<c:if test="${user.admin}">
-									<td><a
-										href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
-											type="submit" value="Delete" /></a></td>
+									<a href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
+										type="submit" value="Delete" /></a>
 								</c:if>
-							</tr>
+							</div>
+						</div>
+						
+							
 						</c:forEach>
 					</table>
 				</c:if>
@@ -278,7 +298,7 @@
 					<input type="hidden" name="gid" value="${group.id}"></input> Item
 					Name: <input type="text" style="width: 400px;" name="name" value=""><br>
 					Description: <input type="text" style="width: 400px;"
-						name="description" value=""> Type: <select name="tid">
+						name="description" value=""><br> Type: <select name="tid">
 						<c:forEach var="type" items="${types}">
 							<c:choose>
 								<c:when test="${type.name == 'shopping'}">
@@ -305,19 +325,20 @@
 				<c:if test="${not empty eventlist}">
 					<table>
 						<c:forEach var="item" items="${eventlist}">
-							<tr>
-								<td class="group_activity">(${item.group.name})</td>
-								<td>${item.name}</td>
-								<td>${item.description}</td>
-								<td><a
-									href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
-										type="submit" value="Edit" /></a></td>
+						<div class="wrapper2">
+							<div>(${item.group.name})</div>
+							<div>${item.name}</div>
+							<div>${item.description}</div>
+							<div>
+								<a href="editActivity.do?aid=${item.id}&gid=${group.id}"><input
+									type="submit" value="Edit" /></a>
 								<c:if test="${user.admin}">
-									<td><a
-										href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
-											type="submit" value="Delete" /></a></td>
+									<a href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
+										type="submit" value="Delete" /></a>
 								</c:if>
-							</tr>
+							</div>
+						</div>
+						
 						</c:forEach>
 					</table>
 				</c:if>
@@ -326,7 +347,7 @@
 					<input type="hidden" name="gid" value="${group.id}"></input> Event
 					Name: <input type="text" style="width: 400px;" name="name" value=""><br>
 					Description: <input type="text" style="width: 400px;"
-						name="description" value=""> Type: <select name="tid">
+						name="description" value=""><br /> Type: <select name="tid">
 						<c:forEach var="type" items="${types}">
 							<c:choose>
 								<c:when test="${type.name == 'event'}">
