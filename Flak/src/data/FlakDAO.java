@@ -66,7 +66,7 @@ public interface FlakDAO {
 	
 	public Group createGroup(Group group);
 	
-	public Group createGroupforUser(User user, Group group);
+	public Group createGroupForUser(User user, Group group);
 	
 	public Group editGroup(int id, Group group);
 	

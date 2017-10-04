@@ -94,15 +94,12 @@ public class FlakController {
 			List<User> users = new ArrayList<>(); //Group requires a list of User
 			users.add(user); // adding current user that's in session
 			group.setUsers(users); // sets List of User in the new group to ^^ 
-			flakDAO.createGroup(group); // creates/persists in DB
-			List<Group> groups = user.getGroups(); // gets current user's group list in case they have some already
-			groups.add(group); //adding new group to user's List<Group>
-			user.setGroups(groups);
-//			User tempUser = user; // temp User prevents overwriting session user's data
-//			tempUser.setGroups(groups); // give tempUser the most current list of Group
-//			flakDAO.editUser(user.getId(), tempUser); //persists current user's changes in DB
+			flakDAO.createGroupForUser(user, group); // creates/persists in DB
 			model.addAttribute("user", user); //adds to model so we can pull out in EL
 			model.addAttribute("groups", user.getGroups());//adds List of Group like ^^
+			List<String> convos = new ArrayList<>();
+			convos.add("Welcome to FLAK!");
+			model.addAttribute("conversations", convos);
 			return "grouplist.jsp";
 		}else {
 			model.addAttribute("user", user); //adds to model so we can pull out in EL
