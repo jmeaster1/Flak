@@ -66,6 +66,8 @@ public interface FlakDAO {
 	
 	public Group createGroup(Group group);
 	
+	public Group createGroupforUser(User user, Group group);
+	
 	public Group editGroup(int id, Group group);
 	
 	public boolean deleteGroup(int id); //only available to Flak Administration
