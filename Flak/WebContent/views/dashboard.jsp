@@ -261,7 +261,12 @@
 			</div>
 
 			<div id="menu3" class="tab-pane fade">
-				<h3>Events</h3>
+				<h3>Events</h3><div class="msg_img">
+					<img
+						src="https://image.flaticon.com/icons/png/128/48/48732.png"
+						alt="img">
+				</div>
+				<br> <br>
 				<hr>
 				<p>Events WILL BE DISPLAYED HERE.</p>
 				<c:if test="${not empty eventlist}">
@@ -288,11 +293,7 @@
 						type="submit" name="submit" value="Add Event">
 				</form>
 
-				<div class="msg_img">
-					<img
-						src="https://freeiconshop.com/wp-content/uploads/edd/task-done-flat.png"
-						alt="img">
-				</div>
+				
 
 			</div>
 
