@@ -261,6 +261,7 @@ INSERT INTO `flak_group` (`id`, `name`) VALUES (1, 'Flak Development Team');
 INSERT INTO `flak_group` (`id`, `name`) VALUES (2, 'The Simpsons');
 INSERT INTO `flak_group` (`id`, `name`) VALUES (3, 'Smith Family');
 INSERT INTO `flak_group` (`id`, `name`) VALUES (4, 'Rugby Team');
+INSERT INTO `flak_group` (`id`, `name`) VALUES (5, 'Axe Throwing');
 
 COMMIT;
 
@@ -308,6 +309,10 @@ INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 10);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 11);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 12);
 INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (2, 13);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (5, 3);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (5, 4);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (4, 2);
+INSERT INTO `group_user` (`group_id`, `user_id`) VALUES (4, 14);
 
 COMMIT;
 
@@ -324,6 +329,8 @@ INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (4, 'Practice Tues
 INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (5, 'Away game - Ft Collins', 4);
 INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (6, 'Eat a donut', 2);
 INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (7, 'Feed Dog', 2);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (8, 'Axe throwing', 5);
+INSERT INTO `conversation` (`id`, `title`, `group_id`) VALUES (9, 'Development Schedule', 1);
 
 COMMIT;
 
@@ -340,6 +347,13 @@ INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (5, '2017-10-12 12:00:00', 'Bring first-aid kit to game', 5, 5);
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (6, '2017-10-20 04:15:30', 'Don\'t eat it all in one bite', 5, 6);
 INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (7, '2017-10-11 09:45:00', 'Remember to feed Santa\'s Little Helper', 10, 7);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (8, '2017-10-9 12:45:00', 'Sharpen my axes', 3, 8);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (9, '2017-10-9 04:15:25', 'Get new blindfold to up the ante', 4, 8);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (10, '2017-10-2 08:00:00', 'Set the proj schedule and update Trello', 1, 9);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (11, '2017-10-2 08:00:00', 'Schedule established', 2, 9);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (12, '2017-10-2 08:00:00', 'Trello updated', 3, 9);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (13, '2017-10-2 08:00:00', 'JSPs created', 4, 9);
+INSERT INTO `post` (`id`, `timestamp`, `message`, `user_id`, `conv_id`) VALUES (14, '2017-10-9 11:30:00', 'Run through a tough practice for bad loss last Saturday', 14, 4);
 
 COMMIT;
 
@@ -361,7 +375,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `flakdb`;
-INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (1, 'Garbage', 'Take garbage to curb', 1, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (1, 'Garbage', 'Take garbage to curb', 3, 1, NULL, 1, DEFAULT);
 INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (2, 'Dishes', 'Wash dishes', 1, 1, NULL, 1, DEFAULT);
 INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (3, 'Meeting', 'Family Meeting', 1, 2, NULL, 1, DEFAULT);
 INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (4, 'Wash Car', 'Wash the car', 3, 1, NULL, 1, DEFAULT);
@@ -369,6 +383,11 @@ INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `tim
 INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (6, 'Rugby Practice', 'Focus on holding the ball', 4, 2, NULL, 1, DEFAULT);
 INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (7, 'Rugby Game', 'Bart\'s 6:00 pm rugby game', 2, 2, NULL, 1, DEFAULT);
 INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (8, 'Get Game Supplies', 'Buy Capri Sun\'s and bananas', 4, 3, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (9, 'Coding', 'Complete Flak project', 1, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (10, 'Coding', 'Finish CSS for Flak', 1, 3, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (11, 'Axe', 'Sharpen axe for competition', 5, 1, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (12, 'Axe', 'Practice throwing blindfolded', 5, 2, NULL, 1, DEFAULT);
+INSERT INTO `activity` (`id`, `name`, `description`, `group_id`, `type_id`, `timestamp`, `assigned`, `complete`) VALUES (13, 'Coding', 'Biz wants in Production by noon tomorrow (not going to happen)', 1, 1, NULL, 1, DEFAULT);
 
 COMMIT;
 
@@ -386,6 +405,10 @@ INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (8, 5);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (1, 6);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (10, 7);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (14, 8);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (4, 9);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (3, 10);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (3, 11);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (4, 12);
 
 COMMIT;
 
