@@ -61,7 +61,15 @@
 				<input name="description" value="${activity.description}"></input><br>
 				Type:<br> <select name="tid">
 					<c:forEach var="type" items="${types}">
-						<option value="${type.id}">${type.name}</option>
+							<c:choose>
+								<c:when test="${type.name == activity.type.name}">
+									<c:set var="defaultOption" value=" selected"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="defaultOption" value=""></c:set>
+								</c:otherwise>
+							</c:choose>
+							<option value="${type.id}" ${defaultOption}>${type.name}</option>
 					</c:forEach>
 				</select> <br><%-- Assigned: <input name="assigned" value="${activity.assigned}"></input> --%><br>
 				Current Users:
@@ -70,7 +78,15 @@
 				</c:forEach><br>
 				Assign a User:<br> <select name="assignedUser">
 					<c:forEach var="u" items="${users}">
-						<option value="${u.id}">${u.username}</option>
+					<c:choose>
+						<c:when test="${u.username == user.username}">
+							<c:set var="defaultOption" value=" selected"></c:set>
+						</c:when>
+						<c:otherwise>
+							<c:set var="defaultOption" value=""></c:set>
+						</c:otherwise>
+					</c:choose>
+						<option value="${u.id}" ${defaultOption}>${u.username}</option>
 					</c:forEach>
 				</select> <input type="submit" name="submit" value="Save"></input>
 			</form>
