@@ -97,14 +97,20 @@ public class FlakController {
 			flakDAO.createGroup(group); // creates/persists in DB
 			List<Group> groups = user.getGroups(); // gets current user's group list in case they have some already
 			groups.add(group); //adding new group to user's List<Group>
-			User tempUser = user; // temp User prevents overwriting session user's data
-			tempUser.setGroups(groups); // give tempUser the most current list of Group
-			flakDAO.editUser(user.getId(), tempUser); //persists current user's changes in DB
+			user.setGroups(groups);
+//			User tempUser = user; // temp User prevents overwriting session user's data
+//			tempUser.setGroups(groups); // give tempUser the most current list of Group
+//			flakDAO.editUser(user.getId(), tempUser); //persists current user's changes in DB
 			model.addAttribute("user", user); //adds to model so we can pull out in EL
 			model.addAttribute("groups", user.getGroups());//adds List of Group like ^^
+			return "grouplist.jsp";
+		}else {
+			model.addAttribute("user", user); //adds to model so we can pull out in EL
+			model.addAttribute("groups", user.getGroups());//adds List of Group like ^^
+			model.addAttribute("message", "Group Name Already In Use");
+			return "grouplist.jsp";
 		}
 		
-		return "grouplist.jsp";
 	}
 
 	@RequestMapping(path = "about.do", method = RequestMethod.GET) // unfinished view

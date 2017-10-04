@@ -82,6 +82,9 @@
 		</div>
 	<!-- User Can Create a New Group -->	
 		<div class="new_group">
+			<c:if test="${not empty message}">
+				<h3>${message}</h3>
+			</c:if>
 			<form action="newGroup.do" method="POST">
 				Group Name: <input type="text" name="newGroup">
 				<input type="submit" name="submit" value="Create Group">			
