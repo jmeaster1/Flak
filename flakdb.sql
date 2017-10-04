@@ -411,7 +411,7 @@ INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (4, 9);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (3, 10);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (3, 11);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (4, 12);
-INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (1, 14);
+INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (2, 13);
 INSERT INTO `user_activity` (`user_id`, `activity_id`) VALUES (1, 15);
 
 COMMIT;
