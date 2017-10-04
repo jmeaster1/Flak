@@ -223,7 +223,7 @@ DROP TABLE IF EXISTS `phone_number` ;
 CREATE TABLE IF NOT EXISTS `phone_number` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `description` VARCHAR(60) NOT NULL,
-  `number` INT NOT NULL,
+  `number` BIGINT(10) NOT NULL,
   `contact_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`, `contact_id`),
   INDEX `fk_phone_number_contact_id_idx` (`contact_id` ASC),
