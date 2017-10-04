@@ -247,7 +247,7 @@ public class FlakDAOImpl implements FlakDAO {
 	}
 	
 	@Override
-	public Group createGroupforUser(User user, Group group) {
+	public Group createGroupForUser(User user, Group group) {
 		em.persist(group);
 		em.flush();
 		User managedUser = em.find(User.class, user.getId());
@@ -257,6 +257,7 @@ public class FlakDAOImpl implements FlakDAO {
 		List<User> users = new ArrayList<>();
 		users.add(managedUser);
 		group.setUsers(users);
+//		em.persist(user);
 		return group;
 	}
 
