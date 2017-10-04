@@ -207,6 +207,7 @@
 					<table>
 						<c:forEach var="item" items="${tasklist}">
 							<tr>
+								<td class="group_activity">(${item.group.name})</td>
 								<td>${item.name}</td>
 								<td>${item.description}</td>
 								<td><a
@@ -257,6 +258,7 @@
 					<table>
 						<c:forEach var="item" items="${shoplist}">
 							<tr>
+								<td class="group_activity">(${item.group.name})</td>
 								<td>${item.name}</td>
 								<td>${item.description}</td>
 								<td><a
@@ -304,6 +306,7 @@
 					<table>
 						<c:forEach var="item" items="${eventlist}">
 							<tr>
+								<td class="group_activity">(${item.group.name})</td>
 								<td>${item.name}</td>
 								<td>${item.description}</td>
 								<td><a
