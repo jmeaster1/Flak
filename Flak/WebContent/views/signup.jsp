@@ -27,9 +27,53 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
 </head>
-<body>
+<body class="login_body">
+	<h1 class="header_class">
+		<!-- login.jsp -->
+	</h1>
 	<div class="login_container">
-		<div class="login_content"></div>
+	<div class="login_content1">
+		<c:if test="${not empty message}">
+			<h3>${message}</h3>
+		</c:if>
+		
+		
+		<form action="signUp.do" method="POST">
+			<br>
+			<!-- <div class="signup_field" >
+				<label>First Name: <input class="signup_field" type="text" name="firstName" value="" /></label> 
+			</div>
+			<br>
+			<div class="signup_field" >
+				<label>Last Name: <input class="signup_field" type="text" name="lastName" value="" /></label>
+			</div> -->
+			<br>
+			<div class="signup_field">
+				<label>User Name: <input class="signup_field" type="text"
+					name="username" value="" /></label>
+			</div>
+			<br>
+			<div class="signup_field">
+				<label>Password:<input class="signup_field" type="password"
+					name="password1" value="" /></label>
+			</div>
+			<br>
+			<div class="signup_field">
+				<label>Confirm Password: <input class="signup_field"
+					type="password" name="password2" value="" /></label>
+			</div>
+			<br> <input class="signup_button" type="submit"
+				name="submit" value="Create Account" />
+
+			<div></div>
+		</form>
+	</div>
+	</div>
+</body>
+
+
+	<%-- <div class="login_container">
+		<div class="login_content1"></div>
 		<h2 id="signup_header">Sign Up</h2>
 
 		<c:if test="${not empty message}">
@@ -69,4 +113,4 @@
 	</div>
 	</div>
 </body>
-</html>
+</html> --%>
