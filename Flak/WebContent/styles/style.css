@@ -218,6 +218,9 @@ body {
 	margin-left: -20px;
 	font-size:20px;
 }
+label {
+  padding-top: 20px;
+}
 
 .content-container h1 {
 	font-family: 'Cabin Sketch', cursive;

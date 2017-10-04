@@ -52,12 +52,12 @@
 				<label>User Name: <input class="signup_field" type="text"
 					name="username" value="" /></label>
 			</div>
-			<br>
+			
 			<div class="signup_field">
 				<label>Password:<input class="signup_field" type="password"
 					name="password1" value="" /></label>
 			</div>
-			<br>
+			
 			<div class="signup_field">
 				<label>Confirm Password: <input class="signup_field"
 					type="password" name="password2" value="" /></label>
