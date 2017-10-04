@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import data.FlakDAO;
+import entities.Activity;
 import entities.Conversation;
 import entities.Post;
+import entities.Type;
 import entities.User;
 
 @Controller
@@ -141,6 +143,34 @@ public class FlakController {
 		model.addAttribute("users", flakDAO.getAllUsersByGroupId(gid));
 		model.addAttribute("user", user);
 		return "editActivity.jsp";
+	}
+	
+	@RequestMapping(path = "saveActivity.do", method = RequestMethod.POST)
+	public String saveEditedActivity(Model model, 
+									@RequestParam("gid") int gid, 
+									@RequestParam("aid") int aid,
+									@RequestParam("name") String name, 
+									@RequestParam("description") String description, 
+									@RequestParam("tid") int tid, 
+									@RequestParam("assigned") boolean assigned, 
+									@ModelAttribute("assignedUser") List<User> assignedUsers, 
+									@ModelAttribute("user") User user) {
+		Activity activity = new Activity();
+		activity.setAssigned(assigned);
+		activity.setDescription(description);
+		activity.setName(name);
+		Type type = flakDAO.showType(tid);
+		activity.setType(type);
+		activity.setUsers(assignedUsers);
+		flakDAO.editActivity(aid, activity);
+		model.addAttribute("group", flakDAO.showGroup(gid));
+		model.addAttribute("groups", user.getGroups());
+		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
+		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
+		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
+		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
+		model.addAttribute("user", user);
+		return "dashboard.jsp";
 	}
 	
 	@RequestMapping(path = "delelteActivity.do", method = RequestMethod.GET)
