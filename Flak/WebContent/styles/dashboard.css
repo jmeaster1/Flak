@@ -91,7 +91,7 @@ li.button a {
 }
 
 li.button a:hover {
-  background-color: #006899;
+  background-color: red;/* #006899 */
 }
 
 .no-show {
