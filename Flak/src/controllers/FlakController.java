@@ -70,6 +70,7 @@ public class FlakController {
 			user.setUsername(username);
 			if (password1.equals(password2)) {
 				user.setPassword(password1);
+				user.setAdmin(true);
 				user.setGroups(new ArrayList<Group>());
 				flakDAO.createUser(user);
 				model.addAttribute("user", user);
