@@ -67,31 +67,31 @@
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 
-			<ul class="nav navbar-nav navbar-right">
-				<ul class="nav navbar-nav ">
-				<c:choose>
-					<c:when test="${not empty user}">
-					
-					</c:when>
-						<c:otherwise>
-							<li><a href="about.do">What is Flak?</a></li>
-						</c:otherwise>
-				</c:choose>
-						 <c:if test="${not empty groups}">
-					<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
-							<ul class="dropdown-menu">
-							<c:forEach var="group" items="${groups}">
-								<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
-								</a></li>
-								<br />
-							</c:forEach>
-						</c:if>
-							</ul> 
-					<li><a href="logout.do">LOGOUT</a></li>
-				</ul>
-			</ul>
-		</div>
+					<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav ">
+							<c:choose>
+								<c:when test="${not empty user}">
+
+								</c:when>
+								<c:otherwise>
+									<li><a href="about.do">What is Flak?</a></li>
+								</c:otherwise>
+							</c:choose>
+							<c:if test="${not empty groups}">
+								<li class="dropdown"><a class="dropdown-toggle"
+									data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
+									<ul class="dropdown-menu">
+										<c:forEach var="group" items="${groups}">
+											<li><a href="getDashboardByUser.do?gid=${group.id}">${group.name}
+											</a></li>
+											<br />
+										</c:forEach>
+							</c:if>
+						</ul>
+						<li><a href="logout.do">LOGOUT</a></li>
+					</ul>
+					</ul>
+				</div>
 			</div>
 </div>
 </nav>
@@ -142,20 +142,23 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<h3>Message Board</h3>
+				<div class="msg_img">
+					<img src="https://image.flaticon.com/icons/png/128/131/131155.png"
+						alt="img">
+				</div>
+				<br>
 				<hr>
 				<c:if test="${not empty conversations}">
 					<c:forEach var="convo" items="${conversations}">
 						<li><a href="getConvos.do?cid=${convo.id}&gid=${group.id}">${convo.title}</a>
-						<!-- Edit Thread Method -->
-						<c:if test="${user.admin}">
-						<a href="editThread.do?cid=${convo.id}&gid=${group.id}">
-						<input type="submit" name="submit" value="Edit Thread"/></a>
-						</c:if>
-						</li>
+							<!-- Edit Thread Method --> <c:if test="${user.admin}">
+								<a href="editThread.do?cid=${convo.id}&gid=${group.id}"> <input
+									type="submit" name="submit" value="Edit Thread" /></a>
+							</c:if></li>
 					</c:forEach>
 					<form class="messages" action="newThread.do" method="post">
-						<input type="hidden" name="gid" value="${group.id}"></input>
-						<input type="text" style="width: 500px;" name="newthread" value="">
+						<input type="hidden" name="gid" value="${group.id}"></input> <input
+							id="input_bar" type="text" name="newthread" value="">
 						<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
 						<input type="submit" name="submit" value="New Thread">
 					</form>
@@ -163,29 +166,34 @@
 				<c:if test="${not empty posts}">
 					<c:forEach var="post" items="${posts}">
 						<p>${post.timestamp}</p>
-						<div class="message_display"><span class="username">${post.user.username}:</span>&emsp;&emsp;${post.message}</div>
+						<div class="message_display">
+							<span class="username">${post.user.username}:</span>&emsp;&emsp;${post.message}
+						</div>
 					</c:forEach>
-					
+
 					<!-- Add New Message Form - Only within a thread -->
 					<form class="messages" action="newPost.do" method="post">
 						<input type="hidden" name="gid" value="${group.id}"></input> <input
 							type="hidden" name="cid" value="${cid}"></input> <input
-							type="text" style="width: 500px;" name="message" value="">
+							type="text" style="width: 400px;" name="message" value="">
 						<input type="submit" name="submit" value="Post">
 					</form>
 					<br>
 					<a href="getDashboardByUser.do?gid=${group.id}">See All Threads</a>
 				</c:if>
 				<!-- Message Image -->
-				<div class="msg_img">
-					<img
-						src="http://icons.iconarchive.com/icons/scafer31000/bubble-circle-2/256/Message-icon.png"
-						alt="img">
-				</div>
+
 
 			</div>
 			<div id="menu1" class="tab-pane fade">
 				<h3>Tasks</h3>
+				<div class="msg_img">
+					<img src="https://image.flaticon.com/icons/png/128/1/1560.png"
+						alt="img"> 
+				</div>
+				<br>
+				<br>
+
 				<hr>
 				<p>TASKS WILL BE DISPLAYED HERE.</p>
 				<c:if test="${not empty tasklist}">
@@ -212,11 +220,7 @@
 						type="submit" name="submit" value="Add Task">
 				</form>
 
-				<div class="msg_img">
-					<img
-						src="https://freeiconshop.com/wp-content/uploads/edd/task-done-flat.png"
-						alt="img">
-				</div>
+
 
 			</div>
 

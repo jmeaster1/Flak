@@ -39,6 +39,10 @@ body {
   font-weight: bold;
   font-size: 34px;
 }
+img {
+    vertical-align: middle;
+    margin-top:25%;
+}
 
 .content-container {
   width: 50%;
@@ -116,7 +120,6 @@ p{
   background-color: white;
   color: black;
   padding: 20px;
-  height: 700px;
 }
 
 #home p {
@@ -166,9 +169,18 @@ p{
 	margin-left: 15px;
 }
 .msg_img{
-  display: inline;
+  display: block;
   float: right;
-  margin-top: -25%;
+  margin-top: 0%;
+  margin-left: 60%;
+  margin-top: -15%;
+  position: inherit;
+}
+#input_bar{
+	width: 400px;
+}
+#menu1 img{
+	padding-top: 6px;
 }
 
 .content1-left {
