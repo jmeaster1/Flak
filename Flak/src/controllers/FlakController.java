@@ -97,10 +97,9 @@ public class FlakController {
 			flakDAO.createGroupForUser(user, group); // creates/persists in DB
 			model.addAttribute("user", user); //adds to model so we can pull out in EL
 			model.addAttribute("groups", user.getGroups());//adds List of Group like ^^
-			List<String> convos = new ArrayList<>();
-			convos.add("Welcome to FLAK!");
-			model.addAttribute("conversations", convos);
-			return "grouplist.jsp";
+			model.addAttribute("message", "Welcome to FLAK!");
+			model.addAttribute("group", flakDAO.showGroup(group.getId()));
+			return "dashboard.jsp";
 		}else {
 			model.addAttribute("user", user); //adds to model so we can pull out in EL
 			model.addAttribute("groups", user.getGroups());//adds List of Group like ^^
