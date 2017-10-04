@@ -71,6 +71,7 @@
 			</div>
 </div>
 </nav>
+<!-- Allows User to Choose a Group -->
 	<div class="login_container3">
 		<div class="login_content3">
 			<h1>Choose A Group</h1><br>
@@ -79,6 +80,14 @@
 				</a><br><br>
 			</c:forEach>
 		</div>
+	<!-- User Can Create a New Group -->	
+		<div class="new_group">
+			<form action="newGroup.do" method="POST">
+				Group Name: <input type="text" name="newGroup">
+				<input type="submit" name="submit" value="Create Group">			
+			</form>
+		</div>
 	</div>
+	
 </body>
 </html>

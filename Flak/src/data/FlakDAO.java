@@ -58,6 +58,8 @@ public interface FlakDAO {
 	
 	public boolean isUsernameUnique(String name);
 
+	public boolean isGroupNameUnique(String name);
+
 	
 	
 	//Create, Edit, Delete for all 9 items

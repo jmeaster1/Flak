@@ -16,6 +16,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import data.FlakDAO;
 import entities.Activity;
 import entities.Conversation;
+import entities.Group;
 import entities.Post;
 import entities.Type;
 import entities.User;
@@ -69,6 +70,7 @@ public class FlakController {
 			user.setUsername(username);
 			if (password1.equals(password2)) {
 				user.setPassword(password1);
+				user.setGroups(new ArrayList<Group>());
 				flakDAO.createUser(user);
 				model.addAttribute("user", user);
 				model.addAttribute("groups", user.getGroups());
@@ -81,6 +83,28 @@ public class FlakController {
 		}
 		model.addAttribute("message", "Username is already in use.");
 		return "signup.jsp";
+	}
+	
+	@RequestMapping(path="newGroup.do", method=RequestMethod.POST)
+	public String newGroup(Model model, @RequestParam("newGroup") String newGroupName
+							, @ModelAttribute("user") User user) {
+		if (newGroupName.length() > 0 && flakDAO.isGroupNameUnique(newGroupName)) {
+			Group group = new Group();
+			group.setName(newGroupName);
+			List<User> users = new ArrayList<>(); //Group requires a list of User
+			users.add(user); // adding current user that's in session
+			group.setUsers(users); // sets List of User in the new group to ^^ 
+			flakDAO.createGroup(group); // creates/persists in DB
+			List<Group> groups = user.getGroups(); // gets current user's group list in case they have some already
+			groups.add(group); //adding new group to user's List<Group>
+			User tempUser = user; // temp User prevents overwriting session user's data
+			tempUser.setGroups(groups); // give tempUser the most current list of Group
+			flakDAO.editUser(user.getId(), tempUser); //persists current user's changes in DB
+			model.addAttribute("user", user); //adds to model so we can pull out in EL
+			model.addAttribute("groups", user.getGroups());//adds List of Group like ^^
+		}
+		
+		return "grouplist.jsp";
 	}
 
 	@RequestMapping(path = "about.do", method = RequestMethod.GET) // unfinished view
@@ -171,18 +195,20 @@ public class FlakController {
 									@RequestParam("description") String description, 
 									@RequestParam("tid") int tid, 
 									@ModelAttribute("user") User user) {
-		Activity activity = new Activity();
-		activity.setDescription(description);
-		activity.setName(name);
-		Type type = flakDAO.showType(tid);
-		activity.setType(type);
-		List<User> users = new ArrayList<>();
-		users.add(user);
-		activity.setUsers(users);
-		activity.setAssigned(true);
-		activity.setGroup(flakDAO.showGroup(gid));
-		activity.setTimeStamp(new java.sql.Date(new java.util.Date().getTime()));
-		flakDAO.createActivity(activity);
+		if(name.length() > 0) {
+			Activity activity = new Activity();
+			activity.setDescription(description);
+			activity.setName(name);
+			Type type = flakDAO.showType(tid);
+			activity.setType(type);
+			List<User> users = new ArrayList<>();
+			users.add(user);
+			activity.setUsers(users);
+			activity.setAssigned(true);
+			activity.setGroup(flakDAO.showGroup(gid));
+			activity.setTimeStamp(new java.sql.Date(new java.util.Date().getTime()));
+			flakDAO.createActivity(activity);
+		}
 		model.addAttribute("group", flakDAO.showGroup(gid));
 		model.addAttribute("groups", user.getGroups());
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
