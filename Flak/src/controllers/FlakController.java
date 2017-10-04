@@ -217,6 +217,9 @@ public class FlakController {
 		model.addAttribute("conversations", flakDAO.getConversationsByGroupId(gid));
 		model.addAttribute("types", flakDAO.getAllTypes());
 		model.addAttribute("user", user);
+		model.addAttribute("shoplist", flakDAO.getUserActivitiesByType(user, "shopping"));
+		model.addAttribute("tasklist", flakDAO.getUserActivitiesByType(user, "task"));
+		model.addAttribute("eventlist", flakDAO.getUserActivitiesByType(user, "event"));
 		return "dashboard.jsp";
 	}
 
