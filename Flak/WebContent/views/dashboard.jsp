@@ -78,6 +78,9 @@
 								</c:otherwise>
 							</c:choose>
 							<c:if test="${not empty groups}">
+							
+						<li><a>${group.name}</a></li>
+					
 								<li class="dropdown"><a class="dropdown-toggle"
 									data-toggle="dropdown" href="#"><span class="caret"></span>&nbsp;GROUPS</a>
 									<ul class="dropdown-menu">
