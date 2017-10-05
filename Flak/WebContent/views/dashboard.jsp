@@ -141,13 +141,11 @@
 
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
+				<h3>Message Board</h3>
 				<!-- <div class="msg_img">
 					<img src="https://image.flaticon.com/icons/png/128/131/131155.png"
 						alt="img">
 				</div> -->
-
-				<h3>Message Board</h3>
-
 				<br>
 				<hr>
 				<c:if test="${not empty message}">
@@ -169,21 +167,22 @@
 							</div>
 							<div class="col-md-3">
 								<c:if test="${user.admin}">
-									<a href="editThread.do?cid=${convo.id}&gid=${group.id}"><input
-										type="submit" name="submit" value="Edit Thread" /></a>
+								<a href="editThread.do?cid=${convo.id}&gid=${group.id}"><input
+									type="submit" name="submit" value="Edit Thread" /></a>
 								</c:if>
 							</div>
-							<div class="col-md-6"></div>
+							<div class="col-md-6">
+							</div>
 						</div>
-
-						<!-- </li> -->
-					</c:forEach>
-					<form class="messages" action="newThread.do" method="post">
-						<input type="hidden" name="gid" value="${group.id}"></input> <input
-							id="input_bar" type="text" name="newthread" value="">
-						<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
-						<input type="submit" name="submit" value="New Thread">
-					</form>
+				
+				<!-- </li> -->
+				</c:forEach>
+				<form class="messages" action="newThread.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> <input
+						id="input_bar" type="text" name="newthread" value="">
+					<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
+					&emsp;<input type="submit" name="submit" value="New Thread">
+				</form>
 				</c:if>
 				<c:if test="${not empty posts}">
 					<c:forEach var="post" items="${posts}">
@@ -228,31 +227,25 @@
 									type="submit" value="Edit" /></a>
 								<c:if test="${user.admin}">
 									<a href="deleteActivity.do?aid=${item.id}&gid=${group.id}"><input
-										type="submit" value="Delete" /></a><br><br>
+										type="submit" value="Delete" /></a>
 								</c:if>
 							</div>
 						</div>
-
+					
 					</c:forEach>
 				</c:if>
 				<!-- Add a New Task Method Here -->
-				<form class="row" action="newActivity.do" method="post">
+				<form class="messages" action="newActivity.do" method="post">
 					<div>
-						<div class="col-md-4">
+						<div>
 							<input type="hidden" name="gid" value="${group.id}"></input>
-							<p>Task Name:</p>
-							<p>Description:</p>
-							<p>Type:</p>
-
-						</div>
-						<div class="col-md-5">
-							<input type="text" style="width: 400px;" name="name" value="">
-							<input type="text" style="width: 400px;" name="description"
+							Task Name: &nbsp; <input type="text" style="width: 400px;" name="name"
 								value="">
-
 						</div>
-						<div class="col-md-3">
-							<select name="tid">
+						<br>
+						<div>
+							Description: <input type="text" style="width: 400px;"
+								name="description" value=""><br><br>Type: <select name="tid">
 								<c:forEach var="type" items="${types}">
 									<c:choose>
 										<c:when test="${type.name == 'task'}">
@@ -264,30 +257,25 @@
 									</c:choose>
 									<option value="${type.id}" ${defaultOption}>${type.name}</option>
 								</c:forEach>
-							</select> <input type="submit" name="submit" value="Create">
-
+							</select>&emsp;<input type="submit" name="submit" value="Create">
 						</div>
-
-
-
 					</div>
+				</form>
+
 			</div>
-			</form>
 
-		</div>
-
-		<div id="menu2" class="tab-pane fade">
-			<h3>Shopping</h3>
-			<!-- <div class="msg_img">
+			<div id="menu2" class="tab-pane fade">
+				<h3>Shopping</h3>
+				<!-- <div class="msg_img">
 					<img
 						src="data:image/png;base64,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"
 						alt="img">
 				</div> -->
-			<br> <br>
-			<hr>
-			<c:if test="${not empty shoplist}">
-				<table>
-					<c:forEach var="item" items="${shoplist}">
+				<br> <br>
+				<hr>
+				<c:if test="${not empty shoplist}">
+					<table>
+						<c:forEach var="item" items="${shoplist}">
 						<div class="wrapper2">
 							<div>(${item.group.name})</div>
 							<div>${item.name}</div>
@@ -301,44 +289,43 @@
 								</c:if>
 							</div>
 						</div>
+						
+							
+						</c:forEach>
+					</table>
+				</c:if>
+				<!-- Add Grocery Item Method -->
+				<form class="messages" action="newActivity.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> Item
+					Name: &nbsp;<input type="text" style="width: 400px;" name="name" value=""><br><br>
+					Description: <input type="text" style="width: 400px;"
+						name="description" value=""><br><br> Type: <select name="tid">
+						<c:forEach var="type" items="${types}">
+							<c:choose>
+								<c:when test="${type.name == 'shopping'}">
+									<c:set var="defaultOption" value=" selected"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="defaultOption" value=""></c:set>
+								</c:otherwise>
+							</c:choose>
+							<option value="${type.id}" ${defaultOption}>${type.name}</option>
+						</c:forEach>
+					</select> &emsp;<input type="submit" name="submit" value="Add Item">
+				</form>
+			</div>
 
-
-					</c:forEach>
-				</table>
-			</c:if>
-			<!-- Add Grocery Item Method -->
-			<form class="messages" action="newActivity.do" method="post">
-				<input type="hidden" name="gid" value="${group.id}"></input> Item
-				Name: <input type="text" style="width: 400px;" name="name" value=""><br>
-				Description: <input type="text" style="width: 400px;"
-					name="description" value=""><br> Type: <select
-					name="tid">
-					<c:forEach var="type" items="${types}">
-						<c:choose>
-							<c:when test="${type.name == 'shopping'}">
-								<c:set var="defaultOption" value=" selected"></c:set>
-							</c:when>
-							<c:otherwise>
-								<c:set var="defaultOption" value=""></c:set>
-							</c:otherwise>
-						</c:choose>
-						<option value="${type.id}" ${defaultOption}>${type.name}</option>
-					</c:forEach>
-				</select> <input type="submit" name="submit" value="Add Item">
-			</form>
-		</div>
-
-		<div id="menu3" class="tab-pane fade">
-			<h3>Events</h3>
-			<!-- <div class="msg_img">
+			<div id="menu3" class="tab-pane fade">
+				<h3>Events</h3>
+				<!-- <div class="msg_img">
 					<img src="https://image.flaticon.com/icons/png/128/48/48732.png"
 						alt="img">
 				</div> -->
-			<br> <br>
-			<hr>
-			<c:if test="${not empty eventlist}">
-				<table>
-					<c:forEach var="item" items="${eventlist}">
+				<br> <br>
+				<hr>
+				<c:if test="${not empty eventlist}">
+					<table>
+						<c:forEach var="item" items="${eventlist}">
 						<div class="wrapper2">
 							<div>(${item.group.name})</div>
 							<div>${item.name}</div>
@@ -352,51 +339,50 @@
 								</c:if>
 							</div>
 						</div>
+						
+						</c:forEach>
+					</table>
+				</c:if>
+				<!-- Add a New Event Method Here -->
+				<form class="messages" action="newActivity.do" method="post">
+					<input type="hidden" name="gid" value="${group.id}"></input> Event
+					Name: <input type="text" style="width: 400px;" name="name" value=""><br><br>
+					Description:&nbsp; <input type="text" style="width: 400px;"
+						name="description" value=""><br><br> Type: <select name="tid">
+						<c:forEach var="type" items="${types}">
+							<c:choose>
+								<c:when test="${type.name == 'event'}">
+									<c:set var="defaultOption" value=" selected"></c:set>
+								</c:when>
+								<c:otherwise>
+									<c:set var="defaultOption" value=""></c:set>
+								</c:otherwise>
+							</c:choose>
+							<option value="${type.id}" ${defaultOption}>${type.name}</option>
+						</c:forEach>
+					</select>&emsp; <input type="submit" name="submit" value="Create Event">
+				</form>
 
-					</c:forEach>
-				</table>
-			</c:if>
-			<!-- Add a New Event Method Here -->
-			<form class="messages" action="newActivity.do" method="post">
-				<input type="hidden" name="gid" value="${group.id}"></input> Event
-				Name: <input type="text" style="width: 400px;" name="name" value=""><br>
-				Description: <input type="text" style="width: 400px;"
-					name="description" value=""><br /> Type: <select
-					name="tid">
-					<c:forEach var="type" items="${types}">
-						<c:choose>
-							<c:when test="${type.name == 'event'}">
-								<c:set var="defaultOption" value=" selected"></c:set>
-							</c:when>
-							<c:otherwise>
-								<c:set var="defaultOption" value=""></c:set>
-							</c:otherwise>
-						</c:choose>
-						<option value="${type.id}" ${defaultOption}>${type.name}</option>
-					</c:forEach>
-				</select> <input type="submit" name="submit" value="Create Event">
-			</form>
-
-		</div>
-
-
-		<div id="menu4" class="tab-pane fade">
-			<h3>Calendar</h3>
-			<hr>
-
-			<!-- <iframe src="https://calendar.google.com/calendar/embed?src=jmeaster1%40gmail.com&ctz=America/Chicago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
-			<div class="googleCalendar">
-				<iframe
-					src="https://calendar.google.com/calendar/embed?title=Put%20your%20Title%20here&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=8d3fc8l9g04n7r9im45fsn08ak%40group.calendar.google.com&amp;color=%238D6F47&amp;ctz=America%2FDenver"
-					style="border-width: 0" width="800" height="600" frameborder="0"
-					scrolling="no"></iframe>
 			</div>
 
+
+			<div id="menu4" class="tab-pane fade">
+				<h3>Calendar</h3>
+				<hr>
+
+				<!-- <iframe src="https://calendar.google.com/calendar/embed?src=jmeaster1%40gmail.com&ctz=America/Chicago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
+				<div class="googleCalendar">
+					<iframe
+						src="https://calendar.google.com/calendar/embed?title=FLAK%20 Calendar&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=8d3fc8l9g04n7r9im45fsn08ak%40group.calendar.google.com&amp;color=%238D6F47&amp;ctz=America%2FDenver"
+						style="border-width: 0" width="800" height="600" frameborder="0"
+						scrolling="no"></iframe>
+				</div>
+
+			</div>
 		</div>
 	</div>
-</div>
 
-</article>
+	</article>
 </div>
 </section>
 
