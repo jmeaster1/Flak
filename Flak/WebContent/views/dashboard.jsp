@@ -210,10 +210,7 @@
 
 			</div>
 			<div id="menu1" class="tab-pane fade">
-				<div class="wrapper">
-				<div><h3>Tasks</h3></div>
-				
-				<div></div>
+				<h3>Tasks</h3>
 				<!-- <div class="msg_img">
 					<img src="https://image.flaticon.com/icons/png/128/1/1560.png"
 						alt="img">
