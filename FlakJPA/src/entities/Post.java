@@ -19,7 +19,6 @@ public class Post {
 	
 	private String message;
 	
-	//many posts belong to one conversation
 	@ManyToOne
 	@JoinColumn(name="conv_id")
 	private Conversation conversation;

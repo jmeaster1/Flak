@@ -145,21 +145,10 @@
 		<div class="tab-content">
 			<div id="home" class="tab-pane fade in active">
 				<h3>Message Board</h3>
-				<!-- <div class="msg_img">
-					<img src="https://image.flaticon.com/icons/png/128/131/131155.png"
-						alt="img">
-				</div> -->
+				
 				<br>
 				<hr>
-				<%-- <c:if test="${not empty message}">
-					<h3>${message}</h3>
-					<form class="messages" action="newThread.do" method="post">
-						<input type="hidden" name="gid" value="${group.id}"></input> <input
-							id="input_bar" type="text" name="newthread" value="">
-						<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
-						<input type="submit" name="submit" value="New Thread">
-					</form>
-				</c:if> --%>
+				
 				<c:if test="${not empty conversations || empty posts}">
 					<c:forEach var="convo" items="${conversations}">
 						<!-- Creates Grid for Message Board -->
@@ -177,8 +166,6 @@
 							<div class="col-md-6">
 							</div>
 						</div>
-				
-				<!-- </li> -->
 				</c:forEach>
 				<form class="messages" action="newThread.do" method="post">
 					<input type="hidden" name="gid" value="${group.id}"></input> <input
