@@ -151,7 +151,7 @@
 				</div> -->
 				<br>
 				<hr>
-				<c:if test="${not empty message}">
+				<%-- <c:if test="${not empty message}">
 					<h3>${message}</h3>
 					<form class="messages" action="newThread.do" method="post">
 						<input type="hidden" name="gid" value="${group.id}"></input> <input
@@ -159,8 +159,8 @@
 						<!-- <input type="text" style="width: 500px;" name="message" value=""> -->
 						<input type="submit" name="submit" value="New Thread">
 					</form>
-				</c:if>
-				<c:if test="${not empty conversations}">
+				</c:if> --%>
+				<c:if test="${not empty conversations || empty posts}">
 					<c:forEach var="convo" items="${conversations}">
 						<!-- Creates Grid for Message Board -->
 						<div class="row">
