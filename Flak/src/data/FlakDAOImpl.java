@@ -115,11 +115,13 @@ public class FlakDAOImpl implements FlakDAO {
 								.getResultList();
 		return groups;
 	}
+	
 	@Override
 	public List<Conversation> getConversationsByGroupId(int id) {
 		List<Conversation> conversations;
-		String queryString = "Select distinct c from Conversation c where c.group.id = :id";
+		String queryString = "Select distinct c from Conversation c where c.group.id = :id order by c.id desc";
 		conversations =  em.createQuery(queryString, Conversation.class)
+						.setMaxResults(10)
 						.setParameter("id", id)
 						.getResultList();
 		return conversations;

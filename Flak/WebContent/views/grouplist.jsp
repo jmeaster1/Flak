@@ -79,16 +79,17 @@
 				<a href="getDashboardByUser.do?gid=${group.id}">${group.name}
 				</a><br><br>
 			</c:forEach>
+			<form action="newGroup.do" method="POST">
+				<br> <input type="text" name="newGroup" value="Group Name Here">
+				<input type="submit" name="submit" value="Create New Group">			
+			</form>
 		</div>
 	<!-- User Can Create a New Group -->	
 		<div class="new_group">
 			<c:if test="${not empty message}">
 				<h3>${message}</h3>
 			</c:if>
-			<form action="newGroup.do" method="POST">
-				Group Name: <input type="text" name="newGroup">
-				<input type="submit" name="submit" value="Create Group">			
-			</form>
+			
 		</div>
 	</div>
 	
