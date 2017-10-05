@@ -105,6 +105,12 @@ body {
 	color:blue;
 	text-shadow: 1px 1px 1px black;
 }
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: center;
+}
 
 .login_content4 p {
 	margin-bottom:-6px;

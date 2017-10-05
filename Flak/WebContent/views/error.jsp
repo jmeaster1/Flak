@@ -28,6 +28,8 @@
 <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="styles/style.css" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<!-- <h1 class="header_class">
