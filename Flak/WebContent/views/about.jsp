@@ -35,13 +35,23 @@
 	<div class="login_container2">
 		<div class="login_content2">
 			<h1>About Flak</h1><br>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-				do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-				ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-				reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-				pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-				culpa qui officia deserunt mollit anim id est laborum.</p>
+			<h4>Ever wish you could manage your tasks, contacts, and upcoming events from all
+			your friend and family groups in one place?</h4>
+			<br />
+			<h4>Tired of scrolling through endless messages to find that one link your friend
+			shared?</h4>
+			<br />
+			<h4>You're not ready to give your youngster a smarthphone but you do want to 
+			keep them connected and give them a tool to manage their responsibilities?</h4>
+			<br />
+			<h2></h2>
+			<p>Just like in the skies of World War 2, FLAK is here! FLAK is a web application 
+			designed to help communities of people reach their goals in an organized and connected 
+			way.</p>
+				
+				
+				FLAK is a full-stack web application designed to help people involved in a common task to achieve their goals.
+				
 		</div>
 	</div>
 
